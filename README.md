@@ -32,4 +32,4 @@ Datos a crear en la cronologia
 #### almacen de objetos 
 ### Estuido de los framework 
 #### laravel 
-####angular
+#### angular

@@ -9,7 +9,7 @@ Datos a crear en la cronologia
 #### casos de uso 
 #### modelos de dominio
 #### interfaces
-####  Conologia
+####  Cronologia
 ## Diseño de la vista
 #### moqups
 #### colores elegidos 

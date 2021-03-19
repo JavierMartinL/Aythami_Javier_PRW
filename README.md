@@ -8,7 +8,6 @@ Datos a crear en la cronologia
 ## Diseño de la aplicacion
 #### casos de uso 
 #### modelos de dominio
-#### interfaces
 ####  Cronologia
 ## Diseño de la vista
 #### moqups

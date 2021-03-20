@@ -1,34 +1,35 @@
-Datos a crear en la cronologia 
-## Introduccion
+Datos a crear en la cronología 
+## Introducción
 ## Objetivos
-## Tecnologias escogidas
-#### Explicaicon de las tecnologias 
-#### Bse de datos usada 
+## Tecnologías escogidas
+#### Explicación de las tecnologías 
+#### Base de datos usada 
 #### Framework
-## Diseño de la aplicacion
+## Diseño de la aplicación
 #### casos de uso 
-#### modelos de dominio
-####  Cronologia
+#### Modelos de dominio
+#### Cronología
 ## Diseño de la vista
-#### moqups
+#### Moqups
 #### colores elegidos 
-#### estilo de siseño
+#### Estilo de diseño
 ## Base de datos
 #### Modelo de datos 
-#### script y tablas creadas 
-#### consulta sql
-## Backend
-#### instalacion del software
-#### desarrollo de clases
-#### desarrolo de controlador
-#### gestion de ususarios
-#### conexion con el back y el front mediante api rest
-#### genarcion de tokens
-## Front 
-#### istalacion de fremawork  a utilizar 
-#### crear vistas
-#### crear la logicas de las vistas
-#### almacen de objetos 
-### Estuido de los framework 
-#### laravel 
-#### angular
+#### Script y tablas creadas 
+#### Consulta sql
+## Backen
+#### Instalación del software
+#### Desarrollo de clases
+#### Desarrollo de controlador
+#### Gestión de usuarios
+#### Conexión con el back y el front mediante api rest
+#### Generación de tokens
+## Fronten 
+#### Instalacion de framework  a utilizar 
+#### Crear vistas
+#### Crear la lógicas de las vistas
+#### Almacén de objetos 
+### Estudio de los framework 
+#### Laravel 
+#### Angular
+

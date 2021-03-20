@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2021-03-15" view-index="0" gantt-divider-location="511" resource-divider-location="300" version="3.0.3000" locale="es_ES">
+    <description/>
+    <view zooming-state="default:4" id="gantt-chart">
+        <field id="tpd3" name="Nombre" width="208" order="0"/>
+        <field id="tpd4" name="Fecha de inicio" width="108" order="1"/>
+        <field id="tpd5" name="Fecha de fin" width="107" order="2"/>
+        <field id="tpc0" name="Duracion" width="84" order="3"/>
+    </view>
+    <view id="resource-table">
+        <field id="0" name="Nombre" width="210" order="0"/>
+        <field id="1" name="Función" width="86" order="1"/>
+    </view>
+    <!-- -->
+    <calendars>
+        <day-types>
+            <day-type id="0"/>
+            <day-type id="1"/>
+            <default-week id="1" name="default" sun="0" mon="0" tue="0" wed="0" thu="0" fri="0" sat="0"/>
+            <only-show-weekends value="false"/>
+            <overriden-day-types/>
+            <days/>
+        </day-types>
+    </calendars>
+    <tasks empty-milestones="true">
+        <taskproperties>
+            <taskproperty id="tpd0" name="type" type="default" valuetype="icon"/>
+            <taskproperty id="tpd1" name="priority" type="default" valuetype="icon"/>
+            <taskproperty id="tpd2" name="info" type="default" valuetype="icon"/>
+            <taskproperty id="tpd3" name="name" type="default" valuetype="text"/>
+            <taskproperty id="tpd4" name="begindate" type="default" valuetype="date"/>
+            <taskproperty id="tpd5" name="enddate" type="default" valuetype="date"/>
+            <taskproperty id="tpd6" name="duration" type="default" valuetype="int"/>
+            <taskproperty id="tpd7" name="completion" type="default" valuetype="int"/>
+            <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
+            <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
+            <taskproperty id="tpc0" name="Duracion" type="custom" valuetype="text"/>
+        </taskproperties>
+        <task id="3" name="Introduccion" color="#8cb6ce" meeting="false" start="2021-03-20" duration="1" complete="0" thirdDate="2021-03-22" thirdDate-constraint="0" expand="true">
+            <depend id="13" type="2" difference="0" hardness="Strong"/>
+            <customproperty taskproperty-id="tpc0" value="2h"/>
+        </task>
+        <task id="13" name="Objetivos" color="#8cb6ce" meeting="false" start="2021-03-21" duration="1" complete="0" thirdDate="2021-03-15" thirdDate-constraint="0" expand="true">
+            <depend id="15" type="2" difference="0" hardness="Strong"/>
+            <customproperty taskproperty-id="tpc0" value="2h"/>
+        </task>
+        <task id="15" name="Tecnologia Escogidas para usar" color="#8cb6ce" meeting="false" start="2021-03-22" duration="3" complete="0" thirdDate="2021-03-15" thirdDate-constraint="0" expand="true">
+            <notes>
+                <![CDATA[2 horas
+]]>
+            </notes>
+            <depend id="32" type="2" difference="0" hardness="Strong"/>
+            <customproperty taskproperty-id="tpc0" value="6h"/>
+            <task id="16" name="Base de datos usada" color="#8cb6ce" meeting="false" start="2021-03-22" duration="1" complete="0" thirdDate="2021-03-15" thirdDate-constraint="0" expand="true">
+                <depend id="78" type="2" difference="0" hardness="Strong"/>
+                <customproperty taskproperty-id="tpc0" value="1h"/>
+            </task>
+            <task id="78" name="Explicacion de las Tecnologias" meeting="false" start="2021-03-23" duration="1" complete="0" expand="true">
+                <depend id="17" type="2" difference="0" hardness="Strong"/>
+                <customproperty taskproperty-id="tpc0" value="3h"/>
+            </task>
+            <task id="17" name="Framework usados" color="#8cb6ce" meeting="false" start="2021-03-24" duration="1" complete="0" thirdDate="2021-03-15" thirdDate-constraint="0" expand="true">
+                <depend id="39" type="2" difference="0" hardness="Strong"/>
+                <customproperty taskproperty-id="tpc0" value="2h"/>
+            </task>
+        </task>
+        <task id="32" name="Diseño de la aplicacion" meeting="false" start="2021-03-25" duration="3" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="10h"/>
+            <task id="39" name="Cronologia" meeting="false" start="2021-03-25" duration="1" complete="0" expand="true">
+                <depend id="73" type="2" difference="0" hardness="Strong"/>
+                <customproperty taskproperty-id="tpc0" value="4h"/>
+            </task>
+            <task id="73" name="Casos de uso" color="#8cb6ce" meeting="false" start="2021-03-26" duration="1" complete="0" thirdDate="2021-03-15" thirdDate-constraint="0" expand="true">
+                <depend id="71" type="2" difference="0" hardness="Strong"/>
+                <customproperty taskproperty-id="tpc0" value="4h"/>
+            </task>
+            <task id="71" name="Modelos de dominio" meeting="false" start="2021-03-27" duration="1" complete="0" expand="true">
+                <depend id="43" type="2" difference="0" hardness="Strong"/>
+                <customproperty taskproperty-id="tpc0" value="2h"/>
+            </task>
+        </task>
+        <task id="50" name="Estilo de diseño" meeting="false" start="2021-03-28" duration="14" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="25h"/>
+            <task id="43" name="Moqups" color="#8cb6ce" meeting="false" start="2021-03-28" duration="8" complete="0" thirdDate="2021-03-31" thirdDate-constraint="0" expand="true">
+                <depend id="41" type="2" difference="0" hardness="Strong"/>
+                <depend id="49" type="2" difference="0" hardness="Strong"/>
+                <customproperty taskproperty-id="tpc0" value="12h"/>
+            </task>
+            <task id="41" name="Diseño de la vista" color="#8cb6ce" meeting="false" start="2021-04-05" duration="6" complete="0" thirdDate="2021-03-15" thirdDate-constraint="0" expand="true">
+                <customproperty taskproperty-id="tpc0" value="12h"/>
+            </task>
+            <task id="49" name="Colores Elegidos" meeting="false" start="2021-04-05" duration="1" complete="0" expand="true">
+                <customproperty taskproperty-id="tpc0" value="1h"/>
+            </task>
+        </task>
+        <task id="51" name="Base de datos" meeting="false" start="2021-03-20" duration="22" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value="6h"/>
+            <task id="67" name="Modelo de datos" meeting="false" start="2021-03-20" duration="12" complete="0" expand="true">
+                <depend id="53" type="2" difference="0" hardness="Strong"/>
+                <depend id="66" type="2" difference="0" hardness="Strong"/>
+                <customproperty taskproperty-id="tpc0" value="6h"/>
+            </task>
+            <task id="53" name="Script y tablas creadas" meeting="false" start="2021-04-01" duration="1" complete="0" expand="true">
+                <customproperty taskproperty-id="tpc0" value="2h"/>
+            </task>
+            <task id="66" name="Consulta Sql" meeting="false" start="2021-04-01" duration="10" complete="0" expand="true">
+                <customproperty taskproperty-id="tpc0" value="10h"/>
+            </task>
+        </task>
+        <task id="55" name="Backend" meeting="false" start="2021-04-12" duration="22" complete="0" expand="true">
+            <customproperty taskproperty-id="tpc0" value=""/>
+            <task id="56" name="Intalaciopn del software" color="#8cb6ce" meeting="false" start="2021-04-12" duration="1" complete="0" thirdDate="2021-03-15" thirdDate-constraint="0" expand="true">
+                <depend id="57" type="2" difference="0" hardness="Strong"/>
+                <customproperty taskproperty-id="tpc0" value="4h"/>
+            </task>
+            <task id="57" name="Desarrollo de clases" color="#8cb6ce" meeting="false" start="2021-04-13" duration="6" complete="0" thirdDate="2021-04-15" thirdDate-constraint="0" expand="true">
+                <depend id="58" type="2" difference="0" hardness="Strong"/>
+                <customproperty taskproperty-id="tpc0" value="10h"/>
+            </task>
+            <task id="58" name="Desarrollo de controladores" color="#8cb6ce" meeting="false" start="2021-04-19" duration="5" complete="0" thirdDate="2021-04-21" thirdDate-constraint="0" expand="true">
+                <depend id="59" type="2" difference="0" hardness="Strong"/>
+                <depend id="61" type="2" difference="0" hardness="Strong"/>
+                <customproperty taskproperty-id="tpc0" value="30h"/>
+            </task>
+            <task id="59" name="Gestion de usuarios" color="#8cb6ce" meeting="false" start="2021-04-24" duration="5" complete="0" thirdDate="2021-04-26" thirdDate-constraint="0" expand="true">
+                <depend id="60" type="2" difference="0" hardness="Strong"/>
+                <customproperty taskproperty-id="tpc0" value="20h"/>
+            </task>
+            <task id="60" name="Conexion del back con el front" meeting="false" start="2021-04-29" duration="5" complete="0" expand="true">
+                <customproperty taskproperty-id="tpc0" value="10h"/>
+            </task>
+        </task>
+        <task id="61" name="Front" meeting="false" start="2021-04-24" duration="23" complete="0" expand="true">
+            <depend id="158" type="2" difference="0" hardness="Strong"/>
+            <task id="141" name="Instalacion del software" color="#8cb6ce" meeting="false" start="2021-04-24" duration="1" complete="0" thirdDate="2021-03-15" thirdDate-constraint="0" expand="true">
+                <depend id="130" type="2" difference="0" hardness="Strong"/>
+                <customproperty taskproperty-id="tpc0" value="4h"/>
+            </task>
+            <task id="130" name="Crear Vistas" color="#8cb6ce" meeting="false" start="2021-04-25" duration="11" complete="0" thirdDate="2021-04-15" thirdDate-constraint="0" expand="true">
+                <depend id="63" type="2" difference="0" hardness="Strong"/>
+                <customproperty taskproperty-id="tpc0" value="30h"/>
+            </task>
+            <task id="63" name="Crear la logica de las vistas" color="#8cb6ce" meeting="false" start="2021-05-06" duration="6" complete="0" thirdDate="2021-03-15" thirdDate-constraint="0" expand="true">
+                <depend id="64" type="2" difference="0" hardness="Strong"/>
+                <customproperty taskproperty-id="tpc0" value="30h"/>
+            </task>
+            <task id="64" name="Almacen de objetos" meeting="false" start="2021-05-12" duration="5" complete="0" expand="true">
+                <customproperty taskproperty-id="tpc0" value="10h"/>
+            </task>
+        </task>
+        <task id="158" name="Tiempo para improvistos" color="#8cb6ce" meeting="false" start="2021-05-17" duration="12" complete="0" thirdDate="2021-03-22" thirdDate-constraint="0" expand="true"/>
+        <task id="0" name="Estudio de las  Tecnologias a utilizar" color="#8cb6ce" meeting="false" start="2021-03-20" duration="70" complete="0" thirdDate="2021-03-22" thirdDate-constraint="0" expand="false">
+            <depend id="126" type="2" difference="0" hardness="Strong"/>
+            <task id="65" name="Estudio de los framework" color="#8cb6ce" meeting="false" start="2021-03-20" duration="70" complete="0" thirdDate="2021-03-15" thirdDate-constraint="0" expand="true"/>
+        </task>
+        <task id="126" name="Documentacion" color="#8cb6ce" meeting="false" start="2021-05-29" duration="70" complete="0" thirdDate="2021-03-11" thirdDate-constraint="0" expand="true"/>
+    </tasks>
+    <resources/>
+    <allocations/>
+    <vacations/>
+    <previous/>
+    <roles roleset-name="Default"/>
+</project>

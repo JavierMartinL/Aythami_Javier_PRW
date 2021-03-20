@@ -1,7 +1,7 @@
 Datos a crear en la cronología 
 ## Introducción
 ## Objetivos
-## Tecnologías escogidas
+## [Tecnologías escogidas](/Documentacion)
 #### Explicación de las tecnologías 
 #### Base de datos usada 
 #### Framework

@@ -1,11 +1,7 @@
 Datos a crear en la cronología 
 ## Introducción
 ## Objetivos
-<<<<<<< HEAD
-## [Tecnologías escogidas](/Documentacion/Tecnologías escogidas)
-=======
 ## [Tecnologías escogidas](/Documentacion/Tecnologías_escogidas.md)
->>>>>>> 79c8aca8c6f63d172c9176eea342ed8794fce0bc
 #### Explicación de las tecnologías 
 #### Base de datos usada 
 #### Framework

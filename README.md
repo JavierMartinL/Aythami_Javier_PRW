@@ -10,7 +10,7 @@ Contamos con una serie de objetivos principales a cumplir en el funcionamiento d
 insertar por el usuario.
 - En la búsqueda se podrá realizar tanto por categoría como por el nombre de los
 documentos o la descripción de este.
--Pantalla donde se muestre el documento estilo Red social.(Previsualización del
+- Pantalla donde se muestre el documento estilo Red social.(Previsualización del
 documento, etiquetas, categorías, descripción)
 - Gestión de usuarios para tener más de una cuenta capaz de poner subir archivos.
 - Agregar Etiquetas a los archivos para subcategorias.

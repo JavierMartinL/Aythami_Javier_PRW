@@ -6,7 +6,7 @@ Gracias a git contamos con las siguientes características que nos ayudan a mejo
 - También nos permite volver a las versiones anteriores de nuestro código.
 
 Para usar git nos vamos a su página web y nos descargamos el archivo de instalación que encontramos para windows.
-![logo]: (/Documentacion/Imagenes/Tecnologias/git.PNG)
+![logo]: (/Imagenes/Tecnologias/git.PNG)
 En caso de usar Linux  podemos instalarlo con los siguientes comandos 
 `Sudo apt install git ` o `sudo pacman install git`. En Mac `yum install git`
 

@@ -7,7 +7,7 @@ Gracias a git contamos con las siguientes características que nos ayudan a mejo
 
 Para usar git nos vamos a su página web y nos descargamos el archivo de instalación que encontramos para windows.
 
-![logo]: (Imagenes/Tecnologias/git.PNG)
+![logo](Imagenes/Tecnologias/git.PNG)
 
 En caso de usar Linux  podemos instalarlo con los siguientes comandos 
 `Sudo apt install git ` o `sudo pacman install git`. En Mac `yum install git`
@@ -24,12 +24,12 @@ En cuanto a git flow es un agregado extra a las funciones git , nos mejora el fl
 A la hora de usar gitflow primero necesitamos intalarlo para ello usaremos el comando `Sudo apt install git-flow ` o en caso de window su instalador correspondiente.
 para usar gitflow de manera comoda sin comandos, tambien nos descagaremos esta extension del  [visual estudio code](https://marketplace.visualstudio.com/items?itemName=PsykoSoldi3r.vscode-git-flow).
 
-![logo]: (Imagenes/Tecnologias/git-flow.PNG)
+![logo](Imagenes/Tecnologias/git-flow.PNG)
 
 ## Trello
 Trello es una herramienta que nos permite gestionar los trabajos que realizan cada uno de los intengrantes del grupo.
 Para ello nos proprociona un tablero como se ve en la siguiente imagen.
-![logo]: (Imagenes/Tecnologias/trello.PNG)
+![logo](Imagenes/Tecnologias/trello.PNG)
 Dandono la capacidad de poner comentarios, hacer listas de tareas e ir cambiando la tarea segun va avanzando en nuestro caso hemos puesto 4
 # Base de datos usada
 # Framework

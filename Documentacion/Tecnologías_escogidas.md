@@ -26,6 +26,24 @@ para usar gitflow de manera comoda sin comandos, tambien nos descagaremos esta e
 
 ![logo](Imagenes/Tecnologias/git-flow.PNG)
 
+###### Funcionamiento
+ Lo primero para hacer uso de gitflow pondremos el comando `git flow init` en nuestra carpeta principal para agregarle las funciones de git flow a nuestro poryecto.
+
+ Ahora en neustro lugin de gitflow de daremos al + que se ve en features  esto nos permitira crear una copia de develop de forma sencialla.
+
+![logo](Imagenes/Tecnologias/feature.PNG)
+
+Trabajaremos en esta rama hasta terminar nuestro trabajo peticion o funcion y luego usaremos el boton que pone merge. 
+
+![logo](Imagenes/Tecnologias/merge.PNG)
+
+Podemos cerrar la rama en finish para no acumular muchas ramas de features. 
+
+![logo](Imagenes/Tecnologias/merge.PNG)
+
+Podemos crear la rama con el comando `git flow feature start feature_branch`
+que es una copia de develop y `git flow feature finish feature_branch`  que cierra la rama y la mergea automaticamente.
+
 ## Trello
 Trello es una herramienta que nos permite gestionar los trabajos que realizan cada uno de los intengrantes del grupo.
 Para ello nos proprociona un tablero como se ve en la siguiente imagen.

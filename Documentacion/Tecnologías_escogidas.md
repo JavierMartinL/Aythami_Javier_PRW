@@ -51,5 +51,6 @@ Para ello nos proporciona un tablero como se ve en la siguiente imagen.
 ![logo](Imagenes/Tecnologias/trello.PNG)
 Dando la capacidad de poner comentarios, hacer listas de tareas e ir cambiando la tarea según va avanzando en nuestro caso hemos puesto 4
 # Base de datos usada
+
 # Framework
  

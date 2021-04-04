@@ -52,5 +52,5 @@ copias y acceder.
 ## [Estudio de los framework](/Documentacion/estudio_de_los_framework.md)
 #### Laravel 
 #### Angular
-## [Estudio de los framework](/Documentacion/Bibliografia.md)
-
+## [Bibliografia](/Documentacion/Bibliografia.md)
+## [Bitacora](/Documentacion/Bitacora.md)

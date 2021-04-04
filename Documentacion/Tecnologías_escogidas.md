@@ -50,7 +50,28 @@ Trello es una herramienta que nos permite gestionar los trabajos que realizan ca
 Para ello nos proporciona un tablero como se ve en la siguiente imagen.
 ![logo](Imagenes/Tecnologias/trello.PNG)
 Dando la capacidad de poner comentarios, hacer listas de tareas e ir cambiando la tarea según va avanzando en nuestro caso hemos puesto 4
-# Base de datos usada
 
-# Framework
+# Base de datos usada
+La base de datos que hemos decidido usar es Mysql o Mariadb.
+Para esta elección hemos tenido en cuenta las bases de datos que puede usar nuestro framework de backend que son:
+- MySQL
+- Postgresql
+- SQLite3
+- SQL Server
  
+Luego hemos tenido en cuenta la experiencia usando las distintas bases de datos  nombradas anteriormente, las dos que hemos usado más son Mysql y Sqlite.
+ 
+ En cuanto a sqlite está diseñada para funcionar en memoria o con dispositivos móviles. 
+ 
+Mysql está más diseñada para páginas web con un servidor integrado, también es una de las que más hemos usado y viene instalada junto con Xampp que será nuestro software de desarrollo.
+ 
+Las otras bases de datos no las hemos tratado en el instituto y están orientadas a grandes flujos de datos.
+ 
+# Framework
+ En cuanto a framework este año no hemos visto muchos framework en el front hemos visto Angular y en el back apenas hemos llegado a ver laravel y sinfonía en la parte de php y Spring en la parte de java(Gracias a la documentación de JC).
+ 
+ Otro de los hándicap a tomar en cuenta ha sido la dificultad de los integrantes del grupo a la hora de programas en una u otro lenguaje de programación y el lenguaje que se está usando en la prácticas de ambos para poder tener un poco de ayuda en caso de necesitarla.
+ 
+ Por ello hemos elegido en el front Angular ya que es el lenguaje que está usando Javier en el front y Laravel por la documentación y que Aythami está usando otro framework muy parecido de back en la empresa de practicas llamado CodeIgniter 3. 
+
+

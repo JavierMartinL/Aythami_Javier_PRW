@@ -24,6 +24,7 @@ copias y acceder.
 ## [Tecnologías escogidas](/Documentacion/Tecnologías_escogidas.md)
 #### [Explicación de las tecnologías](/Documentacion/Tecnologías_escogidas.md)
 mini explicacion de la secion
+#### [Usos de las Tecnologías en nuestro proyecto y otros datos de interés](/Documentacion/Tecnologías_escogidas.md)
 #### [Base de datos usada](/Documentacion/Tecnologías_escogidas.md)
 #### [Framework](/Documentacion/Tecnologías_escogidas.md)
 ## [Diseño de la aplicación](/Documentacion/Diseño_de_la_aplicación.md)

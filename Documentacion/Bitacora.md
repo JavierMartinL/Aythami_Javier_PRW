@@ -12,4 +12,4 @@ Aquí se verán reflejadas en número de horas que ha ido realizando cada uno de
 | Documentación de tecnologias Trello   |03/04/2021 | 40 min| Aythami |
 | Documentación de tecnologias Extra de git flow   |03/04/2021 | 20 min| Aythami |
 | Bitácora y corrección de ortografías |04/04/2021 | 20 min| Aythami |
- 
+| Framework y Base de datos |04/04/2021 | 1h| Aythami |

@@ -8,3 +8,5 @@ https://www.atlassian.com/es/git/tutorials/comparing-workflows/gitflow-workflow
 https://ayudatpymes.com/gestron/que-es-trello/
 - Ayuda para el markdown.
 https://markdown.es/multimarkdown/#Tablas
+- Para la eleccion de base datos.
+https://richos.gitbooks.io/laravel-5/content/capitulos/chapter3.html

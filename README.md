@@ -22,9 +22,10 @@ documento, etiquetas, categorías, descripción)
 copias y acceder.
 
 ## [Tecnologías escogidas](/Documentacion/Tecnologías_escogidas.md)
-#### Explicación de las tecnologías 
-#### Base de datos usada 
-#### Framework
+#### [Explicación de las tecnologías](/Documentacion/Tecnologías_escogidas.md)
+mini explicacion de la secion
+#### [Base de datos usada](/Documentacion/Tecnologías_escogidas.md)
+#### [Framework](/Documentacion/Tecnologías_escogidas.md)
 ## [Diseño de la aplicación](/Documentacion/Diseño_de_la_aplicación.md)
 #### casos de uso 
 #### Modelos de dominio

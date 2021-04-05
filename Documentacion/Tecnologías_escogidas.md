@@ -100,8 +100,11 @@ Como se ve en la imagen tenemos la opción de crear el proyecto con nombre , fec
  
 #### Como hacer los commit 
  
-En nuestro caso hemos decidido hacer los commit de la siguiente manera 'información de lo que has realizado fecha y duración ' quedando de la siguiente manera los commit 'Bibliografía y bitacora actualizada  04/04/2021 5min'
+En nuestro caso hemos decidido hacer los commit de la siguiente manera 'información de lo que has realizado fecha y duración ' quedando de la siguiente manera los commit 'Bibliografía y bitacora actualizada  04/04/2021 5min'.
 
+#### Como Trabajamos con git-flow
+
+Aprovechamos la funcionalidad de git flow que nos crea una rama master  y develop, y las funciones de features para crear cada una de las funcionalidades de nuestro código. Estas ramas se crear con el nombre de la tarea y a que parte del código pertenece  por ejemplo  login_backend.
 
 # Base de datos usada
 

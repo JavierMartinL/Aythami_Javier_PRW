@@ -14,3 +14,4 @@ Aquí se verán reflejadas en número de horas que ha ido realizando cada uno de
 | Bitácora y corrección de ortografías | 04/04/2021 | 20 min | Aythami |
 | Framework y Base de datos | 04/04/2021 | 1h| Aythami |
 | Crada la seccion uso de tecnologias y otros datos | 04/04/2021 | 10min | Aythami |
+| Documentación de tecnologías GanttProject  | 05/04/2021 | 50 min | Aythami |

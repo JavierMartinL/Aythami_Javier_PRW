@@ -56,6 +56,46 @@ Para ello nos proporciona un tablero como se ve en la siguiente imagen.
 ![logo](Imagenes/Tecnologias/trello.PNG)
 Dando la capacidad de poner comentarios, hacer listas de tareas e ir cambiando la tarea según va avanzando en nuestro caso hemos puesto 4
 
+## Diagrama de Gannt 
+
+El diagrama de gantt es una forma útil de gestión que tiene que completarse en un proyecto y sus fechas.
+
+![logo](Imagenes/Tecnologias/gantt.PNG)
+
+
+como vemos en la imagen  El diagrama de gantt cuenta con un nombre para las tareas, fecha de inicio , fecha de fin y tiempo para realizar las tareas. Estos elementos puesto como se ven en la imagen nos proporcionan las duración estimada del proyecto. Cuánto tiempo y en qué fechas se deben entregar cada una de las tareas del mismo.
+
+Usar estos diagramas nos aporta claridad en el proyecto, una vista general del mismo, datos sobre el rendimiento , mejor gestión del tiempo y flexibilidad.
+
+
+![logo](Imagenes/Tecnologias/gantt2.jpg)
+
+###### Claridad
+
+Nos aporta claridad gracias a ver las tareas desglosadas y las líneas temporales en una sola vista del proyecto.
+
+###### Comunicación
+
+Esto ayuda a las diferentes partes del equipo a llevar un tiempo de entrega, reduciendo las reuniones.
+
+###### Motivación
+
+Al tener unos tiempos de entrega tan marcados se motivan a entregar el trabajo para no retrasar el resto del proyecto. 
+
+###### Flexibilidad
+
+Los programas  nos permiten editar el tiempo y las horas de trabajo para ajustar el tiempo de entrega ya que estos suelen variar según las circunstancias.
+
+
+El programa usado en esta ocasión para hacer el diagrama es Ganttproject https://www.ganttproject.biz/ aprobenchando que es de libre uso. 
+Como se ve en la imagen tenemos la opción de crear el proyecto con nombre , fecha inicio y fecha fin.
+
+![logo](Imagenes/Tecnologias/gantt.PNG)
+
+ El programa nos permite agregar nuevas éticas y hacer subTareas. Entonces agregue duración y  para tener en cuenta cuánto deben durar las tareas 
+
+
+
 # Usos de las Tecnologías en nuestro proyecto y otros datos de interés.
  
 #### Como hacer los commit 

@@ -1,23 +1,15 @@
-DROP DATABASE IF EXISTS Organizador;
 CREATE DATABASE Organizador;
 USE Organizador;
 
-CREATE TABLE Usuarios (
-    id INT NOT NULL AUTO_INCREMENT,
-    correo VARCHAR(255) NOT NULL,
-    nombre VARCHAR(255) NOT NULL,
-    password VARBINARY(255) NOT NULL,
-    CONSTRAINT PK_Usuario PRIMARY KEY (id)
-);
 
 CREATE TABLE Categorias (
     id INT NOT NULL AUTO_INCREMENT,
     nombre VARCHAR(255) NOT NULL,
     id_padre INT NOT NULL,
-    id_usuario INT NOT NULL,
+    id_users INT NOT NULL,
     CONSTRAINT PK_Categoria PRIMARY KEY (id),
     CONSTRAINT FK_PadreCategoria FOREIGN KEY (id_padre) REFERENCES Categorias (id),
-    CONSTRAINT FK_UsuarioCategoria FOREIGN KEY (id_usuario) REFERENCES Usuarios (id)
+    CONSTRAINT FK_UsuarioCategoria FOREIGN KEY (id_users) REFERENCES users (id)
 );
 
 CREATE TABLE Archivos (
@@ -27,9 +19,9 @@ CREATE TABLE Archivos (
     tipo VARCHAR(100) NOT NULL,
     fecha_archivo DATE NOT NULL,
     fecha_subida DATE NOT NULL,
-    id_usuario INT NOT NULL,
+    id_users INT NOT NULL,
     CONSTRAINT PK_Archivo PRIMARY KEY (id),
-    CONSTRAINT FK_UsuarioArchivo FOREIGN KEY (id_usuario) REFERENCES Usuarios (id)
+    CONSTRAINT FK_UsuarioArchivo FOREIGN KEY (id_users) REFERENCES users (id)
 );
 
 CREATE TABLE Archivos_Categorias (

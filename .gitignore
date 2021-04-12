@@ -56,11 +56,11 @@ tools/gulp-tasks/cldr/cldr-data/
 # Husky
 .husky/_
 
-/node_modules
-/public/hot
-/public/storage
-/storage/*.key
-/vendor
+servidor/node_modules
+servidor/public/hot
+servidor/public/storage
+servidor/storage/*.key
+servidor/vendor
 .env
 .env.backup
 .phpunit.result.cache

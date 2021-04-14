@@ -12,12 +12,14 @@ Para el proyecto estamos desarrollando un servicio web para el almacenamiento y 
 
 - Un documento puede estar relacionado con varias categorías.
 
-## Modelo Entidad Relación
+## <a name="entidad_relacion">Modelo Entidad Relación</a>
 
 ![Modelo Entidad Relación de la base de datos](Imagenes/BBDD/modelo_entidad_relacion.png)
 
-## Modelo Relacional
+## <a name="relacional">Modelo Relacional</a>
 
 ![Modelo Relacional de la base de datos](Imagenes/BBDD/modelo_relacional.png)
 
-## [Script](BBDD/Organizador.sql)
+## [Script](BBDD/BBDD_LARAVEL.sql)
+
+## Consultas SQL

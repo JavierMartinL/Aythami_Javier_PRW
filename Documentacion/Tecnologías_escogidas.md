@@ -1,5 +1,4 @@
- 
-# Explicación de las tecnologías
+# <a name="explicacion_tecnologias">Explicación de las tecnologías</a>
 
 ## Git
 
@@ -87,7 +86,7 @@ Al tener unos tiempos de entrega tan marcados se motivan a entregar el trabajo p
 Los programas  nos permiten editar el tiempo y las horas de trabajo para ajustar el tiempo de entrega ya que estos suelen variar según las circunstancias.
 
 
-El programa usado en esta ocasión para hacer el diagrama es Ganttproject https://www.ganttproject.biz/ aprobenchando que es de libre uso. 
+El programa usado en esta ocasión para hacer el diagrama es [Ganttproject](https://www.ganttproject.biz/) aprobenchando que es de libre uso. 
 Como se ve en la imagen tenemos la opción de crear el proyecto con nombre , fecha inicio y fecha fin.
 
 ![logo](Imagenes/Tecnologias/gantt.PNG)
@@ -96,7 +95,7 @@ Como se ve en la imagen tenemos la opción de crear el proyecto con nombre , fec
 
 
 
-# Usos de las Tecnologías en nuestro proyecto y otros datos de interés.
+# <a name="uso_tecnologias">Usos de las Tecnologías en nuestro proyecto y otros datos de interés.</a>
  
 #### Como hacer los commit 
  
@@ -106,7 +105,7 @@ En nuestro caso hemos decidido hacer los commit de la siguiente manera 'informac
 
 Aprovechamos la funcionalidad de git flow que nos crea una rama master  y develop, y las funciones de features para crear cada una de las funcionalidades de nuestro código. Estas ramas se crear con el nombre de la tarea y a que parte del código pertenece  por ejemplo  login_backend.
 
-# Base de datos usada
+# <a name="BBDD_usada">Base de datos usada</a>
 
 La base de datos que hemos decidido usar es Mysql o Mariadb.
 Para esta elección hemos tenido en cuenta las bases de datos que puede usar nuestro framework de backend que son:
@@ -123,7 +122,7 @@ Mysql está más diseñada para páginas web con un servidor integrado, también
  
 Las otras bases de datos no las hemos tratado en el instituto y están orientadas a grandes flujos de datos.
  
-# Framework
+# <a name="framework">Framework</a>
 
  En cuanto a framework este año no hemos visto muchos framework en el front hemos visto Angular y en el back apenas hemos llegado a ver laravel y sinfonía en la parte de php y Spring en la parte de java(Gracias a la documentación de JC).
  

@@ -14,11 +14,9 @@ class CreateFilesCategoriesTable extends Migration
     public function up()
     {
         Schema::create('files__categories', function (Blueprint $table) {
-            $table->id();
             $table->foreignId('categorie_id')->references('id')->on('categories');
             $table->foreignId('files_id')->references('id')->on('files');
-            $table->timestamps();
-            $table->softDeletes();
+
         });
     }
 

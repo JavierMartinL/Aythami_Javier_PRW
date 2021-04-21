@@ -14,6 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::prefix('/user')->group(function(){
+    Route::post('/login', 'App\Http\Controllers\LoginController@login');
+    Route::post('/createUser', 'App\Http\Controllers\LoginController@createUser');
+    Route::post('/logout', 'App\Http\Controllers\LoginController@logout');
+    //con este middleware protejemos las rutas dentro de /user
+    Route::middleware('auth:api')->get('/all', 'App\Http\Controllers\LoginController@all');
+});
+
+Route::prefix('/files')->group(function(){
+    //con este middleware protejemos las rutas dentro de /user
+    Route::middleware('auth:api')->get('/all', 'App\Http\Controllers\LoginController@all');
 });

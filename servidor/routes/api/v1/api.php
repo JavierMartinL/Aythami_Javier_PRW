@@ -26,3 +26,7 @@ Route::prefix('/user')->group(function(){
     Route::middleware('auth:api')->get('/all', 'App\Http\Controllers\LoginController@all');
 });
 
+Route::prefix('/files')->group(function(){
+    //con este middleware protejemos las rutas dentro de /user
+    Route::middleware('auth:api')->get('/all', 'App\Http\Controllers\LoginController@all');
+});

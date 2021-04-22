@@ -95,6 +95,16 @@ Empezamos a gregar los atributos para nuestras funciones con `$guarded` creamos 
 ![users](Imagenes/Backend/modelo3.PNG)
 
 # Relaciones en los modelos Eloquent.
-En este apartado explicare las relaciones usasdas en nuestro modelos,
+Aqui veremos la relacion uno muchos que encontramos en nestro modelo usuario archivos donde un usuario pueden tener muchos archivos. Para ello nos vamos primero a user y ponemos la siguiente funcion `hasMany(Files::class)` y en  Files ponemos lo siguiente `$this->belongsTo(User::class)` como se ven en la siguientes imganes.
 
+![users](Imagenes/Backend/relacion1.PNG)
+
+![users](Imagenes/Backend/relacion2.PNG)
+
+En esta ocacion tenemos una relacion muchos a muchos entre categorias y archivos donde un archivo tiene muchas categorias y las cotegorias peternecen a varios archivos. con `belongsToMany(Files::class)` en este caso usa la misma  nomeclartura en los dos modelos, tambien en la documentacion encontramos otra forma de hacerlo que es `return $this->belongsToMany(Role::class, 'role_user', 'user_id', 'role_id');` esta segunda opcion es si quieres ponerle un nombre diferente a la tabla intermedia.  
+
+![users](Imagenes/Backend/relacion3.PNG)
+
+![users](Imagenes/Backend/relacion4.PNG)
+ 
 # Controladores.

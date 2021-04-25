@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Files;
-
+use App\Models\User;
 
 class FilesController extends Controller
 {
@@ -15,9 +15,8 @@ class FilesController extends Controller
      */
     public function index()
     {
-        return response()->json([
-            'message' => 'Hola archivos'
-        ], 201);
+        $files = Files::all();
+        return $files;
     }
 
     /**
@@ -28,7 +27,18 @@ class FilesController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'token'=> 'requied',
+            'file'=>'required|max:500000',
+            'name' => 'required',
+            'description' => 'required',
+            'file_date' => 'required',
+        ]);
 
+        $user = User::where('remember_token', $request->token)->first();
+        $request->file('file')->store($user->user_folder.'/');
+        $file = Files::create($request->all);
+        return $file;
     }
 
     /**
@@ -49,9 +59,19 @@ class FilesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'file_date' => 'required',
+        ]);
+
+        $data = Files::findOrFail($request->id);
+        $data->name = $request->name;
+        $data->description = $request->description;
+        $data->file_date = $request->file_date;
+        $data->save();
     }
 
     /**
@@ -62,6 +82,6 @@ class FilesController extends Controller
      */
     public function delete($id)
     {
-        //
+        Files::find($id)->delete();
     }
 }

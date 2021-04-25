@@ -10,3 +10,10 @@ https://ayudatpymes.com/gestron/que-es-trello/
 https://markdown.es/multimarkdown/#Tablas
 - Para la eleccion de base datos.
 https://richos.gitbooks.io/laravel-5/content/capitulos/chapter3.html
+-para la gestion del backen en general 
+Esta muy bien documentada  y el canal de youtube como apoyo para las explicaciones que no acababa de comprender.
+https://laravel.com/docs/8.x/ 
+https://www.youtube.com/channel/UCXFpliR3rhA_GTTldJ7MYLA
+- Para la gestion de archivos 
+https://www.youtube.com/watch?v=8x9UoYCVGGI
+

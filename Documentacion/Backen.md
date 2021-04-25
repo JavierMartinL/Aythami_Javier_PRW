@@ -108,3 +108,43 @@ En esta ocacion tenemos una relacion muchos a muchos entre categorias y archivos
 ![users](Imagenes/Backend/relacion4.PNG)
  
 # Controladores.
+ 
+Empezamos a usar los controladores para ello vamos a usar el comando `php make:controler nombre --api` en el controlador aparecerán las  siguientes funciones index, store , show, update y delete. 
+Index nos suele usar para enviar la información principal del modelo al que pertenece con un `::all` llamando al modelo, más adelante le iremos complicando la lógica.
+ 
+![users](Imagenes/Backend/controlador.PNG)
+ 
+Store nos permite almacenar los archivos que nos llegan de nuestra vista con `::create` podemos ir guardando todo lo que nos llega.Podemos devolver la respuesta y la información que se ha guardado de en la base de datos.
+ 
+![users](Imagenes/Backend/controlador1.PNG)
+ 
+Show se usa para buscar un archivo en concreto en este caso usa la función `::find($id)` haciendo la búsqueda por id.
+ 
+![users](Imagenes/Backend/controlador2.PNG)
+ 
+En el update primero vamos a validar los datos que nos están entrando por el request para que estos no vengan vacíos y luego procedemos a buscar el archivo que queremos lo modificamos y guardamos.
+ 
+![users](Imagenes/Backend/controlador3.PNG)
+ 
+Delete es muy parecido al anterior lo que hacemos es buscar en la base de datos si existe en documento y si  existe lo eliminamos aquí tienes dos opciones poner delete que va a hacer un soft delete y otra que es destroy que elimina el archivo completamente.
+ 
+![users](Imagenes/Backend/controlador4.PNG)
+ 
+# Rutas.
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+# Manejando archivos.
+ 
+Para manejar archivos vamos al store de nuestro controlador files y agregamos unas validaciones para ello  usamos el validate de laravel y lo primero que vamos a hacer es que sea requerido, también podemos elegir el tipo de archivo de que puede aceptar con `require|image|max:2048` donde image es el tipo requerido y el max es el tamaño máximo del archivo en kilobytes. De momento voy a limitar las subidas de archivos a 500 megas ya que la aplicación es para guardar documentos, en caso de necesitar más espacio de subida se mirara a posteriori.
+ 
+![users](Imagenes/Backend/manejarArchivos.PNG)
+ 
+Ahora una vez el archivo validado vamos a ver como lo almacenamos en nuestra carpeta para ello voy a buscar al usuario en cuestión para guardarlo en su carpeta que ha sido previamente creada a la hora de insertar al usuario. Ya con el usuario conseguido guardamos el archivo en la carpeta correspondiente.
+ 
+![users](Imagenes/Backend/manejarArchivos1.PNG)

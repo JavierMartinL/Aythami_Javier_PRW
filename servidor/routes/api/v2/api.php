@@ -23,9 +23,14 @@ Route::prefix('/user')->group(function(){
     Route::post('/logout', 'App\Http\Controllers\LoginController@logout');
 });
 
-Route::post('register', [PassportAuthController::class, 'register']);
-Route::post('login', [PassportAuthController::class, 'login']);
+Route::post('index', [FilesController::class, 'index']);
+Route::post('store', [FilesController::class, 'store']);
+Route::post('show', [FilesController::class, 'show']);
+Route::post('update', [FilesController::class, 'update']);
+Route::post('delete', [FilesController::class, 'delete']);
+
 // agregamos middleware a Files para que no se pueda acceder sin estar auth
 Route::middleware('auth:api')->group(function () {
     Route::resource('files', FilesController::class);
+
 });

@@ -15,6 +15,7 @@ class Categories extends Model
         'categorie_id',
         'user_id',
     ];
+
     public function files()
     {
         return $this->belongsToMany(Files::class);

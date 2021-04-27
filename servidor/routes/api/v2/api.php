@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\FilesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PassportAuthController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -18,11 +21,11 @@ Route::prefix('/user')->group(function(){
     Route::post('/login', 'App\Http\Controllers\LoginController@login');
     Route::post('/createUser', 'App\Http\Controllers\LoginController@createUser');
     Route::post('/logout', 'App\Http\Controllers\LoginController@logout');
-    //con este middleware protejemos las rutas dentro de /user
-    Route::middleware('auth:api')->get('/all', 'App\Http\Controllers\LoginController@all');
 });
 
-Route::prefix('/files')->group(function(){
-    //con este middleware protejemos las rutas dentro de /user
-    Route::middleware('auth:api')->get('/all', 'App\Http\Controllers\LoginController@all');
+Route::post('register', [PassportAuthController::class, 'register']);
+Route::post('login', [PassportAuthController::class, 'login']);
+// agregamos middleware a Files para que no se pueda acceder sin estar auth
+Route::middleware('auth:api')->group(function () {
+    Route::resource('files', FilesController::class);
 });

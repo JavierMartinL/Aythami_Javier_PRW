@@ -130,14 +130,6 @@ Delete es muy parecido al anterior lo que hacemos es buscar en la base de datos 
  
 ![users](Imagenes/Backend/controlador4.PNG)
  
-# Rutas.
- 
- 
- 
- 
- 
- 
- 
  
 # Manejando archivos.
  
@@ -148,3 +140,4 @@ Para manejar archivos vamos al store de nuestro controlador files y agregamos un
 Ahora una vez el archivo validado vamos a ver como lo almacenamos en nuestra carpeta para ello voy a buscar al usuario en cuestión para guardarlo en su carpeta que ha sido previamente creada a la hora de insertar al usuario. Ya con el usuario conseguido guardamos el archivo en la carpeta correspondiente.
  
 ![users](Imagenes/Backend/manejarArchivos1.PNG)
+

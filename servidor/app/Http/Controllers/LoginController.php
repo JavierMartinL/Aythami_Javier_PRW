@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
@@ -34,14 +35,14 @@ class LoginController extends Controller
             'email' => 'required|string|email|unique:users',
             'password' => 'required|string'
         ]);
-
+        $name_folder=Str::random(128);
         User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
-            'user_folder'=> Str::random(128)
+            'user_folder'=> $name_folder
         ]);
-
+        Storage::disk('local')->put($name_folder.'/prueba.txt', 'Contents');
         return response()->json([
             'message' => 'El usuario se creo correctamente'
         ], 201);

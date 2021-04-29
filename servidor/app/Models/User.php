@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'user_folder'
     ];
 
     /**
@@ -44,6 +45,10 @@ class User extends Authenticatable
 
     public function files()
     {
-        return $this->hasMany(Files::class);
+        return $this->hasManyThrough(
+            // required
+            'App\Models\File', // the related model
+            'App\Models\category_files', // the pivot model
+        );
     }
 }

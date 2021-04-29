@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
-use App\Models\Files;
-use App\Models\User;
+use App\Models\File;
+
 
 class FilesController extends Controller
 {
@@ -15,7 +16,8 @@ class FilesController extends Controller
      */
     public function index()
     {
-        $files = Files::all();
+        $user = auth()->user();
+        $files = File::all()->pivot->quantity;
         return $files;
     }
 
@@ -28,16 +30,17 @@ class FilesController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'token'=> 'requied',
-            'file'=>'required|max:500000',
+            'file' => 'required|max:500000',
             'name' => 'required',
             'description' => 'required',
             'file_date' => 'required',
+            'Categories'=>'required'
+
         ]);
 
-        $user = User::where('remember_token', $request->token)->first();
-        $request->file('file')->store($user->user_folder.'/');
-        $file = Files::create($request->all);
+        $user = auth()->user();
+        //$request->file('file')->store($user->user_folder . '/');
+        $file = File::create($request->all);
         return $file;
     }
 
@@ -49,7 +52,7 @@ class FilesController extends Controller
      */
     public function show($id)
     {
-        return Files::find($id);
+        return File::find($id);
     }
 
     /**
@@ -67,7 +70,7 @@ class FilesController extends Controller
             'file_date' => 'required',
         ]);
 
-        $data = Files::findOrFail($request->id);
+        $data = File::findOrFail($request->id);
         $data->name = $request->name;
         $data->description = $request->description;
         $data->file_date = $request->file_date;
@@ -82,6 +85,6 @@ class FilesController extends Controller
      */
     public function delete($id)
     {
-        Files::find($id)->delete();
+        File::find($id)->delete();
     }
 }

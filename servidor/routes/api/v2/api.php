@@ -26,7 +26,7 @@ Route::prefix('/user')->group(function(){
 
 Route::get('index', [FilesController::class, 'index']);
 Route::post('store', [FilesController::class, 'store']);
-Route::post('show', [FilesController::class, 'show']);
+Route::get('files/{id}', [FilesController::class, 'show']);
 Route::post('update', [FilesController::class, 'update']);
 Route::post('delete', [FilesController::class, 'delete']);
 

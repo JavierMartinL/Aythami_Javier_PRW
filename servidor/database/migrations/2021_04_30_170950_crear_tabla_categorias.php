@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFilesTable extends Migration
+class CrearTablaCategorias extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,13 @@ class CreateFilesTable extends Migration
      */
     public function up()
     {
-        Schema::create('files', function (Blueprint $table) {
-            $table->id();
+        Schema::create('categorias', function (Blueprint $table) {
+            $table->increments('id');
             $table->string('name');
-            $table->string('description');
-            $table->date('file_date');
-            $table->string('up_date');
+            $table->integer('categoria')->nullable();
             $table->foreignId('user_id')->references('id')->on('users');
-            $table->timestamps();
             $table->softDeletes();
+            $table->timestamps();
         });
     }
 
@@ -32,6 +30,6 @@ class CreateFilesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('files');
+        Schema::dropIfExists('categorias');
     }
 }

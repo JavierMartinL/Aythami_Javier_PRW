@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCategoriesTable extends Migration
+class CrearTablaArchivos extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,13 @@ class CreateCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('categories', function (Blueprint $table) {
-            $table->id();
+        Schema::create('archivos', function (Blueprint $table) {
+            $table->increments('id');
             $table->string('name');
-            $table->foreignId('categorie_id')->nullable();
+            $table->string('description');
+            $table->date('file_date');
+            $table->string('file_name');
+            $table->date('up_date')->useCurrent();
             $table->foreignId('user_id')->references('id')->on('users');
             $table->timestamps();
             $table->softDeletes();
@@ -30,6 +33,6 @@ class CreateCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('archivos');
     }
 }

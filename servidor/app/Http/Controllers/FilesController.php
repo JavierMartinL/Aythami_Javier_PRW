@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 
 use Illuminate\Http\Request;
-use App\Models\File;
+use App\Models\Archivo;
 
 
 class FilesController extends Controller
@@ -17,7 +17,7 @@ class FilesController extends Controller
     public function index()
     {
         $user = auth()->user();
-        $files = File::all()->pivot->quantity;
+        $files = Archivo::where('user_id', $user->id)->with('categoria')->get();
         return $files;
     }
 
@@ -34,7 +34,7 @@ class FilesController extends Controller
             'name' => 'required',
             'description' => 'required',
             'file_date' => 'required',
-            'Categories'=>'required'
+            'Categories' => 'required'
 
         ]);
 
@@ -52,7 +52,11 @@ class FilesController extends Controller
      */
     public function show($id)
     {
-        return File::find($id);
+        $archivo=Archivo::find($id);
+        foreach ($archivo->categoria as $categoria) {
+            echo $categoria->pivot->name;
+        }
+        return $archivo;
     }
 
     /**

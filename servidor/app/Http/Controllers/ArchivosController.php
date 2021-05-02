@@ -88,21 +88,14 @@ class ArchivosController extends Controller
         $fileName = $request->file('file')->getClientOriginalName();
         $user = auth()->user();
         $request->file('file')->store($user->user_folder . '/' . $fileName);
-        $file = Archivo::create($request->all);
-        Archivo::create([
-            'name' => $request->name,
-            'description' => $request->description,
-            'file_date' => $request->file_date,
-            'file_name' => $fileName,
-        ]);
-        return $file;
-
         $data = Archivo::findOrFail($request->id);
         $data->name = $request->name;
         $data->description = $request->description;
         $data->file_date = $request->file_date;
         $data->file_name = $request->file_name;
         $data->save();
+        return $data;
+
     }
 
     /**

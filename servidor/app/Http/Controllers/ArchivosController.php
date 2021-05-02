@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Archivo;
 
 
-class FilesController extends Controller
+class ArchivosController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -37,10 +37,16 @@ class FilesController extends Controller
             'Categories' => 'required'
 
         ]);
-
+        $fileName = $request->file('file')->getClientOriginalName();
         $user = auth()->user();
-        //$request->file('file')->store($user->user_folder . '/');
-        $file = File::create($request->all);
+        $request->file('file')->store($user->user_folder . '/' . $fileName);
+        $file = Archivo::create($request->all);
+        Archivo::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'file_date' => $request->file_date,
+            'file_name' => $fileName,
+        ]);
         return $file;
     }
 
@@ -52,7 +58,7 @@ class FilesController extends Controller
      */
     public function show($id)
     {
-        $archivo=Archivo::find($id);
+        $archivo = Archivo::find($id);
         foreach ($archivo->categoria as $categoria) {
             echo $categoria->pivot->name;
         }
@@ -68,16 +74,34 @@ class FilesController extends Controller
      */
     public function update(Request $request)
     {
+
         $request->validate([
+            'file' => 'required|max:500000',
+            'id' => 'required',
             'name' => 'required',
             'description' => 'required',
             'file_date' => 'required',
+            'Categories' => 'required'
+
         ]);
 
-        $data = File::findOrFail($request->id);
+        $fileName = $request->file('file')->getClientOriginalName();
+        $user = auth()->user();
+        $request->file('file')->store($user->user_folder . '/' . $fileName);
+        $file = Archivo::create($request->all);
+        Archivo::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'file_date' => $request->file_date,
+            'file_name' => $fileName,
+        ]);
+        return $file;
+
+        $data = Archivo::findOrFail($request->id);
         $data->name = $request->name;
         $data->description = $request->description;
         $data->file_date = $request->file_date;
+        $data->file_name = $request->file_name;
         $data->save();
     }
 
@@ -89,6 +113,6 @@ class FilesController extends Controller
      */
     public function delete($id)
     {
-        File::find($id)->delete();
+        Archivo::find($id)->delete();
     }
 }

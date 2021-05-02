@@ -1,7 +1,6 @@
 <?php
 
-use App\Http\Controllers\FilesController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\ArchivosController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PassportAuthController;
 
@@ -24,14 +23,14 @@ Route::prefix('/user')->group(function(){
 });
 
 
-Route::get('index', [FilesController::class, 'index']);
-Route::post('store', [FilesController::class, 'store']);
-Route::get('files/{id}', [FilesController::class, 'show']);
-Route::post('update', [FilesController::class, 'update']);
-Route::post('delete', [FilesController::class, 'delete']);
+Route::get('index', [ArchivosController::class, 'index']);
+Route::post('store', [ArchivosController::class, 'store']);
+Route::get('files/{id}', [ArchivosController::class, 'show']);
+Route::post('update', [ArchivosController::class, 'update']);
+Route::post('delete', [ArchivosController::class, 'delete']);
 
 // agregamos middleware a Files para que no se pueda acceder sin estar auth
 Route::middleware('auth:api')->group(function () {
-    Route::resource('files', FilesController::class);
+    Route::resource('files', ArchivosController::class);
 
 });

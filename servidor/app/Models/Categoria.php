@@ -8,12 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Categoria extends Model
 {
     use HasFactory;
-    protected $table = 'categorias';
     protected $guarded = ['deleted_at'];
 
     protected $fillable = [
         'name',
         'user_id',
+        'categorias'
     ];
     public function user()
     {

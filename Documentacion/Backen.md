@@ -26,7 +26,9 @@ También llevaremos un versionado de las distintas apis según vamos trabajando 
 | Version | Funciones | Fecha | 
 | -- | -- | -- | 
 | V1 | Creación de la api y login de usuarios con passport |21/04/2021 | 
-| V2 | Gestion de documentos con cada usuario y categorías principales  |21/04/2021-enproceso|
+| V2 | Gestion de  usuarios y archvios documentos  |21/04/2021-02/05/2021|
+| V3 | Gestion de categorias y usuarios  |02/05/2021 - prograso|
+
  
 para llevar este versionado a cambio modificaremos los siguientes archivos del RouterServiceProvider y ponemos la siguiente configuración.
  
@@ -141,3 +143,6 @@ Ahora una vez el archivo validado vamos a ver como lo almacenamos en nuestra car
  
 ![users](Imagenes/Backend/manejarArchivos1.PNG)
 
+# Problemas
+## Relacion muchos a muchos 
+Uno de los mayores problemas a la hora de usar laravel a sido que no me reconocian las relaciones muchos a muchos entre las relaciones porque laracel tiene definidas las relaciones que los modelos tienen que ir singular y las relaciones  tablas en plural. Pasando de usar los nombres de los modelos de ingles a español al igual que las tablas para poder compender el error bien. Ya que laravel coge los modelos y los campos de las tablas en singular y las tablas en plurar y no reconoce las relaciones. Tambien me ayude de `php artisan tinker` que te rermite ejecutar la funciones del controlador que quieres y ver los errores en la base de datos.

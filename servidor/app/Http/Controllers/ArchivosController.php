@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Http\Resources\ArchivoResource;
 use Illuminate\Http\Request;
 use App\Models\Archivo;
 
@@ -18,7 +18,7 @@ class ArchivosController extends Controller
     {
         $user = auth()->user();
         $files = Archivo::where('user_id', $user->id)->with('categoria')->get();
-        return $files;
+        return response(['archivos'=>ArchivoResource::collection($files),'message'=>'Retrived Successfuly'],200);
     }
 
     /**

@@ -19,7 +19,7 @@ class LoginController extends Controller
 
         if (!Auth::attempt($credentials)) {
             return response([
-                "message" => "Usuario y/o contraseña es invalido."
+                "message" => "$request"
             ], 422);
         }
 

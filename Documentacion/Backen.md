@@ -153,6 +153,29 @@ a  continuacion vamos a mejorar la respuesta de nuestro controlador,  `return re
 
 ![users](Imagenes/Backend/resource1.PNG)
 
+# Contraseña olvidada
+En este caso vamos a ver como creamos un envio de email con token de para recuperar contraseña que nos porporciona passport. 
+
+![users](Imagenes/Backend/forgot.PNG)
+
+Para ello primero validamos que el email llegue rellono con la funcion validate, luego buscamos si existe en la base de datos si es asi generamos un contraseña ramdon y la guardamos en la tabla password_resets, directamente ya que no tenemos un modelo para esa tabla.
+
+El mail para ello tenemos un hacer uso de  la funcion Mail de Laravel para ello las escribimos de la siguiente manera.
+
+![users](Imagenes/Backend/forgot1.PNG)
+
+Tambien tenemos que configurar los datos de nuestro servidor de email en este caso usaremos gmail de manera gratuita que nos permite 100 correos diarios.Para ello nos vamos a nuestro archivo emv.
+
+![users](Imagenes/Backend/forgot3.PNG)
+
+## modificar contraseña
+Esta funcion lo que nos permite es con el paso anterior de gestronar una contraseña con el enlace que se manda al correo recuperarla.
+
+![users](Imagenes/Backend/contraseña1.PNG)
+
+Para ello validamos el token que se te ha enviado al correo y las contraseñas introducidas.
+Vemos si el token generado y el que esta guardado en la tabla password_resets coinciden en ese caso pasamos a ver si el usuario existe  y ya procedemos a guardar la nueva contraseña en el usuario.
+
 # Problemas
 ## Relacion muchos a muchos 
 Uno de los mayores problemas a la hora de usar laravel a sido que no me reconocian las relaciones muchos a muchos entre las relaciones porque laracel tiene definidas las relaciones que los modelos tienen que ir singular y las relaciones  tablas en plural. Pasando de usar los nombres de los modelos de ingles a español al igual que las tablas para poder compender el error bien. Ya que laravel coge los modelos y los campos de las tablas en singular y las tablas en plurar y no reconoce las relaciones. Tambien me ayude de `php artisan tinker` que te rermite ejecutar la funciones del controlador que quieres y ver los errores en la base de datos.

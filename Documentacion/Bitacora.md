@@ -28,3 +28,4 @@ Aquí se verán reflejadas en número de horas que ha ido realizando cada uno de
 | Rutas y documentacion, tambien se crearon todos los controladores | 27/04/2021 | 3h | Aythami |
 | Trabajando con las relaciones porque a la hora de hacer la prueba no funcionaban | 29/04/2021 30/04/2021 | 10h | Aythami |
 | Implementación fallida de la plantilla Metronic Demo1 para Angular | 30/04/2021 | 3 Semanas | Javier |
+| Implementación de Ionic con Angular | 03/05/2021 | 1h | Javier |

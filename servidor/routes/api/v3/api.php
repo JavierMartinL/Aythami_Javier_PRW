@@ -1,8 +1,8 @@
 <?php
 
+use App\Http\Controllers\CategoriasController;
 use App\Http\Controllers\ArchivosController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PassportAuthController;
 
 
 /*
@@ -16,27 +16,29 @@ use App\Http\Controllers\PassportAuthController;
 |
 */
 
-Route::prefix('/user')->group(function(){
+Route::prefix('/user')->group(function () {
     Route::post('/login', 'App\Http\Controllers\LoginController@login');
     Route::post('/createUser', 'App\Http\Controllers\LoginController@createUser');
     Route::post('/logout', 'App\Http\Controllers\LoginController@logout');
 });
 
-
-Route::get('index', [ArchivosController::class, 'index']);
-Route::post('store', [ArchivosController::class, 'store']);
-Route::get('files/{id}', [ArchivosController::class, 'show']);
-Route::post('update', [ArchivosController::class, 'update']);
-Route::post('delete', [ArchivosController::class, 'delete']);
-
-Route::get('index', [CategoriasController::class, 'index']);
-Route::post('store', [CategoriasController::class, 'store']);
-Route::get('files/{id}', [CategoriasController::class, 'show']);
-Route::post('update', [CategoriasController::class, 'update']);
-Route::post('delete', [CategoriasController::class, 'delete']);
+Route::prefix('/files')->group(function () {
+    Route::get('index', [ArchivosController::class, 'index']);
+    Route::post('store', [ArchivosController::class, 'store']);
+    Route::get('/{id}', [ArchivosController::class, 'show']);
+    Route::post('update', [ArchivosController::class, 'update']);
+    Route::post('delete', [ArchivosController::class, 'delete']);
+});
+Route::prefix('/categorias')->group(function () {
+    Route::get('/index', [CategoriasController::class, 'index']);
+    Route::post('/store', 'App\Http\Controllers\CategoriasController@store');
+    Route::get('/{id}', [CategoriasController::class, 'show']);
+    Route::post('/update', [CategoriasController::class, 'update']);
+    Route::post('/delete', [CategoriasController::class, 'delete']);
+});
 
 // agregamos middleware a Files para que no se pueda acceder sin estar auth
 Route::middleware('auth:api')->group(function () {
-    Route::resource('files', ArchivosController::class);
-    Route::resource('categorias', CategoriasController::class);
+    Route::resource('/files', ArchivosController::class);
+    Route::resource('/categorias', CategoriasController::class);
 });

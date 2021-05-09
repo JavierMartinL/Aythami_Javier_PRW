@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Categoria;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CategoriasController extends Controller
 {
@@ -30,13 +31,14 @@ class CategoriasController extends Controller
             'name' => 'required',
             'categoria' => 'required',
         ]);
-        $user = auth()->user();
+        $user = auth('api')->user();
 
         $categoria = Categoria::create([
             'name' => $request->name,
-            'categoria' => $request->description,
+            'categoria' => $request->categoria,
             'user_id' => $user->id
         ]);
+
         return $categoria;
     }
 

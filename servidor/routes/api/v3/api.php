@@ -23,11 +23,11 @@ Route::prefix('/user')->group(function () {
 });
 
 Route::prefix('/files')->group(function () {
-    Route::get('index', [ArchivosController::class, 'index']);
-    Route::post('store', [ArchivosController::class, 'store']);
+    Route::get('/index', [ArchivosController::class, 'index']);
+    Route::post('/store', [ArchivosController::class, 'store']);
     Route::get('/{id}', [ArchivosController::class, 'show']);
-    Route::post('update', [ArchivosController::class, 'update']);
-    Route::post('delete', [ArchivosController::class, 'delete']);
+    Route::post('/update', [ArchivosController::class, 'update']);
+    Route::post('/delete', [ArchivosController::class, 'delete']);
 });
 Route::prefix('/categorias')->group(function () {
     Route::get('/index', [CategoriasController::class, 'index']);

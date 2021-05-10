@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Categoria;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,7 +15,7 @@ class CategoriasController extends Controller
      */
     public function index()
     {
-        $user = auth()->user();
+        $user = auth('api')->user();
         $files = Categoria::where('user_id', $user->id)->get();
         return $files;
     }
@@ -61,18 +62,19 @@ class CategoriasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         $request->validate([
             'id' => 'required',
             'name' => 'required',
             'categoria' => 'required',
         ]);
-        $user = auth()->user();
+
+        $user = auth('api')->user();
         $data = Categoria::findOrFail($request->id);
         $data->name = $request->name;
         $data->categoria = $request->categoria;
-        $data->user_id = $request->user_id;
+        $data->user_id = $user->id;
         $data->save();
         return $data;
     }

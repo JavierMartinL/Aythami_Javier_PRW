@@ -179,3 +179,11 @@ Vemos si el token generado y el que esta guardado en la tabla password_resets co
 # Problemas
 ## Relacion muchos a muchos 
 Uno de los mayores problemas a la hora de usar laravel a sido que no me reconocian las relaciones muchos a muchos entre las relaciones porque laracel tiene definidas las relaciones que los modelos tienen que ir singular y las relaciones  tablas en plural. Pasando de usar los nombres de los modelos de ingles a español al igual que las tablas para poder compender el error bien. Ya que laravel coge los modelos y los campos de las tablas en singular y las tablas en plurar y no reconoce las relaciones. Tambien me ayude de `php artisan tinker` que te rermite ejecutar la funciones del controlador que quieres y ver los errores en la base de datos.
+## Correcion de las rutas
+Vamos a hacer unas corracciones a las rutas en la v3 por lo que no estaban funcionando bien para ello se le ha puesto un `Route::prefix('/categorias')->group(function ()` que nos permite poner todas las categorias dentro de un grupo, gracias a esto podemos acceder a trave de `http://localhost:8000/api/v3/categorias/update` por ejemplo.
+
+![users](Imagenes/Backend/arregloRuta.PNG)
+
+## Correcion en los controladores de categorias
+Se a cambiado la forma de obtener los datos del usuario conectado `$user = auth()->user();` que nos proporcia el usuario cuando se usa la plantilla de laravel a este otro `$user = auth('api')->user();` que es el funciona con las api.
+

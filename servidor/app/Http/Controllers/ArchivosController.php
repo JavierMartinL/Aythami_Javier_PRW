@@ -16,7 +16,7 @@ class ArchivosController extends Controller
      */
     public function index()
     {
-        $user = auth()->user();
+        $user = auth('api')->user();
         $files = Archivo::where('user_id', $user->id)->with('categoria')->get();
         return response(['archivos'=>ArchivoResource::collection($files),'message'=>'Retrived Successfuly'],200);
     }
@@ -38,7 +38,7 @@ class ArchivosController extends Controller
 
         ]);
         $fileName = $request->file('file')->getClientOriginalName();
-        $user = auth()->user();
+        $user = auth('api')->user();
         $request->file('file')->store($user->user_folder . '/' . $fileName);
         $file = Archivo::create($request->all);
         Archivo::create([
@@ -86,7 +86,7 @@ class ArchivosController extends Controller
         ]);
 
         $fileName = $request->file('file')->getClientOriginalName();
-        $user = auth()->user();
+        $user = auth('api')->user();
         $request->file('file')->store($user->user_folder . '/' . $fileName);
         $data = Archivo::findOrFail($request->id);
         $data->name = $request->name;

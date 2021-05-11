@@ -16,8 +16,8 @@ class CategoriasController extends Controller
     public function index()
     {
         $user = auth('api')->user();
-        $files = Categoria::where('user_id', $user->id)->get();
-        return $files;
+        $categoria = Categoria::where('user_id', $user->id)->get();
+        return response(['categorias'=>Categoria::collection($categoria),'message'=>'Retrived Successfuly'],200);
     }
 
     /**

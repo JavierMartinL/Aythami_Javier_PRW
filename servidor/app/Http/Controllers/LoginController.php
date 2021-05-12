@@ -74,15 +74,14 @@ class LoginController extends Controller
 
         //Enviamos el email
         Mail::send('Emails.forgot', ['token' => $token], function ($message) use ($email) {
-            $message->to($email);
-            $message->subject('Reinicia tu contraseña');
+            $message->to($email)->subject('Reinicia tu contraseña');
         });
         return response([
             'message' => 'Revisa tu email'
         ], 200);
     }
 
-    public function ResetPassword(Request $request)
+    public function resetPassword(Request $request)
     {
         $request->validate([
             'token' => 'required',

@@ -20,6 +20,8 @@ Route::prefix('/user')->group(function () {
     Route::post('/login', 'App\Http\Controllers\LoginController@login');
     Route::post('/createUser', 'App\Http\Controllers\LoginController@createUser');
     Route::post('/logout', 'App\Http\Controllers\LoginController@logout');
+    Route::post('/forgot', 'App\Http\Controllers\LoginController@forgotPassword');
+    Route::post('/restpassword', 'App\Http\Controllers\LoginController@resetPassword');
 });
 
 Route::prefix('/files')->group(function () {

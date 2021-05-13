@@ -21,6 +21,19 @@ class ArchivosController extends Controller
         return response(['archivos'=>ArchivoResource::collection($files),'message'=>'Retrived Successfuly'],200);
     }
 
+
+     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showCategoria($idCategoria)
+    {
+        $user = auth('api')->user();
+        $files = Archivo::where('user_id', $user->id)->with('categoria')->where('categoria', 1)->get();
+        return response(['archivos'=>ArchivoResource::collection($files),'message'=>'Retrived Successfuly'],200);
+    }
+
     /**
      * Store a newly created resource in storage.
      *

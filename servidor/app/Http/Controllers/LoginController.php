@@ -36,9 +36,10 @@ class LoginController extends Controller
             'name' => 'required|string',
             'email' => 'required|string|email|unique:users',
             'password' => 'required|string',
-            'paswword_confirm' => 'required|same:password'
+            'password_confirm' => 'required|same:password'
         ]);
         $name_folder = Str::random(128);
+
         User::create([
             'name' => $request->name,
             'email' => $request->email,

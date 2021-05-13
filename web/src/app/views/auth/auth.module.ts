@@ -14,13 +14,15 @@ import { AuthComponent } from './auth.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
+import { PasswordEqualValidatorDirective } from 'src/app/core/directives/password-equal-validator.directive';
 
 @NgModule({
   declarations: [
     AuthComponent,
     HomeComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    PasswordEqualValidatorDirective
   ],
   imports: [
     CommonModule,

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/core/service/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -8,29 +9,68 @@ import { FormControl } from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
 
-  public ocultarPassword: boolean;
-  public ocultarRepetirPassword: boolean;
+  public hidePassword: boolean;
+  public hideRepeatPassword: boolean;
+  private formRegister: FormGroup;
 
-  private name: FormControl;
-  private email: FormControl;
-  private password: FormControl;
-  private repeatPassword: FormControl;
-
-  constructor() { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private authService: AuthService
+  ) { }
 
   ngOnInit() {
-    this.ocultarPassword = this.ocultarRepetirPassword = true; 
-    this.name = new FormControl('');
-    this.email = new FormControl('');
-    this.password = new FormControl('');
-    this.repeatPassword = new FormControl('');
+    this.hidePassword = this.hideRepeatPassword = true;
+    this.formRegister = this.formBuilder.group({
+      name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required],
+      repeatPassword: ['', Validators.required]
+    });
   }
 
   register() {
-    console.log('Nombre -> ' + this.name.value);
-    console.log('Email -> ' + this.email.value);
-    console.log('Password -> ' + this.password.value);
-    console.log('Repeat Password -> ' + this.repeatPassword.value);    
+    if (this.formRegister.valid) {
+      let name: string = this.formRegister.get('name').value;
+      let email: string = this.formRegister.get('email').value;
+      let password: string = this.formRegister.get('password').value;
+      let repeatPassword: string = this.formRegister.get('repeatPassword').value;
+
+      this.authService.register(name, email, password, repeatPassword).subscribe(
+        data => {
+          console.log(data);       
+        }
+      );
+    }
   }
 
+  errorName(): string {
+    return this.formRegister.get('name').hasError('required') ? 'Este campo no puede estar vacío' : '';
+  }
+
+  errorEmail(): string {
+    if (this.formRegister.get('email').hasError('required')) {
+      return 'Este campo no puede estar vacío';
+    }
+    if (this.formRegister.get('email').hasError('email')) {
+      return 'Escribe un E-mail correcto';
+    }
+    return '';
+  }
+
+  errorPassword(): string {
+    if (this.formRegister.get('password').hasError('required')) {
+      return 'Este campo no puede estar vacío';
+    }
+    return '';
+  }
+
+  errorRepeatPassword(): string {
+    if (this.formRegister.get('repeatPassword').hasError('required')) {
+      return 'Este campo no puede estar vacío';
+    }
+    if (this.formRegister.get('repeatPassword').hasError('passwordNotEqual')) {
+      return 'Debe ser la misma contraseña';
+    }
+    return '';
+  }
 }

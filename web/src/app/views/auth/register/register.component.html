@@ -1,0 +1,42 @@
+<div class="app-register">
+
+  <div class="header">
+    <h1>Crear Cuenta</h1>
+    <button mat-icon-button matSuffix class="exit" [routerLink]="['/auth']">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <div class="form">
+    <form>
+      <mat-form-field appearance="outline">
+        <mat-label>Nombre</mat-label>
+        <input matInput [formControl]="name">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>E-mail</mat-label>
+        <input matInput [formControl]="email">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Contraseña</mat-label>
+        <input matInput [type]="ocultarPassword ? 'password' : 'text'" [formControl]="password" autocomplete="off">  
+        <button mat-icon-button matSuffix (click)="ocultarPassword = !ocultarPassword">
+          <mat-icon>{{ocultarPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Repetir contraseña</mat-label>
+        <input matInput [type]="ocultarRepetirPassword ? 'password' : 'text'" [formControl]="repeatPassword" autocomplete="off">  
+        <button mat-icon-button matSuffix (click)="ocultarRepetirPassword = !ocultarRepetirPassword">
+          <mat-icon>{{ocultarRepetirPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+    </form>
+
+    <button mat-flat-button color="primary" (click)="register()">Crear Cuenta</button>
+  </div>
+
+</div>

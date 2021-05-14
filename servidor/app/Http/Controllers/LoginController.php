@@ -19,7 +19,7 @@ class LoginController extends Controller
 
         if (!Auth::attempt($credentials)) {
             return response([
-                "message" => "$request"
+                "message" => "El usuario no existe"
             ], 422);
         }
 
@@ -87,7 +87,7 @@ class LoginController extends Controller
         $request->validate([
             'token' => 'required',
             'password'=>'required',
-            'paswword_confirm' => 'required|same:password'
+            'password_confirm' => 'required|same:password'
         ]);
         $token = $request->input('token');
 

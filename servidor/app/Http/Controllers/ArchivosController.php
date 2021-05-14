@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Resources\ArchivoResource;
 use Illuminate\Http\Request;
 use App\Models\Archivo;
-
+use App\Models\Categoria;
 
 class ArchivosController extends Controller
 {
@@ -18,20 +18,33 @@ class ArchivosController extends Controller
     {
         $user = auth('api')->user();
         $files = Archivo::where('user_id', $user->id)->with('categoria')->get();
-        return response(['archivos'=>ArchivoResource::collection($files),'message'=>'Retrived Successfuly'],200);
+        return response(['archivos' => ArchivoResource::collection($files), 'message' => 'Retrived Successfuly'], 200);
     }
 
 
-     /**
+
+
+
+
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function showCategoria($idCategoria)
     {
+        $archivos = [];
         $user = auth('api')->user();
-        $files = Archivo::where('user_id', $user->id)->with('categoria')->where('categoria', 1)->get();
-        return response(['archivos'=>ArchivoResource::collection($files),'message'=>'Retrived Successfuly'],200);
+        $files = Archivo::where('user_id', $user->id)->with('categoria')->get();
+        foreach ($files as $file) {
+            foreach ($file->categoria as $cat) {
+                if ($cat->pivot->categoria_id == $idCategoria) {
+                    array_push($archivos, $file);
+                }
+            }
+        }
+        return response(['archivos' => ArchivoResource::collection($archivos), 'message' => 'Retrived Successfuly'], 200);
     }
 
     /**
@@ -108,7 +121,6 @@ class ArchivosController extends Controller
         $data->file_name = $request->file_name;
         $data->save();
         return $data;
-
     }
 
     /**

@@ -9,13 +9,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthModule } from './views/auth/auth.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { IonicStorageModule } from '@ionic/storage-angular';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [
-    BrowserModule, 
-    IonicModule.forRoot(), 
+    BrowserModule,
+    IonicModule.forRoot(),
+    IonicStorageModule.forRoot(),
     AppRoutingModule,
     AuthModule,
     BrowserAnimationsModule,

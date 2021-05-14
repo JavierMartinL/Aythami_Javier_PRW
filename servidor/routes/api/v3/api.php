@@ -24,10 +24,11 @@ Route::prefix('/user')->group(function () {
     Route::post('/restpassword', 'App\Http\Controllers\LoginController@resetPassword');
 });
 
-Route::prefix('/files')->group(function () {
+Route::prefix('/archivos')->group(function () {
     Route::get('/index', [ArchivosController::class, 'index']);
     Route::post('/store', [ArchivosController::class, 'store']);
     Route::get('/{id}', [ArchivosController::class, 'show']);
+    Route::get('showCategoria/{id}', [ArchivosController::class, 'showCategoria']);
     Route::post('/update', [ArchivosController::class, 'update']);
     Route::post('/delete', [ArchivosController::class, 'delete']);
 });
@@ -41,6 +42,6 @@ Route::prefix('/categorias')->group(function () {
 
 // agregamos middleware a Files para que no se pueda acceder sin estar auth
 Route::middleware('auth:api')->group(function () {
-    Route::resource('/files', ArchivosController::class);
+    Route::resource('/archivos', ArchivosController::class);
     Route::resource('/categorias', CategoriasController::class);
 });

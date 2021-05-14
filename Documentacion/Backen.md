@@ -1,8 +1,9 @@
 instalamos composer
  
  
- 
-# Instalación de Laravel 
+# Instalaciones
+
+## Instalación de Laravel 
 Una vez instalado composer, ya podemos crear nuestro back con el siguiente comando composer `create-project laravel/laravel servidor` esto instalará el proyecto.
 Cuando acabe  la instalación entramos en la carpeta donde esté instalado el servidor y lo lanzamos con el comando `php artisan serve`.
 ## Instalación de la extensión passport
@@ -10,6 +11,8 @@ Cuando acabe  la instalación entramos en la carpeta donde esté instalado el se
 Instalaremos también la extensión que nos permitirá gestionar las autentificación, para apis en laravel llamada passport con el comando composer `require laravel/passport` esperamos a que acabe la instalación, y ya podemos empezar a hacer la configuración esenciales para nuestro proyecto. 
 Lo primero es agregar nuestra base de datos en el proyecto para ello buscamos el archivo .env y agregamos el nombre de nuestra base de datos en caso de haber creado un usuario y contraseña tambien se lo ponemos.
 ![Env](Imagenes/Backend/env.PNG)
+
+# Primeros pasos despues de la intalacion
  
 Ya con nuestra base de datos vinculada crearemos usaremos el siguiente comando para que laravel cree la tablas en la base de datos `php artisan migrate` ya con la base de datos lista podemos hacer `php artisan passport:install` para que nos genere las dos claves de nuestra api.
 ![passportInstall](Imagenes/Backend/passportInstall.PNG).
@@ -38,7 +41,7 @@ y creamos esa estructura de carpetas en routes.
  
 ![users](Imagenes/Backend/routes1.PNG).
  
-# Generamos las rutas de los usuarios
+## Generamos las rutas de los usuarios
 Para ello lo primero que vamos hacer es ir a la carpeta `v1/api.php` que comentamos  antes. y agregamos comentamos la línea que contiene `Route::middleware` y procedemos a crear un prefijo para nuestros comandos de login. Y agregamos nuestra primera ruta a `/login` en nuestro controlador.
  
 ![users](Imagenes/Backend/routes2.PNG).
@@ -67,7 +70,7 @@ Como medida de seguridad extra vamos a darle un tiempo de vida útil a nuestro t
  
 ![users](Imagenes/Backend/token.PNG).
  
-# Migraciones con Laravel Y Eloquent.
+## Migraciones con Laravel Y Eloquent.
 Vamos a ver que el ORM que utiliza elocuent tiene diversas funciones que iremos explicando la primera de ellas es la posibilidad de guardar la base datos y todos sus cambios en el apartado de migraciones para ello procederemos a usar los siguiente comandos.
  
 Para ello usaremos el siguiente comando `php artisan make:migration create_files_table` donde `files` es el nombre en plural de la tabla a utilizar, este siempre tiene que estar en minúscula.Nos generara el siguiente archivo.
@@ -82,7 +85,7 @@ Nos centraremos en la función up que se encarga de crear las tablas en la base 
  
 ![users](Imagenes/Backend/migrations3.PNG)
  
-# Modelos con Laravel Y Eloquent.
+## Modelos con Laravel Y Eloquent.
 
 Vamos  a empezar a preparar nuestros modelos para ello usaremos el comando `php artisan make:model Files` donde files es el nombre que tendra nuestro modelo, esto nos generare la siente clase.
 
@@ -96,7 +99,7 @@ Empezamos a gregar los atributos para nuestras funciones con `$guarded` creamos 
 
 ![users](Imagenes/Backend/modelo3.PNG)
 
-# Relaciones en los modelos Eloquent.
+## Relaciones en los modelos Eloquent.
 Aqui veremos la relacion uno muchos que encontramos en nestro modelo usuario archivos donde un usuario pueden tener muchos archivos. Para ello nos vamos primero a user y ponemos la siguiente funcion `hasMany(Files::class)` y en  Files ponemos lo siguiente `$this->belongsTo(User::class)` como se ven en la siguientes imganes.
 
 ![users](Imagenes/Backend/relacion1.PNG)
@@ -109,7 +112,7 @@ En esta ocacion tenemos una relacion muchos a muchos entre categorias y archivos
 
 ![users](Imagenes/Backend/relacion4.PNG)
  
-# Controladores.
+## Controladores.
  
 Empezamos a usar los controladores para ello vamos a usar el comando `php make:controler nombre --api` en el controlador aparecerán las  siguientes funciones index, store , show, update y delete. 
 Index nos suele usar para enviar la información principal del modelo al que pertenece con un `::all` llamando al modelo, más adelante le iremos complicando la lógica.
@@ -133,7 +136,11 @@ Delete es muy parecido al anterior lo que hacemos es buscar en la base de datos 
 ![users](Imagenes/Backend/controlador4.PNG)
  
  
-# Manejando archivos.
+# Finconalidades del backend
+
+Aparte de lo basico que se va a usar en el codigo se han intengrado  aqui se van explicar como se han ido cambiado las cosas para obtener el buen funcionamiento de la aplicacion.
+
+## Manejando archivos.
  
 Para manejar archivos vamos al store de nuestro controlador files y agregamos unas validaciones para ello  usamos el validate de laravel y lo primero que vamos a hacer es que sea requerido, también podemos elegir el tipo de archivo de que puede aceptar con `require|image|max:2048` donde image es el tipo requerido y el max es el tamaño máximo del archivo en kilobytes. De momento voy a limitar las subidas de archivos a 500 megas ya que la aplicación es para guardar documentos, en caso de necesitar más espacio de subida se mirara a posteriori.
  
@@ -143,7 +150,7 @@ Ahora una vez el archivo validado vamos a ver como lo almacenamos en nuestra car
  
 ![users](Imagenes/Backend/manejarArchivos1.PNG)
 
-# Mejorando las respuestas de neustro servidor
+## Mejorando las respuestas de neustro servidor
 Ahora que ya vemos que responde correctamente nuestro servidor, vamos a mejorar la respuesta que nos da para ello acudimos a la funcionalidad de eloquent resource, para ello crearemos el resource de arvhivo que nos facilitara la conversiones en json para dar una respuesta mas completa por parte de nuestro servidor. Primero usamos el comando `php artisan make:resource Archivo` y se genera la clase encargada de gestionar nuestro json.
 
 
@@ -153,7 +160,9 @@ a  continuacion vamos a mejorar la respuesta de nuestro controlador,  `return re
 
 ![users](Imagenes/Backend/resource1.PNG)
 
-# Contraseña olvidada
+Tambien tenemos que poner la carpeta estorage accesible para la web  para ello usamos el siguiente comando `php artisan storage:link`.
+
+## Contraseña olvidada
 En este caso vamos a ver como creamos un envio de email con token de para recuperar contraseña que nos porporciona passport. 
 
 ![users](Imagenes/Backend/forgot.PNG)
@@ -168,6 +177,7 @@ Tambien tenemos que configurar los datos de nuestro servidor de email en este ca
 
 ![users](Imagenes/Backend/forgot3.PNG)
 
+
 ## modificar contraseña
 Esta funcion lo que nos permite es con el paso anterior de gestronar una contraseña con el enlace que se manda al correo recuperarla.
 
@@ -175,6 +185,14 @@ Esta funcion lo que nos permite es con el paso anterior de gestronar una contras
 
 Para ello validamos el token que se te ha enviado al correo y las contraseñas introducidas.
 Vemos si el token generado y el que esta guardado en la tabla password_resets coinciden en ese caso pasamos a ver si el usuario existe  y ya procedemos a guardar la nueva contraseña en el usuario.
+
+## Distintos tipos de busqueda 
+
+Aqui vamos a implementar un par de busquedas extrar aparte de la que vienen por "defecto", ya que no son tan comunes, entre ellas tenemos la busqueda de archivos por categoria, despues de darle una vuelta la forma mas sencilla es filtrar el contenido de la siguiente manera .
+
+![users](Imagenes/Backend/archivoCategorias.PNG)
+
+
 
 # Problemas
 ## Relacion muchos a muchos 

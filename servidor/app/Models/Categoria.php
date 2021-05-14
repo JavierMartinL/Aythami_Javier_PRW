@@ -21,6 +21,6 @@ class Categoria extends Model
     }
     public function archivos()
     {
-        return $this->belongsToMany(Archivo::class);
+        return $this->belongsToMany(Archivo::class, 'rel_archivos_categorias', 'archivo_id', 'categoria_id');
     }
 }

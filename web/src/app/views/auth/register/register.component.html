@@ -1,4 +1,4 @@
-<div class="app-register">
+<div class="app-auth-register">
 
   <div class="header">
     <h1>Registrar Usuario</h1>
@@ -16,7 +16,7 @@
 
     <mat-form-field appearance="outline">
       <mat-label>E-mail</mat-label>
-      <input matInput formControlName="email" required>
+      <input matInput formControlName="email" type="email" required>
       <mat-error *ngIf="formRegister.invalid">{{errorEmail()}}</mat-error>
     </mat-form-field>
 

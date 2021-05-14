@@ -60,6 +60,7 @@ servidor/node_modules
 servidor/public/hot
 servidor/public/storage
 servidor/storage/*.key
+servidor/storage/framework/cache/data
 servidor/vendor
 servidor/.env
 servidor/.env.backup

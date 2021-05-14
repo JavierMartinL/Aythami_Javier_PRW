@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../../core/service/auth/auth.service';
 
 @Component({
-  selector: 'app-register',
+  selector: 'app-auth-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
 })
@@ -14,11 +14,7 @@ export class RegisterComponent implements OnInit {
   public hideRepeatPassword: boolean;
   private formRegister: FormGroup;
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private authService: AuthService,
-    private router: Router
-  ) { }
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
     this.hidePassword = this.hideRepeatPassword = true;

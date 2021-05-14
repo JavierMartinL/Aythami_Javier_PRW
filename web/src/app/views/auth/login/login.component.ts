@@ -5,7 +5,7 @@ import { StorageService } from '../../../core/service/storage/storage.service';
 import { AuthService } from '../../../core/service/auth/auth.service';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-auth-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
@@ -14,11 +14,7 @@ export class LoginComponent implements OnInit {
   public hidePassword: boolean;
   private formLogin: FormGroup;
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private authService: AuthService,
-    private router: Router
-  ) { }
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private storage: StorageService, private router: Router) { }
 
   ngOnInit() {
     this.hidePassword = true;
@@ -26,6 +22,7 @@ export class LoginComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     });
+    this.storage.ver();
   }
 
   login(): void {
@@ -35,8 +32,10 @@ export class LoginComponent implements OnInit {
 
       this.authService.login(email, password).subscribe(
         data => {
-          console.log(data);
-          //this.router.navigate(['/home']);
+          this.storage.saveToken(data.access_token);
+          this.storage.saveUser(data.user);
+
+          this.router.navigate(['/home']);
         },
         err => {
           console.log(err);

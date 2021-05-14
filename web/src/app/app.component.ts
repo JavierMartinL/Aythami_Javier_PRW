@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { StorageService } from './core/service/storage/storage.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor() {}
+
+  constructor(private storage: StorageService) {}
+
+  async ngOnInit() {
+    await this.storage.create();
+  }
 }

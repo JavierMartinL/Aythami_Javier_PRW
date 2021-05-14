@@ -7,21 +7,23 @@
     </button>
   </div>
 
-  <div class="form">
+  <form [formGroup]="formLogin" (ngSubmit)="login()" class="form">
     <mat-form-field appearance="outline">
       <mat-label>E-mail</mat-label>
-      <input matInput [formControl]="email">
+      <input matInput formControlName="email">
+      <mat-error *ngIf="formLogin.invalid">{{errorEmail()}}</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
       <mat-label>Contraseña</mat-label>
-      <input matInput [type]="ocultarPassword ? 'password' : 'text'" [formControl]="password" autocomplete="off">
-      <button mat-icon-button matSuffix (click)="ocultarPassword = !ocultarPassword">
-        <mat-icon>{{ocultarPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+      <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password" autocomplete="off">
+      <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword">
+        <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
       </button>
+      <mat-error *ngIf="formLogin.invalid">{{errorPassword()}}</mat-error>
     </mat-form-field>
 
-    <button mat-flat-button color="primary" (click)="login()">Iniciar sesión</button>
-  </div>
+    <button mat-flat-button color="primary">Iniciar sesión</button>
+  </form>
 
 </div>

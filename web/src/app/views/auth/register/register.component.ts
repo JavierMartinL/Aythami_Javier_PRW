@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from 'src/app/core/service/auth.service';
+import { Router } from '@angular/router';
+import { AuthService } from '../../../core/service/auth/auth.service';
 
 @Component({
-  selector: 'app-register',
+  selector: 'app-auth-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
 })
@@ -13,10 +14,7 @@ export class RegisterComponent implements OnInit {
   public hideRepeatPassword: boolean;
   private formRegister: FormGroup;
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private authService: AuthService
-  ) { }
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
     this.hidePassword = this.hideRepeatPassword = true;
@@ -28,7 +26,7 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  register() {
+  register(): void {
     if (this.formRegister.valid) {
       let name: string = this.formRegister.get('name').value;
       let email: string = this.formRegister.get('email').value;
@@ -37,7 +35,11 @@ export class RegisterComponent implements OnInit {
 
       this.authService.register(name, email, password, repeatPassword).subscribe(
         data => {
-          console.log(data);       
+          console.log(data);
+          this.router.navigate(['/auth/login']);
+        },
+        err => {
+          console.log(err);
         }
       );
     }

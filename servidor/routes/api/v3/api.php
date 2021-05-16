@@ -16,6 +16,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('email/verify/{id}', 'App\Http\Controllers\VerificationController@verify')->name('verification.verify');
+
+Route::get('email/resend', 'App\Http\Controllers\VerificationController@resend')->name('verification.resend');
+
+
 Route::prefix('/user')->group(function () {
     Route::post('/login', 'App\Http\Controllers\LoginController@login');
     Route::post('/createUser', 'App\Http\Controllers\LoginController@createUser');
@@ -41,7 +46,7 @@ Route::prefix('/categorias')->group(function () {
 });
 
 // agregamos middleware a Files para que no se pueda acceder sin estar auth
-Route::middleware('auth:api')->group(function () {
+Route::middleware('auth:api', 'verified')->group(function () {
     Route::resource('/archivos', ArchivosController::class);
     Route::resource('/categorias', CategoriasController::class);
 });

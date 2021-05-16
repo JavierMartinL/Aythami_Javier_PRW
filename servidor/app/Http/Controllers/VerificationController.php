@@ -17,8 +17,8 @@ class VerificationController extends Controller
         if (!$user->hasVerifiedEmail()) {
             $user->markEmailAsVerified();
         }
-
-        return redirect()->to('/');
+        //cambiar
+        return redirect()->away('https://localhost:8100');
     }
 
     public function resend() {

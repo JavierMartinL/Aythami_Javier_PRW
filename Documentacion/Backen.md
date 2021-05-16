@@ -216,6 +216,8 @@ Primero implementamos la interfas `MustVerifyEmail` en nuestro modelo user.
 
 ![users](Imagenes/Backend/verificacion1.PNG)
 
+Despues nos vamos a generar una nuevo controlador para gestionar estas dos paginas nuevas funciones una que recoja el email de verificacion y otra que renvie el mail para ello usamos el comando `php artisan make:controller VerificationController` 
+
 # Problemas
 
 ## Relacion muchos a muchos

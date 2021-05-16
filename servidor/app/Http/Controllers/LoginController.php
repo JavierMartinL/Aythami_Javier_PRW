@@ -24,6 +24,7 @@ class LoginController extends Controller
         }
 
         $accessToken = Auth::user()->createToken('authTestToken')->accessToken;
+
         return response([
             "user" => Auth::user(),
             "access_token" => $accessToken
@@ -34,22 +35,29 @@ class LoginController extends Controller
     {
         $request->validate([
             'name' => 'required|string',
-            'email' => 'required|string|email|unique:users',
+            'email' => 'required|string|email',
             'password' => 'required|string',
             'password_confirm' => 'required|same:password'
         ]);
-        $name_folder = Str::random(128);
+        if (User::where('email', $request->email)->first()) {
+            return response([
+                'message' => 'El email ya existe'
+            ], 404);
+        } else {
+            $name_folder = Str::random(128);
 
-        User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => bcrypt($request->password),
-            'user_folder' => $name_folder
-        ]);
-        Storage::disk('local')->put($name_folder . '/prueba.txt', 'Contents');
-        return response()->json([
-            'message' => 'El usuario se creo correctamente'
-        ], 201);
+            User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => bcrypt($request->password),
+                'user_folder' => $name_folder
+            ])->sendEmailVerificationNotification();
+
+            Storage::disk('local')->put($name_folder . '/prueba.txt', 'Contents');
+            return response()->json([
+                'message' => 'El usuario se creo correctamente'
+            ], 201);
+        }
     }
 
     public function forgotPassword(Request $request)
@@ -86,7 +94,7 @@ class LoginController extends Controller
     {
         $request->validate([
             'token' => 'required',
-            'password'=>'required',
+            'password' => 'required',
             'password_confirm' => 'required|same:password'
         ]);
         $token = $request->input('token');
@@ -97,7 +105,7 @@ class LoginController extends Controller
             ], 404);
         }
 
-        if(!$user = user::where('email',$passwordResets->email)->first()){
+        if (!$user = user::where('email', $passwordResets->email)->first()) {
             return response([
                 'message' => 'El usuario no existe'
             ], 404);
@@ -109,7 +117,6 @@ class LoginController extends Controller
         return response([
             'message' => 'Success'
         ]);
-
     }
 
 
@@ -120,7 +127,5 @@ class LoginController extends Controller
         return response()->json([
             'message' => 'Ha cerrado la sesion'
         ]);
-
-
     }
 }

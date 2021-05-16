@@ -1,5 +1,7 @@
+import { BLACK_ON_WHITE_CSS_CLASS } from '@angular/cdk/a11y/high-contrast-mode/high-contrast-mode-detector';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../core/service/auth/auth.service';
 
@@ -12,22 +14,34 @@ export class RegisterComponent implements OnInit {
 
   public hidePassword: boolean;
   public hideRepeatPassword: boolean;
+  private durationInSeconds: number = 5;
   private formRegister: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) { }
+  private acceptConditions: boolean = true;
+
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private _snackBar: MatSnackBar, private router: Router) { }
 
   ngOnInit() {
     this.hidePassword = this.hideRepeatPassword = true;
     this.formRegister = this.formBuilder.group({
       name: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
+      email: ['', [
+        Validators.required, 
+        Validators.email,
+        Validators.pattern('[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}')
+        ]
+      ],
       password: ['', Validators.required],
-      repeatPassword: ['', Validators.required]
+      repeatPassword: ['', Validators.required],
+      acceptConditions: ['']
     });
   }
 
   register(): void {
-    if (this.formRegister.valid) {
+    this.acceptConditions = this.formRegister.get('acceptConditions').value;
+    console.log(this.formRegister.value);
+    
+    if (this.formRegister.valid && this.acceptConditions === true) {
       let name: string = this.formRegister.get('name').value;
       let email: string = this.formRegister.get('email').value;
       let password: string = this.formRegister.get('password').value;
@@ -39,9 +53,18 @@ export class RegisterComponent implements OnInit {
           this.router.navigate(['/auth/login']);
         },
         err => {
-          console.log(err);
+          this.errorCreateUser(err.error.errors);
         }
       );
+    }
+  }
+
+  errorCreateUser(errors: any) {
+    if (errors.email){
+      let message = 'Ya existe un usuario con este E-mail.';
+      this._snackBar.open(message, '', {
+        duration: this.durationInSeconds * 1000,
+      });
     }
   }
 
@@ -53,7 +76,7 @@ export class RegisterComponent implements OnInit {
     if (this.formRegister.get('email').hasError('required')) {
       return 'Este campo no puede estar vacío';
     }
-    if (this.formRegister.get('email').hasError('email')) {
+    if (this.formRegister.get('email').hasError('email') || this.formRegister.get('email').hasError('pattern')) {
       return 'Escribe un E-mail correcto';
     }
     return '';

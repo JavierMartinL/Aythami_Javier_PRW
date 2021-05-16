@@ -2,6 +2,7 @@
 
   <div class="header">
     <h1>Registrar Usuario</h1>
+    
     <button mat-icon-button matSuffix class="exit" [routerLink]="['/auth']">
       <mat-icon>close</mat-icon>
     </button>
@@ -37,6 +38,11 @@
       </button>
       <mat-error *ngIf="formRegister.invalid">{{errorRepeatPassword()}}</mat-error>
     </mat-form-field>
+
+    <div class="check">
+      <mat-checkbox class="example-margin" color="primary" formControlName="acceptConditions">Acepto política de privacidad</mat-checkbox>
+      <mat-error *ngIf="!acceptConditions">No olvides aceptar la política de privacidad</mat-error>
+    </div>  
 
     <button mat-flat-button color="primary">Registrar Usuario</button>
   </form>

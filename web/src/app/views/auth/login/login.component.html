@@ -2,6 +2,7 @@
 
   <div class="header">
     <h1>Iniciar Sesión</h1>
+    
     <button mat-icon-button matSuffix class="exit" [routerLink]="['/auth']">
       <mat-icon>close</mat-icon>
     </button>
@@ -22,6 +23,10 @@
       </button>
       <mat-error *ngIf="formLogin.invalid">{{errorPassword()}}</mat-error>
     </mat-form-field>
+
+    <div class="forgot">
+      <a [routerLink]="['/auth/forgot']" routerLinkActive="router-link-active" >Recuperar Contraseña</a>
+    </div>
 
     <button mat-flat-button color="primary">Iniciar sesión</button>
   </form>

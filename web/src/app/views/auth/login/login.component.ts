@@ -45,7 +45,6 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/home']);
         },
         err => {
-          console.log(err.error);
           this.errorLoginUser(err.error)
         }
       );
@@ -56,7 +55,7 @@ export class LoginComponent implements OnInit {
     if (errors.message){
       let message = 'El e-mail o la contraseña no son correctos.';
       this._snackBar.open(message, '', {
-        duration: this.durationInSeconds * 1000,
+        duration: this.durationInSeconds * 1000
       });
     }
   }

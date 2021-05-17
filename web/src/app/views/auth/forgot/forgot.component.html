@@ -8,7 +8,7 @@
     </button>
   </div>
 
-  <form [formGroup]="formForgot" (ngSubmit)="forgot()" class="form">
+  <form [formGroup]="formForgot" (ngSubmit)="forgot()" class="form" *ngIf="!emailCorrect">
     <mat-form-field appearance="outline">
       <mat-label>E-mail</mat-label>
       <input matInput formControlName="email" type="email">
@@ -17,5 +17,9 @@
 
     <button mat-flat-button color="primary">Iniciar sesión</button>
   </form>
+
+  <div *ngIf="emailCorrect" class="message">
+    <p>Te hemos enviado un correo, revisa tu E-mail</p>
+  </div>
 
 </div>

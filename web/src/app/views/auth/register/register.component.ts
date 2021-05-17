@@ -53,17 +53,17 @@ export class RegisterComponent implements OnInit {
           this.router.navigate(['/auth/login']);
         },
         err => {
-          this.errorCreateUser(err.error.errors);
+          this.errorCreateUser(err.error);
         }
       );
     }
   }
 
   errorCreateUser(errors: any) {
-    if (errors.email){
+    if (errors.message){
       let message = 'Ya existe un usuario con este E-mail.';
       this._snackBar.open(message, '', {
-        duration: this.durationInSeconds * 1000,
+        duration: this.durationInSeconds * 1000
       });
     }
   }

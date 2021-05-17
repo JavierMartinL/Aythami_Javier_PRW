@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/core/service/auth/auth.service';
 
 @Component({
   selector: 'app-auth-forgot',
@@ -8,9 +11,11 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 })
 export class ForgotComponent implements OnInit {
 
+  public emailCorrect: boolean = false;
+  private durationInSeconds: number = 5;
   private formForgot: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private _snackBar: MatSnackBar, private router: Router) { }
 
   ngOnInit() {
     this.formForgot = this.formBuilder.group({
@@ -24,7 +29,29 @@ export class ForgotComponent implements OnInit {
   }
 
   forgot() {
-    console.log(this.formForgot.value);
+    if (this.formForgot.valid) {
+      let email: string = this.formForgot.get('email').value;
+
+      this.authService.forgot(email).subscribe(
+        data =>{
+          this.emailCorrect = true;
+          console.log(data);
+          
+        },
+        err=> {
+          this.errorForgotUser(err.error);
+        }
+      );
+    }
+  }
+
+  errorForgotUser(errors: any) {
+    if (errors.message){
+      let message = 'Este E-mail no existe';
+      this._snackBar.open(message, '', {
+        duration: this.durationInSeconds * 1000
+      });
+    }
   }
 
   errorEmail(): string {

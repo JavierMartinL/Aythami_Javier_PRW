@@ -29,4 +29,10 @@ export class AuthService {
       password_confirm
     }, httpOptions);
   }
+
+  forgot(email: string): Observable<any> {
+    return this.http.post(environment.AUTH_API + 'forgot', {
+      email
+    }, httpOptions);
+  }
 }

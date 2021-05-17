@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  AUTH_API: 'http://localhost:8000/api/v2/user/'
+  AUTH_API: 'http://localhost:8000/api/v3/user/'
 };
 
 /*

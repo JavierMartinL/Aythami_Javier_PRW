@@ -35,4 +35,12 @@ export class AuthService {
       email
     }, httpOptions);
   }
+
+  resetPassword(token: string, password: string, password_confirm: string): Observable<any> {
+    return this.http.post(environment.AUTH_API + 'restpassword', {
+      token,
+      password,
+      password_confirm
+    }, httpOptions)
+  }
 }

@@ -39,7 +39,6 @@ export class RegisterComponent implements OnInit {
 
   register(): void {
     this.acceptConditions = this.formRegister.get('acceptConditions').value;
-    console.log(this.formRegister.value);
     
     if (this.formRegister.valid && this.acceptConditions === true) {
       let name: string = this.formRegister.get('name').value;
@@ -49,7 +48,6 @@ export class RegisterComponent implements OnInit {
 
       this.authService.register(name, email, password, repeatPassword).subscribe(
         data => {
-          console.log(data);
           this.router.navigate(['/auth/login']);
         },
         err => {

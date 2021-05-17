@@ -35,8 +35,6 @@ export class ForgotComponent implements OnInit {
       this.authService.forgot(email).subscribe(
         data =>{
           this.emailCorrect = true;
-          console.log(data);
-          
         },
         err=> {
           this.errorForgotUser(err.error);

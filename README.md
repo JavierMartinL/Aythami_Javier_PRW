@@ -29,9 +29,9 @@ copias y acceder.
 
 ## [Tecnologías escogidas](Documentacion/Tecnologías_escogidas.md)
 
-#### [Explicación de las tecnologías](Documentacion/Tecnologías_escogidas.md#explicacion_tecnologias)
+Aqui vamos a explicar el porque hemos utilizado cada una de las tecnologias usadas en el proyecto. Para ello nos apoyamos en nuestros conoscimientos y resto de pruebas.
 
-mini explicacion de la sesion
+#### [Explicación de las tecnologías](Documentacion/Tecnologías_escogidas.md#explicacion_tecnologias)
 
 #### [Usos de las Tecnologías en nuestro proyecto y otros datos de interés](Documentacion/Tecnologías_escogidas.md#uso_tecnologias)
 
@@ -57,6 +57,7 @@ mini explicacion de la sesion
 
 ## [Backen](Documentacion/Backen.md)
 #### Instalación del software
+#### Laravel 
 #### Desarrollo de clases
 #### Desarrollo de controlador
 #### Gestión de usuarios
@@ -65,13 +66,10 @@ mini explicacion de la sesion
 
 ## [Fronten](Documentacion/Fronten.md)
 #### Instalacion de framework  a utilizar 
+#### Angular e Ionic
 #### Crear vistas
 #### Crear la lógicas de las vistas
 #### Almacén de objetos 
-
-## [Estudio de los framework](Documentacion/Estudio_de_los_framework.md)
-#### Laravel 
-#### Angular
 
 ## [Bibliografia](Documentacion/Bibliografia.md)
 

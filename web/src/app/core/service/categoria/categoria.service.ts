@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { AuthService } from '../auth/auth.service';
+import { StorageService } from '../storage/storage.service';
 
 
 @Injectable({
@@ -10,10 +10,10 @@ import { AuthService } from '../auth/auth.service';
 })
 export class CategoriaService {
   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.authService.getToken() })
+    headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.storage.getToken() })
   };
 
-  constructor(private http: HttpClient, private authService: AuthService) { }
+  constructor(private http: HttpClient, private storage: StorageService) { }
 
   index(): Observable<any> {
     return this.http.post(environment.API + 'categorias/', null, this.httpOptions);

@@ -17,7 +17,7 @@ class CategoriasController extends Controller
     {
         $user = auth('api')->user();
         $categoria = Categoria::where('user_id', $user->id)->get();
-        return response(['categorias'=>Categoria::collection($categoria),'message'=>'Retrived Successfuly'],200);
+        return response(['categorias'=>$categoria,'message'=>'Retrived Successfuly'],200);
     }
 
     /**
@@ -74,7 +74,6 @@ class CategoriasController extends Controller
         $data = Categoria::findOrFail($request->id);
         $data->name = $request->name;
         $data->categoria = $request->categoria;
-        $data->user_id = $user->id;
         $data->save();
         return $data;
     }

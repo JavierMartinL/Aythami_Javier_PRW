@@ -21,25 +21,20 @@ class ArchivosController extends Controller
         return response(['archivos' => ArchivoResource::collection($files), 'message' => 'Retrived Successfuly'], 200);
     }
 
-
-
-
-
-
-
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function showCategoria($idCategoria)
+    public function showCategoria($id)
     {
         $archivos = [];
         $user = auth('api')->user();
         $files = Archivo::where('user_id', $user->id)->with('categoria')->get();
+
         foreach ($files as $file) {
             foreach ($file->categoria as $cat) {
-                if ($cat->pivot->categoria_id == $idCategoria) {
+                if ($cat->pivot->categoria_id == $id) {
                     array_push($archivos, $file);
                 }
             }

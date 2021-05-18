@@ -13,7 +13,7 @@ class Categoria extends Model
     protected $fillable = [
         'name',
         'user_id',
-        'categorias'
+        'categoria'
     ];
     public function user()
     {

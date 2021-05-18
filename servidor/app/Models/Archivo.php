@@ -17,6 +17,7 @@ class Archivo extends Model
         'description',
         'file_date',
         'file_name',
+        'user_id'
     ];
 
     public function user()

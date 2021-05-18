@@ -19,7 +19,7 @@ class Categoria extends Model
     {
         return $this->belongsTo(User::class);
     }
-    public function archivos()
+    public function archivo()
     {
         return $this->belongsToMany(Archivo::class, 'rel_archivos_categorias', 'archivo_id', 'categoria_id');
     }

@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Resources\ArchivoResource;
 use Illuminate\Http\Request;
 use App\Models\Archivo;
-use App\Models\Categoria;
 
 class ArchivosController extends Controller
 {
@@ -55,19 +54,23 @@ class ArchivosController extends Controller
             'name' => 'required',
             'description' => 'required',
             'file_date' => 'required',
-            'Categories' => 'required'
+            'categories' => 'required'
 
         ]);
+
         $fileName = $request->file('file')->getClientOriginalName();
         $user = auth('api')->user();
-        $request->file('file')->store($user->user_folder . '/' . $fileName);
-        $file = Archivo::create($request->all);
-        Archivo::create([
+        $request->file('file')->store($user->user_folder . '/');
+        $file =Archivo::create([
             'name' => $request->name,
             'description' => $request->description,
             'file_date' => $request->file_date,
             'file_name' => $fileName,
+            'user_id' => $user->id
         ]);
+
+            $file->categoria()->sync($request->categories);
+
         return $file;
     }
 

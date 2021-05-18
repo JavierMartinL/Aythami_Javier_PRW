@@ -9,5 +9,8 @@ class Rel_archivo_categoria extends Model
 {
     use HasFactory;
     protected $table = 'rel_archivos_categorias';
-
+    protected $fillable = [
+        'archivo_id',
+        'categoria_id'
+    ];
 }

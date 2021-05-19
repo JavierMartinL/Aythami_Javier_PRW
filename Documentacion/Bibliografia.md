@@ -18,3 +18,4 @@ https://www.youtube.com/channel/UCXFpliR3rhA_GTTldJ7MYLA
 https://www.youtube.com/watch?v=8x9UoYCVGGI
 - Solucion para las relaciones de aqui entendi lo de las s
 https://es.stackoverflow.com/questions/288948/pregunta-acerca-de-una-relaci%C3%B3n-muchos-a-muchos-en-laravel
+

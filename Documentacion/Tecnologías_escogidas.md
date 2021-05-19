@@ -121,7 +121,17 @@ Luego hemos tenido en cuenta la experiencia usando las distintas bases de datos 
 Mysql está más diseñada para páginas web con un servidor integrado, también es una de las que más hemos usado y viene instalada junto con Xampp que será nuestro software de desarrollo.
  
 Las otras bases de datos no las hemos tratado en el instituto y están orientadas a grandes flujos de datos.
+
+# <a name="postan">Postman</a>
+
+Postman es una herramienta que se utiliza, sobre todo, para el testing de API REST, aunque también admite otras funcionalidades que se salen de lo que engloba el testing de este tipo de sistemas. ... Quizás sea una de las herramientas más utilizadas para hacer testing exploratorio de este tipo de sistemas.
  
+En este caso posman lo hemos utilizado para ir haciendo pruebas del funcionamiento de los endpoint de nuestra api  en la documentación de backend vemos en detalle su funcionamiento.
+ 
+![logo](Imagenes/Tecnologias/postman.PNG)
+ 
+Pero nos permite hacer peticiones  de todo tipo y recibir la correspondiente respuesta del servidor.
+
 # <a name="framework">Framework</a>
 
  En cuanto a framework este año no hemos visto muchos framework en el front hemos visto Angular y en el back apenas hemos llegado a ver laravel y sinfonía en la parte de php y Spring en la parte de java(Gracias a la documentación de JC).
@@ -129,5 +139,7 @@ Las otras bases de datos no las hemos tratado en el instituto y están orientada
  Otro de los hándicap a tomar en cuenta ha sido la dificultad de los integrantes del grupo a la hora de programas en una u otro lenguaje de programación y el lenguaje que se está usando en la prácticas de ambos para poder tener un poco de ayuda en caso de necesitarla.
  
  Por ello hemos elegido en el front Angular ya que es el lenguaje que está usando Javier en el front y Laravel por la documentación y que Aythami está usando otro framework muy parecido de back en la empresa de practicas llamado CodeIgniter 3. 
+
+
 
  

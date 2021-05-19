@@ -33,6 +33,7 @@ Route::prefix('/archivos')->group(function () {
     Route::get('/index', [ArchivosController::class, 'index']);
     Route::post('/store', [ArchivosController::class, 'store']);
     Route::get('/{id}', [ArchivosController::class, 'show']);
+    Route::get('/recuperarArchivo/{id}', [ArchivosController::class, 'recuperarArchivo']);
     Route::get('showCategoria/{id}', [ArchivosController::class, 'showCategoria']);
     Route::post('/update', [ArchivosController::class, 'update']);
     Route::post('/delete/{id}', [ArchivosController::class, 'destroy']);

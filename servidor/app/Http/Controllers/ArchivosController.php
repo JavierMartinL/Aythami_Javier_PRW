@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\ArchivoResource;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Archivo;
 
 class ArchivosController extends Controller
@@ -59,9 +60,17 @@ class ArchivosController extends Controller
         ]);
 
         $fileName = $request->file('file')->getClientOriginalName();
+
         $user = auth('api')->user();
-        $request->file('file')->store($user->user_folder . '/');
-        $file =Archivo::create([
+        Storage::exists($user->user_folder . '/' . $fileName);
+
+        if (Storage::disk('local')->exists($user->user_folder . '/' . $fileName)) {
+            return response([
+                'message' => 'El archivo ya existe'
+            ], 404);
+        }
+
+        $file = Archivo::create([
             'name' => $request->name,
             'description' => $request->description,
             'file_date' => $request->file_date,
@@ -69,9 +78,24 @@ class ArchivosController extends Controller
             'user_id' => $user->id
         ]);
 
-            $file->categoria()->sync($request->categories);
+        $file->categoria()->sync($request->categories);
+
+        $request->file('file')->storeAs(
+            $user->user_folder,
+            $fileName
+        );
 
         return $file;
+    }
+
+    public function recuperarArchivo($id)
+    {
+        $user = auth('api')->user();
+        $archivo = Archivo::find($id);
+        if (Storage::disk('local')->exists($user->user_folder . '/' . $archivo->file_name)) {
+
+             return  Storage::download($user->user_folder . '/' . $archivo->file_name);
+        }
     }
 
     /**

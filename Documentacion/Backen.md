@@ -244,3 +244,39 @@ Vamos a hacer unas correcciones a las rutas en la v3 por lo que no estaban funci
 Se a cambiado la forma de obtener los datos del usuario conectado `$user = auth()->user();` que nos proporciona el usuario cuando se usa la plantilla de laravel a este otro `$user = auth('api')->user();` que es el funciona con las api.
 
 # Pruebas
+
+Para probar el funcionamiento del los endpoint del backen he usado postman, una herrramienta que nos permite ver la informacion que estamos introduccion y la que que recivimos a contianucion voy a poner las pruebas que corresponden a cada uno de los endpoint.
+
+
+![users](Imagenes/Backend/routes4.PNG)
+
+Como se ve en la imagen contamos con 2 rutas de email puestas por ultimo para el funcionamiento de la validacion de correo.
+
+Estas dos solo generan un link de solo uso que una vez usado activan en la base de datos y redirigen al front.
+
+![users](Imagenes/Backend/pruebas/validacion.PNG)
+
+En /user encontramos los siguientes 
+
++ /login que nos permite iniciar sesion en nuestrra aplicacion como se ven la imagen pide email y contraseña y nos devuelve los datos de usuario necesario para su funcionamiento. Es de tipo post.
+
+![users](Imagenes/Backend/pruebas/validacion1.PNG)
+
++ /createUser  En este endpint de tipo post nos pide un poco mas de informacion  que son el name,email,password y password_confirm  y nos devuelve un El usuario se creco correctamente con un 201 o un 404 si a habiendo un error o el usuario ya existe.
+
+![users](Imagenes/Backend/pruebas/validacion2.PNG)
+
+![users](Imagenes/Backend/pruebas/validacion3.PNG)
+
++ /forgot de tipo post nos permite enviar un reset pasword al correo  y comprueba si el correo esta el sistema y nos responde un revisa tu email.
+
+![users](Imagenes/Backend/pruebas/validacion4.PNG)
+
++ /resetpassword nes de tipo post y nos permite enviar nuestro token  que emos enviado por correo y la nueva contraseña cuenta con los campos token, password y password_confirm.
+
+![users](Imagenes/Backend/pruebas/validacion5.PNG)
+
+En /files ya  tiene varios middleware uno que nos pedira el token del usuario y otra que la cuenta este verificada. 
+
+
+

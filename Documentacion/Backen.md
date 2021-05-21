@@ -278,5 +278,11 @@ En /user encontramos los siguientes
 
 En /files ya  tiene varios middleware uno que nos pedira el token del usuario y otra que la cuenta este verificada. 
 
++ El / o /index nos trae todos los archivos guaraados en la base de datos  es  una peticio nde tipo get.
 
+![users](Imagenes/Backend/pruebas/perdirTodosArchivos.PNG)
+
++ Con /showCategoria/{id} pdemos traernos todos los archivos que estan relacionados con una categoria.Es una peticion de tipo get.
+
+![users](Imagenes/Backend/pruebas/archivosporcategorias.PNG)
 

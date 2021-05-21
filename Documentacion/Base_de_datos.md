@@ -14,12 +14,27 @@ Para el proyecto estamos desarrollando un servicio web para el almacenamiento y 
 
 ## <a name="entidad_relacion">Modelo Entidad Relación</a>
 
+
+
+
 ![Modelo Entidad Relación de la base de datos](Imagenes/BBDD/modelo_entidad_relacion.png)
+
 
 ## <a name="relacional">Modelo Relacional</a>
 
+Primer modelos propuesto antes de  aplicar la gestion de usuarios con passport y los distintos cambios requeridos por laravel para su buen funcionamiento.
+
 ![Modelo Relacional de la base de datos](Imagenes/BBDD/modelo_relacional.png)
+
+Modelo definitivo despues de aplicar todos los cambios a la base de datos.
+
+![Modelo Relacional de la base de datos](Imagenes/BBDD/BBDDFin.png)
+
 
 ## [Script](BBDD/BBDD_LARAVEL.sql)
 
 ## Consultas SQL
+
+En este caso al usar las migraciones de Laravel no usamos consultas ya que etas las gestiona eloquent.
+
+

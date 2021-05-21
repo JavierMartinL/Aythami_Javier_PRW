@@ -122,7 +122,12 @@ class LoginController extends Controller
 
     public function logout(Request $request)
     {
-        $request->user()->token()->revoke();
+        $request->validate([
+            'token' => 'required'
+        ]);
+        
+        $user = auth('api')->user();
+        $user->token()->revoke();
 
         return response()->json([
             'message' => 'Ha cerrado la sesion'

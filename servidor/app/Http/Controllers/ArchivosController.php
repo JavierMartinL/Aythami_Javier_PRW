@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Archivo;
 
+
 class ArchivosController extends Controller
 {
     /**
@@ -161,7 +162,7 @@ class ArchivosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function delete($id)
+    public function destroy($id)
     {
         Archivo::find($id)->delete();
     }

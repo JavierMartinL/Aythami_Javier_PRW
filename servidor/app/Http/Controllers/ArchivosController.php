@@ -162,7 +162,7 @@ class ArchivosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
         Archivo::find($id)->delete();
     }

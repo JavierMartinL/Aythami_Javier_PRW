@@ -135,12 +135,22 @@ class ArchivosController extends Controller
 
         $fileName = $request->file('file')->getClientOriginalName();
         $user = auth('api')->user();
-        $request->file('file')->store($user->user_folder . '/' . $fileName);
+
+        if (Storage::disk('local')->exists($user->user_folder . '/' . $fileName)) {
+            return response([
+                'message' => 'El archivo ya existe'
+            ], 404);
+        }
+
         $data = Archivo::findOrFail($request->id);
+
         $data->name = $request->name;
         $data->description = $request->description;
         $data->file_date = $request->file_date;
         $data->file_name = $request->file_name;
+
+        $data->categoria()->sync($request->categories);
+
         $data->save();
         return $data;
     }

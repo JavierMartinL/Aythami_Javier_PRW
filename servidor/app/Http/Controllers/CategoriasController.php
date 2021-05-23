@@ -30,13 +30,13 @@ class CategoriasController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'categoria' => 'required',
+            'idCategoria' => 'required',
         ]);
         $user = auth('api')->user();
 
         $categoria = Categoria::create([
             'name' => $request->name,
-            'categoria' => $request->categoria,
+            'categoria' => $request->idCategoria,
             'user_id' => $user->id
         ]);
 
@@ -67,13 +67,12 @@ class CategoriasController extends Controller
         $request->validate([
             'id' => 'required',
             'name' => 'required',
-            'categoria' => 'required',
+            'idCategoria' => 'idCategoria',
         ]);
 
-        $user = auth('api')->user();
         $data = Categoria::findOrFail($request->id);
         $data->name = $request->name;
-        $data->categoria = $request->categoria;
+        $data->categoria = $request->idCategoria;
         $data->save();
         return $data;
     }
@@ -84,7 +83,7 @@ class CategoriasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
         Categoria::find($id)->delete();
     }

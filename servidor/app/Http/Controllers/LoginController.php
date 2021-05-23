@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\DB;
+use App\Models\Categoria;
 
 use App\Models\User;
 
@@ -52,6 +53,14 @@ class LoginController extends Controller
                 'password' => bcrypt($request->password),
                 'user_folder' => $name_folder
             ])->sendEmailVerificationNotification();
+
+
+            $user = User::where('email', $request->email)->firstOrFail();
+
+            Categoria::create([
+                'name' => 'Archivo',
+                'user_id' => $user->id
+            ]);
 
             Storage::disk('local')->put($name_folder . '/prueba.txt', 'Contents');
             return response()->json([
@@ -125,7 +134,7 @@ class LoginController extends Controller
         $request->validate([
             'token' => 'required'
         ]);
-        
+
         $user = auth('api')->user();
         $user->token()->revoke();
 

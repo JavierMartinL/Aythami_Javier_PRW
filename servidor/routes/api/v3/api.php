@@ -36,14 +36,14 @@ Route::prefix('/archivos')->group(function () {
     Route::get('/recuperarArchivo/{id}', [ArchivosController::class, 'recuperarArchivo']);
     Route::get('showCategoria/{id}', [ArchivosController::class, 'showCategoria']);
     Route::post('/update', [ArchivosController::class, 'update']);
-    Route::post('/delete/{id}', [ArchivosController::class, 'destroy']);
+    Route::post('/delete/{id}', [ArchivosController::class, 'delete']);
 });
 Route::prefix('/categorias')->group(function () {
     Route::get('/index', [CategoriasController::class, 'index']);
     Route::post('/store', 'App\Http\Controllers\CategoriasController@store');
     Route::get('/{id}', [CategoriasController::class, 'show']);
     Route::post('/update', [CategoriasController::class, 'update']);
-    Route::post('/delete/{id}', [CategoriasController::class, 'destroy']);
+    Route::post('/delete/{id}', [CategoriasController::class, 'delete']);
 });
 
 // agregamos middleware a Files para que no se pueda acceder sin estar auth

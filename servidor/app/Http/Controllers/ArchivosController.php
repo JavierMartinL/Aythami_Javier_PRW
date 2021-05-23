@@ -95,7 +95,7 @@ class ArchivosController extends Controller
         $archivo = Archivo::find($id);
         if (Storage::disk('local')->exists($user->user_folder . '/' . $archivo->file_name)) {
 
-             return  Storage::download($user->user_folder . '/' . $archivo->file_name);
+            return  Storage::download($user->user_folder . '/' . $archivo->file_name);
         }
     }
 
@@ -126,26 +126,40 @@ class ArchivosController extends Controller
 
         $request->validate([
             'file' => 'required|max:500000',
-            'id' => 'required',
             'name' => 'required',
+            'id' => 'required',
             'description' => 'required',
             'file_date' => 'required',
-            'Categories' => 'required'
-
+            'categories' => 'required'
         ]);
 
 
 
         $data = Archivo::findOrFail($request->id);
 
+        $fileName = $request->file('file')->getClientOriginalName();
+
+
+        if ($fileName != $data->file_name) {
+
+            $request->file('file')->storeAs(
+                $data->user_folder,
+                $fileName
+            );
+
+            if (Storage::disk('local')->exists($data->user_folder . '/' . $fileName)) {
+                return  Storage::delete($data->user_folder . '/' . $fileName);
+            }
+        }
+
         $data->name = $request->name;
         $data->description = $request->description;
         $data->file_date = $request->file_date;
-        $data->file_name = $request->file_name;
+        $data->file_name = $fileName;
+        $data->save();
 
         $data->categoria()->sync($request->categories);
 
-        $data->save();
         return $data;
     }
 
@@ -157,6 +171,10 @@ class ArchivosController extends Controller
      */
     public function delete($id)
     {
-        Archivo::find($id)->delete();
+        $data = Archivo::findOrFail($id);
+
+        if (Storage::disk('local')->exists($data->user_folder . '/' . $data->file_name)) {
+            return  Storage::delete($data->user_folder . '/' . $data->file_name);
+        }
     }
 }

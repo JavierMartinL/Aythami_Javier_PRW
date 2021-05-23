@@ -171,10 +171,14 @@ class ArchivosController extends Controller
      */
     public function delete($id)
     {
-        $data = Archivo::findOrFail($id);
+        $data  = Archivo::find($id);
 
         if (Storage::disk('local')->exists($data->user_folder . '/' . $data->file_name)) {
-            return  Storage::delete($data->user_folder . '/' . $data->file_name);
+             Storage::delete($data->user_folder . '/' . $data->file_name);
         }
+        $data->delete();
+        return response([
+            'message' => 'El archivo se elimino correctamente'
+        ], 200);
     }
 }

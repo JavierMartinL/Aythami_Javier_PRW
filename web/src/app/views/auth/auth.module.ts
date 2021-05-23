@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Materials
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -38,7 +38,8 @@ import { ResetComponent } from './reset/reset.component';
     MatIconModule,
     MatCheckboxModule,
     MatSnackBarModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class AuthModule { }

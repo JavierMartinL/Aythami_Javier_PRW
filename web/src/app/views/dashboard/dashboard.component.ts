@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 import { CategoriaService } from 'src/app/core/service/categoria/categoria.service';
 import { FileService } from 'src/app/core/service/file/file.service';
-import { StorageService } from 'src/app/core/service/storage/storage.service';
+import { AddFileModalComponent } from './file/add-file-modal/add-file-modal.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,11 +11,17 @@ import { StorageService } from 'src/app/core/service/storage/storage.service';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private file: FileService, private category: CategoriaService, private storage: StorageService) { }
+  constructor(private modalController: ModalController, private file: FileService, private category: CategoriaService) { }
 
-  ngOnInit() {    
-    // console.log(await this.storage.getToken());
+  ngOnInit() {
     this.index();
+  }
+
+  async subir() {
+    const modal = await this.modalController.create({
+      component: AddFileModalComponent
+    });
+    return await modal.present();
   }
 
   async index() {

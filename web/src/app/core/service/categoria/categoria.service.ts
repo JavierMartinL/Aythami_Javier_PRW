@@ -9,37 +9,38 @@ import { StorageService } from '../storage/storage.service';
   providedIn: 'root'
 })
 export class CategoriaService {
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.storage.getToken() })
-  };
 
   constructor(private http: HttpClient, private storage: StorageService) { }
 
-  index(): Observable<any> {
-    return this.http.post(environment.API + 'categorias/', null, this.httpOptions);
+  async header() {
+    return {headers: new HttpHeaders({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + await this.storage.getToken()})};
   }
 
-  store(name: string, categoria: string): Observable<any> {
+  async index(): Promise<Observable<any>> {
+    return this.http.get(environment.API + 'categorias/index', await this.header());
+  }
+
+  async store(name: string, categoria: string): Promise<Observable<any>> {
     return this.http.post(environment.AUTH_API + 'categorias/store', {
       name,
       categoria
-    }, this.httpOptions);
+    }, await this.header());
   }
 
-  update(id: number, name: string, categoria: string): Observable<any> {
+  async update(id: number, name: string, categoria: string): Promise<Observable<any>> {
     return this.http.post(environment.AUTH_API + 'categorias/store', {
       id,
       name,
       categoria
-    }, this.httpOptions);
+    }, await this.header());
   }
 
-  show(id): Observable<any> {
-    return this.http.post(environment.API + 'categorias/' + id, null, this.httpOptions);
+  async show(id): Promise<Observable<any>> {
+    return this.http.post(environment.API + 'categorias/' + id, null, await this.header());
   }
 
-  destroy(id): Observable<any> {
-    return this.http.post(environment.API + 'categorias/delete/' + id, null, this.httpOptions);
+  async destroy(id): Promise<Observable<any>> {
+    return this.http.post(environment.API + 'categorias/delete/' + id, null, await this.header());
   }
 
 }

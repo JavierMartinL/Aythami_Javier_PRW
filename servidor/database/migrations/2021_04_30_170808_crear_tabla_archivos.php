@@ -19,7 +19,6 @@ class CrearTablaArchivos extends Migration
             $table->string('description');
             $table->date('file_date');
             $table->string('file_name');
-            $table->date('up_date');
             $table->foreignId('user_id')->references('id')->on('users');
             $table->timestamps();
             $table->softDeletes();

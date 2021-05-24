@@ -142,14 +142,13 @@ class ArchivosController extends Controller
             $fileName = $request->file('file')->getClientOriginalName();
 
             if ($fileName != $data->file_name) {
-                echo $user->user_folder;
                 $request->file('file')->storeAs(
                     $user->user_folder,
                     $fileName
                 );
 
                 if (Storage::disk('local')->exists($user->user_folder . '/' . $data->file_name)) {
-                    return  Storage::delete($user->user_folder . '/' . $data->file_name);
+                      Storage::delete($user->user_folder . '/' . $data->file_name);
                 }
             }
             $data->file_name = $fileName;

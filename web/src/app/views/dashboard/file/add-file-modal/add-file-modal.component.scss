@@ -1,0 +1,69 @@
+.toolbar{
+    --background: none;
+    background-image: 
+        linear-gradient(135deg, lightblue 0%, transparent 52%), 
+        linear-gradient(135deg, #4c84ea 0%, transparent 31%), 
+        linear-gradient(134deg, #090080 -10%, transparent 117%);
+    color: white;
+    text-align: center;   
+}
+
+ion-grid, ion-col {
+    padding: 0px 5px;
+}
+
+.form {
+    margin: 10px;
+
+    .dropzone {
+        height: 120px;
+        background-color: #74c2e19f;
+        border: none;
+        color: #383b44;
+        margin-bottom: 10px;
+    }
+
+    mat-form-field {
+        display: block;
+        margin: auto;
+        max-height: 100px;
+        padding-top: 5px;
+
+        .textArea {
+            resize: none;
+        }
+    }
+
+    .iconColor {
+        color: #757575;
+    }
+    .iconColor:hover {
+        color: #673ab7;
+    }
+
+    .category {
+        .category-title {
+            margin-top: 23px;
+            margin-bottom: 0;
+            font-size: 20px;
+        }
+
+        .showCategory {
+            padding: 10px;
+            margin: 0px 10px;
+            background-color: #74c2e19f;
+            color: #383b44;
+    
+            .button {
+                height: 20px;
+                width: 20px;
+                line-height: 20px
+            }
+        }
+
+    }
+}
+
+::ng-deep .cdk-overlay-container {
+    z-index: 20042 !important;
+}

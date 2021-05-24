@@ -32,3 +32,16 @@
         }
     }
 }
+
+::ng-deep .mat-snack-bar-container {
+    background-color: red;
+    color: white;
+
+    .mat-button-wrapper {
+        color: white;
+    }
+    
+    span {
+        margin: auto;
+    }
+}

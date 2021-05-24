@@ -125,7 +125,7 @@ class ArchivosController extends Controller
     {
 
         $request->validate([
-            'file' => 'required|max:500000',
+            'file' => 'max:500000',
             'name' => 'required',
             'id' => 'required',
             'description' => 'required',
@@ -137,25 +137,28 @@ class ArchivosController extends Controller
 
         $data = Archivo::findOrFail($request->id);
 
-        $fileName = $request->file('file')->getClientOriginalName();
+        if ($request->file('file')){
+            $fileName = $request->file('file')->getClientOriginalName();
 
 
-        if ($fileName != $data->file_name) {
+            if ($fileName != $data->file_name) {
 
-            $request->file('file')->storeAs(
-                $data->user_folder,
-                $fileName
-            );
+                $request->file('file')->storeAs(
+                    $data->user_folder,
+                    $fileName
+                );
 
-            if (Storage::disk('local')->exists($data->user_folder . '/' . $fileName)) {
-                return  Storage::delete($data->user_folder . '/' . $fileName);
+                if (Storage::disk('local')->exists($data->user_folder . '/' . $fileName)) {
+                    return  Storage::delete($data->user_folder . '/' . $fileName);
+                }
             }
+            $data->file_name = $fileName;
         }
 
         $data->name = $request->name;
         $data->description = $request->description;
         $data->file_date = $request->file_date;
-        $data->file_name = $fileName;
+        
         $data->save();
 
         $data->categoria()->sync($request->categories);

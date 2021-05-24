@@ -136,20 +136,20 @@ class ArchivosController extends Controller
 
 
         $data = Archivo::findOrFail($request->id);
-
+        $user = auth('api')->user();
         if ($request->file('file')){
+
             $fileName = $request->file('file')->getClientOriginalName();
 
-
             if ($fileName != $data->file_name) {
-
+                echo $user->user_folder;
                 $request->file('file')->storeAs(
-                    $data->user_folder,
+                    $user->user_folder,
                     $fileName
                 );
 
-                if (Storage::disk('local')->exists($data->user_folder . '/' . $fileName)) {
-                    return  Storage::delete($data->user_folder . '/' . $fileName);
+                if (Storage::disk('local')->exists($user->user_folder . '/' . $data->file_name)) {
+                    return  Storage::delete($user->user_folder . '/' . $data->file_name);
                 }
             }
             $data->file_name = $fileName;
@@ -158,7 +158,7 @@ class ArchivosController extends Controller
         $data->name = $request->name;
         $data->description = $request->description;
         $data->file_date = $request->file_date;
-        
+
         $data->save();
 
         $data->categoria()->sync($request->categories);

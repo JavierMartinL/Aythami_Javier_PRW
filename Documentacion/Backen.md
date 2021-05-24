@@ -286,3 +286,21 @@ En /files ya  tiene varios middleware uno que nos pedira el token del usuario y 
 
 ![users](Imagenes/Backend/pruebas/archivosporcategorias.PNG)
 
++ /store nos permite recoger un archivo file y el resto de informacion que nos ofrece el usuario, este puede dar dos respuestas el archivo guardado como resultado de que este se a guardado correctamente o un error de que el archivo ya exixte.
+
+![users](Imagenes/Backend/pruebas/guardarArchivos.PNG)
+
+![users](Imagenes/Backend/pruebas/yaExiste.PNG)
+
++ /update nos permite actualizar tanto el archivo como  los datos que guardamos de estos. Esta funcion comprueba el arvhico que has subido y si es distinto al que ya tenemos lo remplazas. La diferencia con el storage es que se pide tambien el id del archivo
+
+![users](Imagenes/Backend/pruebas/updateArchivo.PNG)
+
++ /recuperarArchivo nos permite recuperar la informacion del archivo. Para ello se introduce un id del archivo.Haciendolo de esta manera el archivo no tiene url publico.
+
+
+![users](Imagenes/Backend/pruebas/recuperarArchivo.PNG)
+
++ /delete nos permite borrar la  informacion del archivo y este ultimo de nuestro servidor. Para ello mandamos la id del archivo.
+
+![users](Imagenes/Backend/pruebas/recuperarArchivo.PNG)

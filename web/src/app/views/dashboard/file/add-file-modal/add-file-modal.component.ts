@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ModalController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import {finalize, map, startWith} from 'rxjs/operators';
 import { CategoriaService } from 'src/app/core/service/categoria/categoria.service';
@@ -20,7 +21,7 @@ export class AddFileModalComponent implements OnInit {
   private categories: any[] = [];
   private files: File = null;
 
-  constructor(private formBuilder: FormBuilder, private categoryService: CategoriaService, private fileService: FileService) { }
+  constructor(private modalController: ModalController, private formBuilder: FormBuilder, private categoryService: CategoriaService, private fileService: FileService) { }
 
   async ngOnInit() {
     this.maxDate = new Date();    
@@ -97,6 +98,7 @@ export class AddFileModalComponent implements OnInit {
       (await this.fileService.store(formModel)).subscribe(
         data => {
           console.log(data);
+          this.modalController.dismiss();
         },
         err => {
           console.log(err);

@@ -30,7 +30,24 @@ export class DashboardComponent implements OnInit {
       this.index();
     })
       
+    return await modal.present();
+  }
 
+  async editar(file) {
+    console.log(file);
+    
+    const modal = await this.modalController.create({
+      component: AddFileModalComponent,
+      componentProps: {
+        'fileObject': file,
+        'update': true
+      }
+    });
+
+    modal.onDidDismiss().then((data) => {
+      this.index();
+    })
+      
     return await modal.present();
   }
 

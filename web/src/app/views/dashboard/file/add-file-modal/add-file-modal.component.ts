@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
 import { Observable } from 'rxjs';
@@ -12,25 +12,30 @@ import { FileService } from 'src/app/core/service/file/file.service';
   styleUrls: ['./add-file-modal.component.scss']
 })
 export class AddFileModalComponent implements OnInit {
+
+  @Input() fileObject: Object = null;
+  @Input() update: boolean = false;
  
   public filteredOptions: Observable<any[]>;
   public maxDate: Date;
+  public title: string;
   private fileForm: FormGroup;
   private categoryControl = new FormControl();
   private categoryOptions: any[] = [];
-  private categories: any[] = [];
+  private categories: any[];
   private files: File = null;
 
   constructor(private modalController: ModalController, private formBuilder: FormBuilder, private categoryService: CategoriaService, private fileService: FileService) { }
 
   async ngOnInit() {
+    this.title = (this.update) ? 'Editar Archivo' : 'Subir Archivo';
     this.maxDate = new Date();    
     this.fileForm = this.formBuilder.group({
-      file: [''],
-      name: ['', Validators.required],
-      description: ['', Validators.required],
-      date_file: ['', Validators.required]
-    });            
+      name: [(this.fileObject !== null ) ? this.fileObject['name'] : '', Validators.required],
+      description: [(this.fileObject !== null ) ? this.fileObject['description'] : '', Validators.required],
+      file_date: [(this.fileObject !== null ) ? new Date(this.fileObject['file_date']) : '', Validators.required]
+    });
+    this.categories = (this.fileObject !== null ) ? this.fileObject['categoria'] : [];
     await this.getCategories();
   }
 
@@ -49,7 +54,6 @@ export class AddFileModalComponent implements OnInit {
 
   addFile(event): void {
     this.files = event.addedFiles;
-    this.fileForm.get('file').setValue(event.addedFiles);
   }
 
   deleteFile(): void {
@@ -75,14 +79,14 @@ export class AddFileModalComponent implements OnInit {
   }
 
   changeDate(): string {
-    let date = this.fileForm.get('date_file').value;
+    let date = this.fileForm.get('file_date').value;
     return date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
   }
 
   async saveFile(): Promise<void> {
     if (this.fileForm.valid && this.files !== null) {
       const formModel: FormData = new FormData();
-      formModel.append("file", this.fileForm.get('file').value[0]);
+      formModel.append("file", this.files[0]);
       formModel.append("name", this.fileForm.get('name').value);
       formModel.append("description", this.fileForm.get('description').value);
       formModel.append("file_date", this.changeDate());
@@ -97,6 +101,8 @@ export class AddFileModalComponent implements OnInit {
 
       (await this.fileService.store(formModel)).subscribe(
         data => {
+          console.log(this.files[0]);
+          
           console.log(data);
           this.modalController.dismiss();
         },
@@ -104,7 +110,37 @@ export class AddFileModalComponent implements OnInit {
           console.log(err);
         }
       )
-      
+    }
+  }
+
+  async updateFile(): Promise<void> {
+    if (this.fileForm.valid) {
+      const formModel: FormData = new FormData();
+      if (this.files !== null) {
+        formModel.append("file", this.files[0]);
+      }
+      formModel.append("id", this.fileObject['id']);
+      formModel.append("name", this.fileForm.get('name').value);
+      formModel.append("description", this.fileForm.get('description').value);
+      formModel.append("file_date", this.changeDate());
+
+      if (this.categories.length > 0) {
+        for(let i = 0; i < this.categories.length; i++) {
+          formModel.append("categories["+ i +"]", this.categories[i].id);          
+        }
+      } else {
+        formModel.append("categories[0]", '1');
+      }      
+
+      (await this.fileService.update(formModel)).subscribe(
+        data => {
+          console.log(data);
+          this.modalController.dismiss();
+        },
+        err => {
+          console.log(err);
+        }
+      )
     }
   }
 
@@ -137,10 +173,10 @@ export class AddFileModalComponent implements OnInit {
   }
 
   errorDate(): string {
-    if (this.fileForm.get('date_file').hasError('required')) {
+    if (this.fileForm.get('file_date').hasError('required')) {
       return 'Este campo no puede estar vacío';
     }
-    if (this.fileForm.get('date_file').value > this.maxDate){
+    if (this.fileForm.get('file_date').value > this.maxDate){
       return 'Elige una fecha valida';
     }
     return '';

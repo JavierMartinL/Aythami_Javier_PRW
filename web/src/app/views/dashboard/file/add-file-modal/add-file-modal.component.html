@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar class="toolbar">
-    <ion-title>Subir Archivo</ion-title>
+    <ion-title>{{title}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -35,7 +35,7 @@
 
           <mat-form-field appearance="outline">
             <mat-label>Fecha del Archivo</mat-label>
-            <input matInput [max]="maxDate" [matDatepicker]="picker" formControlName="date_file" placeholder="MM/DD/YYYY">
+            <input matInput [max]="maxDate" [matDatepicker]="picker" formControlName="file_date" placeholder="MM/DD/YYYY">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker class="picker"></mat-datepicker>
             <mat-error *ngIf="fileForm.invalid">{{errorDate()}}</mat-error>
@@ -94,9 +94,14 @@
       <ion-row>
         <ion-col class="text-center">
 
-          <button mat-flat-button color="primary" (click)="saveFile()">
+          <button mat-flat-button color="primary" (click)="saveFile()" *ngIf="!update">
             Subir Archivo
             <mat-icon>upload_file</mat-icon>
+          </button>
+
+          <button mat-flat-button color="primary" (click)="updateFile()" *ngIf="update">
+            Editar Archivo
+            <mat-icon>edit</mat-icon>
           </button>
 
         </ion-col>

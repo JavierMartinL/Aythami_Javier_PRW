@@ -28,4 +28,8 @@ export class FileService {
   async store(fileForm: FormData): Promise<Observable<any>> {
     return this.http.post(URL + 'store', fileForm, await this.header());
   }
+
+  async update(fileForm: FormData): Promise<Observable<any>> {
+    return this.http.post(URL + 'update', fileForm, await this.header());
+  }
 }

@@ -242,73 +242,89 @@ Vamos a hacer unas correcciones a las rutas en la v3 por lo que no estaban funci
 ## Corrección en los controladores de categorías
  
 Se a cambiado la forma de obtener los datos del usuario conectado `$user = auth()->user();` que nos proporciona el usuario cuando se usa la plantilla de laravel a este otro `$user = auth('api')->user();` que es el funciona con las api.
-
+ 
 # Pruebas
-
-Para probar el funcionamiento del los endpoint del backen he usado postman, una herrramienta que nos permite ver la informacion que estamos introduccion y la que que recivimos a contianucion voy a poner las pruebas que corresponden a cada uno de los endpoint.
-
-
+ 
+Para probar el funcionamiento de los endpoint del backen he usado postman, una herramienta que nos permite ver la información que estamos introduciendo y la que que recibimos a continuación voy a poner las pruebas que corresponden a cada uno de los endpoint.
+ 
+ 
 ![users](Imagenes/Backend/routes4.PNG)
-
-Como se ve en la imagen contamos con 2 rutas de email puestas por ultimo para el funcionamiento de la validacion de correo.
-
+ 
+Como se ve en la imagen contamos con 2 rutas de email puestas por ultimo para el funcionamiento de la validación de correo.
+ 
 Estas dos solo generan un link de solo uso que una vez usado activan en la base de datos y redirigen al front.
-
+ 
 ![users](Imagenes/Backend/pruebas/validacion.PNG)
-
+ 
 En /user encontramos los siguientes 
-
-+ /login que nos permite iniciar sesion en nuestrra aplicacion como se ven la imagen pide email y contraseña y nos devuelve los datos de usuario necesario para su funcionamiento. Es de tipo post.
-
+ 
++ /login que nos permite iniciar sesión en nuestra aplicación como se ven la imagen pide email y contraseña y nos devuelve los datos de usuario necesarios para su funcionamiento. Es de tipo post.
+ 
 ![users](Imagenes/Backend/pruebas/validacion1.PNG)
-
-+ /createUser  En este endpint de tipo post nos pide un poco mas de informacion  que son el name,email,password y password_confirm  y nos devuelve un El usuario se creco correctamente con un 201 o un 404 si a habiendo un error o el usuario ya existe.
-
+ 
++ /createUser  En este endpoint de tipo post nos pide un poco más de información  que son el name,email,password y password_confirm  y nos devuelve un El usuario se crea correctamente con un 201 o un 404 si a habiendo un error o el usuario ya existe.
+ 
 ![users](Imagenes/Backend/pruebas/validacion2.PNG)
-
+ 
 ![users](Imagenes/Backend/pruebas/validacion3.PNG)
-
-+ /forgot de tipo post nos permite enviar un reset pasword al correo  y comprueba si el correo esta el sistema y nos responde un revisa tu email.
-
+ 
++ /forgot de tipo post nos permite enviar un reset password al correo  y comprueba si el correo está el sistema y nos responde un revisa tu email.
+ 
 ![users](Imagenes/Backend/pruebas/validacion4.PNG)
-
-+ /resetpassword nes de tipo post y nos permite enviar nuestro token  que emos enviado por correo y la nueva contraseña cuenta con los campos token, password y password_confirm.
-
+ 
++ /resetpassword nes de tipo post y nos permite enviar nuestro token  que hemos enviado por correo y la nueva contraseña cuenta con los campos token, password y password_confirm.
+ 
 ![users](Imagenes/Backend/pruebas/validacion5.PNG)
-
-En /archivos ya  tiene varios middleware uno que nos pedira el token del usuario y otra que la cuenta este verificada. 
-
-+ El / o /index nos trae todos los archivos guaraados en la base de datos  es  una peticio nde tipo get.
-
+ 
+En /archivos ya  tiene varios middleware uno que nos pedirá el token del usuario y otra que la cuenta esté verificada. 
+ 
++ El / o /index nos trae todos los archivos guardados en la base de datos  es  una petición de tipo get.
+ 
 ![users](Imagenes/Backend/pruebas/perdirTodosArchivos.PNG)
-
-+ Con /showCategoria/{id} pdemos traernos todos los archivos que estan relacionados con una categoria.Es una peticion de tipo get.
-
+ 
++ Con /showCategoria/{id} podemos traernos todos los archivos que están relacionados con una categoria.Es una peticion de tipo get.
+ 
 ![users](Imagenes/Backend/pruebas/archivosporcategorias.PNG)
-
-+ /store nos permite recoger un archivo file y el resto de informacion que nos ofrece el usuario, este puede dar dos respuestas el archivo guardado como resultado de que este se a guardado correctamente o un error de que el archivo ya exixte.
-
+ 
++ /{id} para traer una de los archivos, es de tipo get .
+ 
+![users](Imagenes/Backend/pruebas/pedirUnArchivo.PNG)
+ 
++ /store nos permite recoger un archivo file y el resto de información que nos ofrece el usuario, este puede dar dos respuestas el archivo guardado como resultado de que este se ha guardado correctamente o un error de que el archivo ya existe.
+ 
 ![users](Imagenes/Backend/pruebas/guardarArchivos.PNG)
-
+ 
 ![users](Imagenes/Backend/pruebas/yaExiste.PNG)
-
-+ /update nos permite actualizar tanto el archivo como  los datos que guardamos de estos. Esta funcion comprueba el arvhico que has subido y si es distinto al que ya tenemos lo remplazas. La diferencia con el storage es que se pide tambien el id del archivo
-
+ 
++ /update nos permite actualizar tanto el archivo como  los datos que guardamos de estos. Esta función comprueba el archivo que has subido y si es distinto al que ya tenemos lo reemplazas. La diferencia con el storage es que se pide también el id del archivo
+ 
 ![users](Imagenes/Backend/pruebas/updateArchivo.PNG)
-
-+ /recuperarArchivo nos permite recuperar la informacion del archivo. Para ello se introduce un id del archivo.Haciendolo de esta manera el archivo no tiene url publico.
-
-
+ 
++ /recuperarArchivo nos permite recuperar la información del archivo. Para ello se introduce un id del archivo.Haciéndolo de esta manera el archivo no tiene url publico.
+ 
+ 
 ![users](Imagenes/Backend/pruebas/recuperarArchivo.PNG)
-
-+ /delete nos permite borrar la  informacion del archivo y este ultimo de nuestro servidor. Para ello mandamos la id del archivo.
-
+ 
++ /delete nos permite borrar la  información del archivo y este último de nuestro servidor. Para ello mandamos la id del archivo.
+ 
 ![users](Imagenes/Backend/pruebas/eliminarArchivos.PNG)
-
-En /categorias contamamos con acceso al crud e categorias al igual que  archivos cuenta con un middleware que obliga al usuario a estar registrado y activo antes de poder acceder a esta sutiacion.
-
-+ / o /index que nos proporciona todas las categorias que encontramo en la aplicacion. Es de tipo de get.
-
-+ /store almacenamos las categorias para ello pedimos nombre y categoria padre.
-
-+ 
+ 
+En /categorias contamos con acceso al crud de categorías al igual que  archivos cuenta con un middleware que obliga al usuario a estar registrado y activo antes de poder acceder a esta situación.
+ 
++ / o /index que nos proporciona todas las categorías que encuentras en la aplicación. Es de tipo de get.
+ 
+![users](Imagenes/Backend/pruebas/pedirCategorias.PNG)
+ 
++ /store almacenamos las categorías para ello pedimos nombre y categoría padre.
+ 
+![users](Imagenes/Backend/pruebas/guardarCategoria.PNG)
+ 
++ /update nos permite actualizar la información de las categorías, para ello se le pide la id de la categoría, name y la categoría padre.
+ 
+![users](Imagenes/Backend/pruebas/updateCategoria.PNG)
+ 
+ 
++ /{id} podemos pedir una categoría es de tipo get y nos devuelve la categoría elegida por id.
+ 
+![users](Imagenes/Backend/pruebas/pedirUnaCategoria.PNG)
+ 

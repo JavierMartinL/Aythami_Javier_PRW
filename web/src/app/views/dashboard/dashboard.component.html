@@ -4,7 +4,24 @@
 
 <ion-grid *ngIf="files !== null" >
   <ion-row>
-    <ion-col size="2" *ngFor="let file of files">
+    <ion-col size="2" *ngFor="let category of ca">
+      <ion-card>
+        <ion-card-header (click)="setCategory(category.id)">
+          <!-- <mat-icon>{{icon(file)}}</mat-icon> -->
+          <ion-card-title>{{category.name}}</ion-card-title>
+        </ion-card-header>
+      
+        <ion-card-content>
+          <button (click)="categoryModal(category)">Editar</button>
+          <!-- <p>{{file.description}}</p>
+          {{file.file_date}} -->
+          <!-- <button (click)="editar(file)">Editar</button> -->
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="2" *ngFor="let file of fi">
       <ion-card>
         <ion-card-header>
           <mat-icon>{{icon(file)}}</mat-icon>
@@ -14,11 +31,12 @@
         <ion-card-content>
           <p>{{file.description}}</p>
           {{file.file_date}}
-          <button (click)="editar(file)">Editar</button>
+          <button (click)="fileModal(file)">Editar</button>
         </ion-card-content>
       </ion-card>
     </ion-col>
   </ion-row>
 </ion-grid>
 
-<button (click)="subir()">Subir Documento</button>
+<button (click)="fileModal()">Subir Documento</button><br>
+<button (click)="categoryModal()">Crear Categoria</button>

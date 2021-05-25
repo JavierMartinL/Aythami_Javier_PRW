@@ -14,11 +14,13 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
 import { FileModalComponent } from './file/file-modal/file-modal.component';
+import { CategoryModalComponent } from './category/category-modal/category-modal.component';
 
 @NgModule({
   declarations: [
     DashboardComponent,
-    FileModalComponent
+    FileModalComponent,
+    CategoryModalComponent
   ],
   imports: [
     CommonModule,

@@ -10,8 +10,12 @@ import { Subscription } from "rxjs";
         multi: true
     }]
 })
-export class PasswordEqualValidatorDirective implements Validator {
+/**
+ * Comprobar que las dos contraseñas introducidas son iguales
+ */
+ export class PasswordEqualValidatorDirective implements Validator {
     @Input() appPasswordEqualValidator: string;
+    
     validate(control: AbstractControl): ValidationErrors | null {
         const controlToCompare = control.parent.get(this.appPasswordEqualValidator);
         if (controlToCompare) {

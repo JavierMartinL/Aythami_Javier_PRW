@@ -5,7 +5,10 @@
         linear-gradient(135deg, #4c84ea 0%, transparent 31%), 
         linear-gradient(134deg, #090080 -10%, transparent 117%);
     color: white;
-    text-align: center;   
+    text-align: center;
+    ion-title {
+        padding: 5px;
+    }
 }
 
 ion-grid, ion-col {

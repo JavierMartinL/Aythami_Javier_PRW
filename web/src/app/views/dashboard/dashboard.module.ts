@@ -7,19 +7,18 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-
+import { MatIconModule } from '@angular/material/icon';
 
 import { NgxDropzoneModule } from 'ngx-dropzone';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
-import { AddFileModalComponent } from './file/add-file-modal/add-file-modal.component';
-import { MatIcon, MatIconModule } from '@angular/material/icon';
+import { FileModalComponent } from './file/file-modal/file-modal.component';
 
 @NgModule({
   declarations: [
     DashboardComponent,
-    AddFileModalComponent
+    FileModalComponent
   ],
   imports: [
     CommonModule,

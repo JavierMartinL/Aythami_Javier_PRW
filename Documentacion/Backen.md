@@ -276,7 +276,7 @@ En /user encontramos los siguientes
 
 ![users](Imagenes/Backend/pruebas/validacion5.PNG)
 
-En /files ya  tiene varios middleware uno que nos pedira el token del usuario y otra que la cuenta este verificada. 
+En /archivos ya  tiene varios middleware uno que nos pedira el token del usuario y otra que la cuenta este verificada. 
 
 + El / o /index nos trae todos los archivos guaraados en la base de datos  es  una peticio nde tipo get.
 
@@ -303,4 +303,12 @@ En /files ya  tiene varios middleware uno que nos pedira el token del usuario y 
 
 + /delete nos permite borrar la  informacion del archivo y este ultimo de nuestro servidor. Para ello mandamos la id del archivo.
 
-![users](Imagenes/Backend/pruebas/recuperarArchivo.PNG)
+![users](Imagenes/Backend/pruebas/eliminarArchivos.PNG)
+
+En /categorias contamamos con acceso al crud e categorias al igual que  archivos cuenta con un middleware que obliga al usuario a estar registrado y activo antes de poder acceder a esta sutiacion.
+
++ / o /index que nos proporciona todas las categorias que encontramo en la aplicacion. Es de tipo de get.
+
++ /store almacenamos las categorias para ello pedimos nombre y categoria padre.
+
++ 

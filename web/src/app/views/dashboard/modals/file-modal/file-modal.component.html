@@ -12,7 +12,7 @@
 
           <ngx-dropzone (change)="addFile($event)" [multiple]="false" [maxFileSize]="500000" class="dropzone">
             <ngx-dropzone-label>Arrastra un archivo aqui para subirlo</ngx-dropzone-label>
-            <ngx-dropzone-preview *ngFor="let file of files" [removable]="true" (removed)="deleteFile()">
+            <ngx-dropzone-preview *ngFor="let file of files" [removable]="true" (removed)="deleteFile()" class="preview">
               <ngx-dropzone-label>
                 {{file.name}}
               </ngx-dropzone-label>

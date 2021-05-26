@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit {
       ],
       password: ['', Validators.required]
     });
+    this.storage.ver();
   }
 
   login(): void {

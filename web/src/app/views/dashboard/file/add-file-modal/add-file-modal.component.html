@@ -1,0 +1,111 @@
+<ion-header>
+  <ion-toolbar class="toolbar">
+    <ion-title>{{title}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="fileForm" class="form">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+
+          <ngx-dropzone (change)="addFile($event)" [multiple]="false" [maxFileSize]="500000" class="dropzone">
+            <ngx-dropzone-label>Arrastra un archivo aqui para subirlo</ngx-dropzone-label>
+            <ngx-dropzone-preview *ngFor="let file of files" [removable]="true" (removed)="deleteFile()">
+              <ngx-dropzone-label>
+                {{file.name}}
+              </ngx-dropzone-label>
+            </ngx-dropzone-preview>
+          </ngx-dropzone>
+
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="8">
+
+          <mat-form-field appearance="outline">
+            <mat-label>Nombre</mat-label>
+            <input matInput autocomplete="off" formControlName="name">
+            <mat-error *ngIf="fileForm.invalid">{{errorName()}}</mat-error>
+          </mat-form-field>
+
+        </ion-col>
+        <ion-col size="4">
+
+          <mat-form-field appearance="outline">
+            <mat-label>Fecha del Archivo</mat-label>
+            <input matInput [max]="maxDate" [matDatepicker]="picker" formControlName="file_date" placeholder="MM/DD/YYYY">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker class="picker"></mat-datepicker>
+            <mat-error *ngIf="fileForm.invalid">{{errorDate()}}</mat-error>
+          </mat-form-field>
+
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Descripción</mat-label>
+            <textarea matInput formControlName="description" class="textArea" rows="4"></textarea>
+            <mat-error *ngIf="fileForm.invalid">{{errorDescription()}}</mat-error>
+          </mat-form-field>
+
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-align-items-center category">
+        <ion-col size="12">
+
+          <p class="category-title">Categorias</p>
+
+        </ion-col>
+        <ion-col size="11">
+
+          <mat-form-field appearance="outline">
+            <mat-label>Categorias</mat-label>
+            <input matInput [formControl]="categoryControl" [matAutocomplete]="auto" type="text">
+            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+              <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                {{option.name}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+
+        </ion-col>
+        <ion-col size="1">
+
+          <button mat-icon-button matSuffix (click)="addCategory()" class="iconColor">
+            <mat-icon>create_new_folder</mat-icon>
+          </button>
+
+        </ion-col>
+        <ion-col size="12">
+
+          <ion-badge color="tertiary" class="showCategory" *ngFor="let category of categories">
+            {{category.name}} 
+            <button mat-icon-button matSuffix (click)="deleteCategory(category.id)" class="button iconColor">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </ion-badge>
+
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="text-center">
+
+          <button mat-flat-button color="primary" (click)="saveFile()" *ngIf="!update">
+            Subir Archivo
+            <mat-icon>upload_file</mat-icon>
+          </button>
+
+          <button mat-flat-button color="primary" (click)="updateFile()" *ngIf="update">
+            Editar Archivo
+            <mat-icon>edit</mat-icon>
+          </button>
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

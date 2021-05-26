@@ -1,0 +1,25 @@
+<div class="app-auth-forgot">
+
+  <div class="header">
+    <h1>Recuperar Contraseña</h1>
+
+    <button mat-icon-button matSuffix class="exit" [routerLink]="['/auth/login']">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <form [formGroup]="formForgot" (ngSubmit)="forgot()" class="form" *ngIf="!emailCorrect">
+    <mat-form-field appearance="outline">
+      <mat-label>E-mail</mat-label>
+      <input matInput formControlName="email" type="email">
+      <mat-error *ngIf="formForgot.invalid">{{errorEmail()}}</mat-error>
+    </mat-form-field>
+
+    <button mat-flat-button color="primary">Iniciar sesión</button>
+  </form>
+
+  <div *ngIf="emailCorrect" class="message">
+    <p>Te hemos enviado un correo, revisa tu E-mail</p>
+  </div>
+
+</div>

@@ -1,0 +1,50 @@
+<div class="app-auth-register">
+
+  <div class="header">
+    <h1>Registrar Usuario</h1>
+    
+    <button mat-icon-button matSuffix class="exit" [routerLink]="['/auth']">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <form [formGroup]="formRegister" (ngSubmit)="register()" class="form">
+    <mat-form-field appearance="outline">
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="name" required>
+      <mat-error *ngIf="formRegister.invalid">{{errorName()}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>E-mail</mat-label>
+      <input matInput formControlName="email" type="email" required>
+      <mat-error *ngIf="formRegister.invalid">{{errorEmail()}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Contraseña</mat-label>
+      <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password" autocomplete="off" required>
+      <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword">
+        <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+      <mat-error *ngIf="formRegister.invalid">{{errorPassword()}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Repetir contraseña</mat-label>
+      <input matInput [type]="hideRepeatPassword ? 'password' : 'text'" formControlName="repeatPassword" autocomplete="off" appPasswordEqualValidator="password" required>  
+      <button mat-icon-button matSuffix (click)="hideRepeatPassword = !hideRepeatPassword">
+        <mat-icon>{{hideRepeatPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+      <mat-error *ngIf="formRegister.invalid">{{errorRepeatPassword()}}</mat-error>
+    </mat-form-field>
+
+    <div class="check">
+      <mat-checkbox class="example-margin" color="primary" formControlName="acceptConditions">Acepto política de privacidad</mat-checkbox>
+      <mat-error *ngIf="!acceptConditions">No olvides aceptar la política de privacidad</mat-error>
+    </div>  
+
+    <button mat-flat-button color="primary">Registrar Usuario</button>
+  </form>
+
+</div>

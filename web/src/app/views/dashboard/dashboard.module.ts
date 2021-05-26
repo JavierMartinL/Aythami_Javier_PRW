@@ -17,13 +17,15 @@ import { DashboardComponent } from './dashboard.component';
 import { FileModalComponent } from './modals/file-modal/file-modal.component';
 import { CategoryModalComponent } from './modals/category-modal/category-modal.component';
 import { UserPopoverComponent } from './popover/user-popover/user-popover.component';
+import { DetailFileModalComponent } from './modals/detail-file-modal/detail-file-modal.component';
 
 @NgModule({
   declarations: [
     DashboardComponent,
     FileModalComponent,
+    DetailFileModalComponent,
     CategoryModalComponent,
-    UserPopoverComponent
+    UserPopoverComponent,
   ],
   imports: [
     CommonModule,

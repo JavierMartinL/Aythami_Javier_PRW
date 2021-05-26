@@ -1,23 +1,20 @@
 ## Introducción
 
-En este proyecto se pretende satisfacer la necesidad de almacenar documentos personales ,tenerlos y gestionarlos de manera cómoda para el usuario. Para ello vamos a desarrollar una aplicación web. Para ello usaremos las tecnologías aprendidas en el ciclo de DAW, desde la parte de desarrollo de diagramas y documentación hasta la parte de despliegue sin olvidarnos del código. Para ello vamos a programar usando php en nuestro Backend con el framework laravel.  En el front usaremos angular.
+En este proyecto se pretende satisfacer la necesidad de almacenar documentos personales ,tenerlos y gestionarlos de manera cómoda para el usuario. Para ello vamos a desarrollar una aplicación web. Para ello usaremos las tecnologías aprendidas en el ciclo de DAW, desde la parte de desarrollo de diagramas y documentación hasta la parte de despliegue sin olvidarnos del código. Para ello vamos a programar usando php en nuestro Backend con el framework laravel. En el front usaremos angular.
 
 ## Objetivos
 
 Contamos con una serie de objetivos principales a cumplir en el funcionamiento de la aplicación y unos opcionales.
 
-#####  Principales
+##### Principales
 
-- Una aplicacion de gestion de guardado de “documentos” estos pudiendo estar en
-- diferentes formatos desde imágenes,pdf,texto....
-- Contará con una gestión de de documentos mediante categorías, las cuales se podrán
-insertar por el usuario.
-- En la búsqueda se podrá realizar tanto por categoría como por el nombre de los
-documentos o la descripción de este.
+- Una aplicacion de gestion de guardado de “documentos” estos pudiendo estar en diferentes formatos desde imágenes,pdf,texto....
+- Contará con una gestión de de documentos mediante categorías, las cuales se podrán insertar por el usuario.
+- En la búsqueda se podrá realizar tanto por categoría como por el nombre de los documentos.
 - Pantalla donde se muestre el documento estilo Red social.(Previsualización del
-documento, etiquetas, categorías, descripción)
+  documento, etiquetas, categorías, descripción).
 - Gestión de usuarios para tener más de una cuenta capaz de poner subir archivos.
-- Agregar Etiquetas a los archivos para subcategorias.
+- Agregar Etiquetas a los archivos para subcategorias(Se a solucionado puediendo ponerle multiples categorias a un archivo).
 - Gestionar documento por años o fechas determinadas por el usuario.
 
 ##### Opcionales
@@ -25,7 +22,19 @@ documento, etiquetas, categorías, descripción)
 - Compartir archivos mediante link.
 - Lista de últimos archivos abiertos.
 - Subido a la nube (google drive,dropbox etc ), copias del documento para tener más
-copias y acceder.
+  copias y acceder.
+
+## Instalación
+
+Esta instalación no es recomendable para un usuario común ya que esta aplicación está orientada para instalarse en un servidor.
+
+Para hacer uso del backen se deberá tener instalado php, mysql y composer,como se explica [aqui](Documentacion/Backen.md).
+Con esto solo tenemos que ejecutar el comando `composer install` dentro de la carpeta de servidor.
+Luego agregamos el environment que va a tener nuestras variables de acceso a la base de datos y servidor de correos.
+Una vez esté listo ejecutamos el comando `php artisan migrate` que nos generará la base de datos en mysql y para lanzar el servidor `php artisan serve`.
+
+Para la instalación de Fronten se requiere tener instalados nodejs y npm , angular y ionic.
+Entramos en la carpeta de web hacemos `npm install` y `ionic serve`.
 
 ## [Tecnologías escogidas](Documentacion/Tecnologías_escogidas.md)
 
@@ -40,36 +49,58 @@ Aqui vamos a explicar el porque hemos utilizado cada una de las tecnologias usad
 #### [Framework](Documentacion/Tecnologías_escogidas.md#framework)
 
 ## [Diseño de la aplicación](Documentacion/Diseño_de_la_aplicación.md)
-#### casos de uso 
+
+#### casos de uso
+
 #### Modelos de dominio
+
 #### [Cronología](Documentacion/Cronologia/CronologiaPWR.pdf)
 
 ## [Diseño de la vista](Documentacion/Diseño_de_la_vista.md)
+
 #### Moqups
-#### colores elegidos 
+
+#### colores elegidos
+
 #### Estilo de diseño
 
 ## [Base de datos](Documentacion/Base_de_datos.md)
+
 #### [Modelo Entidad Relación](Documentacion/Base_de_datos.md#entidad_relacion)
+
 #### [Modelo Relacional](Documentacion/Base_de_datos.md#relacional)
+
 #### [Script](Documentacion/BBDD/BBDD_LARAVEL.sql)
+
 #### Consultas SQL
 
 ## [Backen](Documentacion/Backen.md)
+
 #### Instalación del software
-#### Laravel 
+
+#### Laravel
+
 #### Desarrollo de clases
+
 #### Desarrollo de controlador
+
 #### Gestión de usuarios
+
 #### Conexión con el back y el front mediante api rest
+
 #### Generación de tokens
 
 ## [Fronten](Documentacion/Fronten.md)
-#### Instalacion de framework  a utilizar 
+
+#### Instalacion de framework a utilizar
+
 #### Angular e Ionic
+
 #### Crear vistas
+
 #### Crear la lógicas de las vistas
-#### Almacén de objetos 
+
+#### Almacén de objetos
 
 ## [Bibliografia](Documentacion/Bibliografia.md)
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuController, ModalController, PopoverController } from '@ionic/angular';
+import { ModalController, PopoverController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { CategoriaService } from 'src/app/core/service/categoria/categoria.service';
 import { FileService } from 'src/app/core/service/file/file.service';
@@ -15,7 +15,7 @@ import { UserPopoverComponent } from './popover/user-popover/user-popover.compon
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private menu: MenuController, private modalController: ModalController, private popoverController: PopoverController, private categoryService: CategoriaService, private fileService: FileService) { }
+  constructor(private modalController: ModalController, private popoverController: PopoverController, private categoryService: CategoriaService, private fileService: FileService) { }
 
   private allCategories: Observable<any> | null = null;
   private root: number;
@@ -32,11 +32,7 @@ export class DashboardComponent implements OnInit {
     await this.getAllCategory();
   }
 
-  openFirst() {
-    this.menu.enable(true, 'first');
-    this.menu.open('first');
-  }
-
+  // Función que recarga la información de los archivos y las categorías
   setCategory(id: number = this.root): void {
     this.idCategory = id;
     this.files = null
@@ -45,7 +41,8 @@ export class DashboardComponent implements OnInit {
     this.getCategories();
   }
 
-  getCategories() {
+  // Función que controla las categorias que se van a mostrar
+  getCategories(): void {
     this.categories = [];
     this.allCategories.forEach(element => {
       if (element.id === this.idCategory) {
@@ -112,6 +109,7 @@ export class DashboardComponent implements OnInit {
     return await modal.present();
   }
 
+  // Función que abre el modal con los detalles de un archivo
   async detailFileModal(file = null): Promise<void> {
     if (file !== null) {
       const modal = await this.modalController.create({
@@ -183,48 +181,4 @@ export class DashboardComponent implements OnInit {
         return 'insert_drive_file';
     }
   }
-
-  // async createTree() {
-  //   let base=[]
-
-  //   this.allCategories.forEach(element1 =>{
-  //     let a = [];
-  //     this.allCategories.forEach(element2 =>{
-  //       if (element1['id'] === element2['categoria']){
-  //         a.push(element2);
-  //       }
-  //     })
-  //     if (a.length > 0) {
-  //       base.push(a);
-  //     }
-  //   })
-  //   console.log(base);
-    
-
-    // let base = [];
-    // this.allCategories.forEach(category => {
-    //   if (category['id'] !== this.root) {
-    //     let a: CategoriesGroup;
-    //     let arr: CategoriesGroup[] = [];
-    //     this.allCategories.forEach(categoryChildren => {
-    //       if (category['id'] === categoryChildren['id']) {
-    //         a = {id: category['id'], name: category['name']};
-    //       }
-    //       if (category['id'] === categoryChildren['categoria']){
-    //         arr.push({id: categoryChildren['id'], name: categoryChildren['name']});
-    //         console.log('{' + 1 + ', ' + categoryChildren['id'] + '}');
-    //       }
-    //     });
-    //     if (arr.length > 0) {
-    //       a.children = arr;
-    //     }
-    //     base.push(a);
-    //   }
-    // });
-    // console.log(base);
-    
-    // console.log(this.TREE_DATA);
-    
-  //}
-
 }

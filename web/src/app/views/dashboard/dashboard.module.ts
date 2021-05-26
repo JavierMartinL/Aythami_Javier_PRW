@@ -7,19 +7,25 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-
+import { MatIconModule } from '@angular/material/icon';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { NgxDropzoneModule } from 'ngx-dropzone';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
-import { AddFileModalComponent } from './file/add-file-modal/add-file-modal.component';
-import { MatIcon, MatIconModule } from '@angular/material/icon';
+import { FileModalComponent } from './modals/file-modal/file-modal.component';
+import { CategoryModalComponent } from './modals/category-modal/category-modal.component';
+import { UserPopoverComponent } from './popover/user-popover/user-popover.component';
+import { DetailFileModalComponent } from './modals/detail-file-modal/detail-file-modal.component';
 
 @NgModule({
   declarations: [
     DashboardComponent,
-    AddFileModalComponent
+    FileModalComponent,
+    DetailFileModalComponent,
+    CategoryModalComponent,
+    UserPopoverComponent,
   ],
   imports: [
     CommonModule,
@@ -31,7 +37,8 @@ import { MatIcon, MatIconModule } from '@angular/material/icon';
     MatButtonModule,
     MatDatepickerModule,
     MatAutocompleteModule,
-    MatIconModule
+    MatIconModule,
+    MatProgressSpinnerModule
   ]
 })
 export class DashboardModule { }

@@ -1,65 +1,54 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ModalController } from '@ionic/angular';
 import { Observable } from 'rxjs';
-import {finalize, map, startWith} from 'rxjs/operators';
-import { CategoriaService } from 'src/app/core/service/categoria/categoria.service';
+import { map, startWith} from 'rxjs/operators';
 import { FileService } from 'src/app/core/service/file/file.service';
 
 @Component({
-  selector: 'app-add-file-modal',
-  templateUrl: './add-file-modal.component.html',
-  styleUrls: ['./add-file-modal.component.scss']
+  selector: 'app-file-modal',
+  templateUrl: './file-modal.component.html',
+  styleUrls: ['./file-modal.component.scss']
 })
-export class AddFileModalComponent implements OnInit {
+export class FileModalComponent implements OnInit {
 
   @Input() fileObject: Object = null;
-  @Input() update: boolean = false;
+  @Input() categoryOptions: any[] = [];
  
   public filteredOptions: Observable<any[]>;
-  public maxDate: Date;
+  public maxDate: Date = new Date(); // Fecha max (Dia Actual)
   public title: string;
   private fileForm: FormGroup;
   private categoryControl = new FormControl();
-  private categoryOptions: any[] = [];
   private categories: any[];
   private files: File = null;
+  private durationInSeconds: number = 5;
 
-  constructor(private modalController: ModalController, private formBuilder: FormBuilder, private categoryService: CategoriaService, private fileService: FileService) { }
+  constructor(private modalController: ModalController, private _snackBar: MatSnackBar, private formBuilder: FormBuilder, private fileService: FileService) { }
 
   async ngOnInit() {
-    this.title = (this.update) ? 'Editar Archivo' : 'Subir Archivo';
-    this.maxDate = new Date();    
+    this.title = (this.fileObject !== null) ? 'Editar Archivo' : 'Subir Archivo';
     this.fileForm = this.formBuilder.group({
       name: [(this.fileObject !== null ) ? this.fileObject['name'] : '', Validators.required],
       description: [(this.fileObject !== null ) ? this.fileObject['description'] : '', Validators.required],
       file_date: [(this.fileObject !== null ) ? new Date(this.fileObject['file_date']) : '', Validators.required]
     });
     this.categories = (this.fileObject !== null ) ? this.fileObject['categoria'] : [];
-    await this.getCategories();
+    this.loadSearch();
   }
 
-  async getCategories(): Promise<void> {
-    (await this.categoryService.index()).pipe(finalize( () => this.loadSearch())).subscribe(
-      data => {
-        for(let category of data.categorias){
-          this.categoryOptions.push(category);
-        }
-      },
-      err => {
-        console.log(err);
-      }
-    );
-  }
-
+  // Subir Archivo
   addFile(event): void {
     this.files = event.addedFiles;
   }
 
-  deleteFile(): void {
+  // Eliminar Archivo insertado
+  dropFile(): void {
      this.files = null;
   }
 
+  // Añadir categoría valida y evitar repeticiones
   addCategory(): void {
     if (this.categoryControl.value !== null && typeof this.categoryControl.value === 'object'){
       this.categories.push(this.categoryControl.value);
@@ -70,7 +59,8 @@ export class AddFileModalComponent implements OnInit {
     this.categoryControl.setValue('');
   }
 
-  deleteCategory(i) {
+  // Eliminar categoría insertada
+  deleteCategory(i): void {
     for(let j = 0; j < this.categories.length; j++){
       if (this.categories[j].id === i){
         this.categories.splice(j, 1);
@@ -83,6 +73,7 @@ export class AddFileModalComponent implements OnInit {
     return date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
   }
 
+  // Guardar archivo y datos en el backend
   async saveFile(): Promise<void> {
     if (this.fileForm.valid && this.files !== null) {
       const formModel: FormData = new FormData();
@@ -96,23 +87,29 @@ export class AddFileModalComponent implements OnInit {
           formModel.append("categories["+ i +"]", this.categories[i].id);          
         }
       } else {
-        formModel.append("categories[0]", '1');
+        let root: string = null;
+        for (let i = 0; i < this.categoryOptions.length; i++) {
+          if (this.categoryOptions[i].categoria === null && root === null) {
+            root = this.categoryOptions[i].id;
+          }
+        }
+        formModel.append("categories[0]", root);
       }      
 
       (await this.fileService.store(formModel)).subscribe(
-        data => {
-          console.log(this.files[0]);
-          
+        data => {          
           console.log(data);
-          this.modalController.dismiss();
+          this.modalController.dismiss('load');
         },
         err => {
           console.log(err);
+          this.errorUpFile(err.error);
         }
       )
     }
   }
 
+  // Modificar archivo y/o datos
   async updateFile(): Promise<void> {
     if (this.fileForm.valid) {
       const formModel: FormData = new FormData();
@@ -135,22 +132,45 @@ export class AddFileModalComponent implements OnInit {
       (await this.fileService.update(formModel)).subscribe(
         data => {
           console.log(data);
-          this.modalController.dismiss();
+          this.modalController.dismiss('load');
         },
         err => {
           console.log(err);
+          this.errorUpFile(err.error);
         }
       )
     }
   }
 
-  loadSearch(): void{
-    this.filteredOptions = this.categoryControl.valueChanges
-    .pipe(
-        startWith(''),
-        map(value => typeof value === 'string' ? value : value.name),
-        map(name => name ?  this._filter(name) : this.categoryOptions.slice())
-      );
+  // Función que elimina el Archivo
+  async deleteFile(): Promise<void> { 
+    (await this.fileService.delete(this.fileObject['id'])).subscribe(
+      data => {
+        console.log(data);
+        this.modalController.dismiss();
+      },
+      err => {
+        console.log(err);
+      }
+    )
+  }
+
+  // Mostrar error si el fichero ya existe
+  errorUpFile(errors: any): void {
+    if (errors.message){
+      this._snackBar.open(errors.message, '', {
+        duration: this.durationInSeconds * 1000
+      });
+    }
+  }
+
+  // Funciones de Material Autocomplete
+  loadSearch(): void {
+    this.filteredOptions = this.categoryControl.valueChanges.pipe(
+      startWith(''),
+      map(value => typeof value === 'string' ? value : value.name),
+      map(name => name ?  this._filter(name) : this.categoryOptions.slice())
+    );
   }
 
   private _filter(name: string): any[] {
@@ -158,6 +178,7 @@ export class AddFileModalComponent implements OnInit {
     return this.categoryOptions.filter(options => options.name.toLowerCase().indexOf(filterValue) === 0);
   }
   
+  // MENSAJES DE ERROR PARA EL FORMULARIO
   errorName(): string {
     if (this.fileForm.get('name').hasError('required')) {
       return 'Este campo no puede estar vacío';

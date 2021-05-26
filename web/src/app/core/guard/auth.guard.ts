@@ -5,13 +5,15 @@ import { StorageService } from '../service/storage/storage.service';
 @Injectable({
   providedIn: 'root'
 })
+/**
+ * Comprueba que existe un token almacenado
+ * Si no existe es redirigido al login
+*/
 export class AuthGuard implements CanActivate {
 
   constructor(private router: Router, private storage: StorageService) {}
   
-  async canActivate() {
-    console.log(this.storage.isAuth());
-    
+  async canActivate() {    
     if (await this.storage.isAuth()) {
       return true;
     } else {      

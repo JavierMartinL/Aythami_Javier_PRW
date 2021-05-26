@@ -24,18 +24,6 @@ Contamos con una serie de objetivos principales a cumplir en el funcionamiento d
 - Subido a la nube (google drive,dropbox etc ), copias del documento para tener más
   copias y acceder.
 
-## Instalación
-
-Esta instalación no es recomendable para un usuario común ya que esta aplicación está orientada para instalarse en un servidor.
-
-Para hacer uso del backen se deberá tener instalado php, mysql y composer,como se explica [aqui](Documentacion/Backen.md).
-Con esto solo tenemos que ejecutar el comando `composer install` dentro de la carpeta de servidor.
-Luego agregamos el environment que va a tener nuestras variables de acceso a la base de datos y servidor de correos.
-Una vez esté listo ejecutamos el comando `php artisan migrate` que nos generará la base de datos en mysql y para lanzar el servidor `php artisan serve`.
-
-Para la instalación de Fronten se requiere tener instalados nodejs y npm , angular y ionic.
-Entramos en la carpeta de web hacemos `npm install` y `ionic serve`.
-
 ## [Tecnologías escogidas](Documentacion/Tecnologías_escogidas.md)
 
 Aqui vamos a explicar el porque hemos utilizado cada una de las tecnologias usadas en el proyecto. Para ello nos apoyamos en nuestros conoscimientos y resto de pruebas.

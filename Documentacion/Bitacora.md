@@ -4,7 +4,7 @@ Aquí se verán reflejadas en número de horas que ha ido realizando cada uno de
 
 |         | Horas totales |
 | ------- | ------------- |
-| Aythami | 99 hora       |
+| Aythami | 102 hora       |
 | Javier  | 62 horas      |
 
 **Fecha: 12/03/2021 y 20/03/2021**
@@ -329,6 +329,16 @@ Generación de la primera bitácora y corrección de ortografía.
 **Tiempo invertido:** 4h
 **Área:** Documentación
 **Resumen:** Agregado el Manual de uso y finalizada la documentacion del backend, tambien he aztualizado la bitacora.
+
+**Commits:**
+
+- Agregada a la documentacion del backen pruebas de las categorias, bli… 
+
+**Fecha: 26/05/2021**
+**Realizado por:** Aythami
+**Tiempo invertido:** 3h
+**Área:** Documentación
+**Resumen:** Cambios en el readme principal, 
 
 **Commits:**
 

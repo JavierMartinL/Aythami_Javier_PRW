@@ -38,9 +38,7 @@ Aqui vamos a explicar el porque hemos utilizado cada una de las tecnologias usad
 
 ## [Diseño de la aplicación](Documentacion/Diseño_de_la_aplicación.md)
 
-#### casos de uso
-
-#### Modelos de dominio
+#### [Casos De uso](Documentacion/Imagenes/casosdeUso.PNG)
 
 #### [Cronología](Documentacion/Cronologia/CronologiaPWR.pdf)
 

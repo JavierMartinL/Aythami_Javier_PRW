@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar class="toolbar">
+    <ion-title>Crear Categoria</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <form [formGroup]="categoryForm" class="form">
+          <ion-row>
+            <ion-col>
+    
+              <mat-form-field appearance="outline">
+                <mat-label>Nombre</mat-label>
+                <input matInput autocomplete="off" formControlName="name">
+                <mat-error *ngIf="categoryForm.invalid">{{errorName()}}</mat-error>
+              </mat-form-field>
+    
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+    
+              <mat-form-field appearance="outline">
+                <mat-label>Categoria Padre</mat-label>
+                <input matInput formControlName="categoryControl" [matAutocomplete]="auto" type="text">
+                <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                  <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                    {{option.name}}
+                  </mat-option>
+                </mat-autocomplete>
+                <mat-error *ngIf="categoryForm.invalid">{{errorCategory()}}</mat-error>
+              </mat-form-field>
+    
+            </ion-col>
+          </ion-row>
+        </form>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="text-center">
+
+          <button mat-flat-button color="primary" (click)="saveCategory()" *ngIf="categoryObject === null">
+            Crear
+            <mat-icon>create_new_folder</mat-icon>
+          </button>
+
+          <div *ngIf="categoryObject !== null">
+            <button mat-flat-button color="primary" (click)="updateCategory()" class="button">
+              Editar
+              <mat-icon>edit</mat-icon>
+            </button>
+            
+            <button mat-flat-button color="warn" (click)="deleteCategory()" class="button">
+              Eliminar
+              <mat-icon>delete_outline</mat-icon>
+            </button>
+          </div>
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+</ion-content>

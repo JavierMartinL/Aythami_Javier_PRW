@@ -73,6 +73,23 @@ ion-grid, ion-col {
     }
 }
 
+.buttons {
+    margin: 10px 5px !important;
+}
+
 ::ng-deep .cdk-overlay-container {
     z-index: 20042 !important;
+}
+
+::ng-deep .mat-snack-bar-container {
+    background-color: red;
+    color: white;
+
+    .mat-button-wrapper {
+        color: white;
+    }
+    
+    span {
+        margin: auto;
+    }
 }

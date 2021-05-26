@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController, ModalController, PopoverController } from '@ionic/angular';
-import { element } from 'protractor';
 import { Observable } from 'rxjs';
 import { CategoriaService } from 'src/app/core/service/categoria/categoria.service';
 import { FileService } from 'src/app/core/service/file/file.service';
 import { CategoryModalComponent } from './modals/category-modal/category-modal.component';
+import { DetailFileModalComponent } from './modals/detail-file-modal/detail-file-modal.component';
 import { FileModalComponent } from './modals/file-modal/file-modal.component';
 import { UserPopoverComponent } from './popover/user-popover/user-popover.component';
 
@@ -104,10 +104,32 @@ export class DashboardComponent implements OnInit {
     });
 
     modal.onDidDismiss().then((data) => {
-      this.getFiles();
+      if (data.data === "load") {
+        this.getFiles();
+      }
     })
 
     return await modal.present();
+  }
+
+  async detailFileModal(file = null): Promise<void> {
+    if (file !== null) {
+      const modal = await this.modalController.create({
+        component: DetailFileModalComponent,
+        componentProps: {
+          'fileObject': file,
+          'icon': this.setIcon(file)
+        }
+      });
+  
+      modal.onDidDismiss().then((data) => {
+        if (data.role === "edit"){
+          this.fileModal(data.data);
+        }
+      })
+  
+      return await modal.present();
+    }
   }
 
   // Función que abre el modal para crear o editar una categoría
@@ -121,7 +143,9 @@ export class DashboardComponent implements OnInit {
     });
 
     modal.onDidDismiss().then((data) => {
-      this.getAllCategory();
+      if (data.data === 'load') {
+        this.getAllCategory();
+      }
     })
     
     return await modal.present();

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ModalController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { map, startWith} from 'rxjs/operators';
@@ -22,8 +23,9 @@ export class FileModalComponent implements OnInit {
   private categoryControl = new FormControl();
   private categories: any[];
   private files: File = null;
+  private durationInSeconds: number = 5;
 
-  constructor(private modalController: ModalController, private formBuilder: FormBuilder, private fileService: FileService) { }
+  constructor(private modalController: ModalController, private _snackBar: MatSnackBar, private formBuilder: FormBuilder, private fileService: FileService) { }
 
   async ngOnInit() {
     this.title = (this.fileObject !== null) ? 'Editar Archivo' : 'Subir Archivo';
@@ -36,13 +38,13 @@ export class FileModalComponent implements OnInit {
     this.loadSearch();
   }
 
-  // Subir Fichero
+  // Subir Archivo
   addFile(event): void {
     this.files = event.addedFiles;
   }
 
-  // Eliminar Fichero
-  deleteFile(): void {
+  // Eliminar Archivo insertado
+  dropFile(): void {
      this.files = null;
   }
 
@@ -58,7 +60,7 @@ export class FileModalComponent implements OnInit {
   }
 
   // Eliminar categoría insertada
-  deleteCategory(i) {
+  deleteCategory(i): void {
     for(let j = 0; j < this.categories.length; j++){
       if (this.categories[j].id === i){
         this.categories.splice(j, 1);
@@ -95,14 +97,13 @@ export class FileModalComponent implements OnInit {
       }      
 
       (await this.fileService.store(formModel)).subscribe(
-        data => {
-          console.log(this.files[0]);
-          
+        data => {          
           console.log(data);
-          this.modalController.dismiss();
+          this.modalController.dismiss('load');
         },
         err => {
           console.log(err);
+          this.errorUpFile(err.error);
         }
       )
     }
@@ -131,17 +132,40 @@ export class FileModalComponent implements OnInit {
       (await this.fileService.update(formModel)).subscribe(
         data => {
           console.log(data);
-          this.modalController.dismiss();
+          this.modalController.dismiss('load');
         },
         err => {
           console.log(err);
+          this.errorUpFile(err.error);
         }
       )
     }
   }
 
+  // Función que elimina el Archivo
+  async deleteFile(): Promise<void> { 
+    (await this.fileService.delete(this.fileObject['id'])).subscribe(
+      data => {
+        console.log(data);
+        this.modalController.dismiss();
+      },
+      err => {
+        console.log(err);
+      }
+    )
+  }
+
+  // Mostrar error si el fichero ya existe
+  errorUpFile(errors: any): void {
+    if (errors.message){
+      this._snackBar.open(errors.message, '', {
+        duration: this.durationInSeconds * 1000
+      });
+    }
+  }
+
   // Funciones de Material Autocomplete
-  loadSearch(): void{
+  loadSearch(): void {
     this.filteredOptions = this.categoryControl.valueChanges.pipe(
       startWith(''),
       map(value => typeof value === 'string' ? value : value.name),

@@ -1,0 +1,6 @@
+<div class="userData" *ngIf="user !== null">
+  <mat-icon class="icon">badge</mat-icon>
+  <h2>{{user.name}}</h2>
+  <h4>{{user.email}}</h4>
+  <button mat-flat-button color="primary" (click)="logout()">Cerrar sesión</button>
+</div>

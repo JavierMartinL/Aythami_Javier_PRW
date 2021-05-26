@@ -28,7 +28,7 @@ Primer modelos propuesto antes de  aplicar la gestion de usuarios con passport y
 
 Modelo definitivo despues de aplicar todos los cambios a la base de datos.
 
-![Modelo Relacional de la base de datos](Imagenes/BBDD/BBDDFin.png)
+![Modelo Relacional de la base de datos](Imagenes/BBDD/BBDDFin.PNG)
 
 
 ## [Script](BBDD/BBDD_LARAVEL.sql)

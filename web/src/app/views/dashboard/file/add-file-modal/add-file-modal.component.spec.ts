@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { CategoryModalComponent } from './category-modal.component';
+import { AddFileModalComponent } from './add-file-modal.component';
 
-describe('CategoryModalComponent', () => {
-  let component: CategoryModalComponent;
-  let fixture: ComponentFixture<CategoryModalComponent>;
+describe('AddFileModalComponent', () => {
+  let component: AddFileModalComponent;
+  let fixture: ComponentFixture<AddFileModalComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ CategoryModalComponent ],
+      declarations: [ AddFileModalComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(CategoryModalComponent);
+    fixture = TestBed.createComponent(AddFileModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

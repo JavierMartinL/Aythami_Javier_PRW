@@ -5,10 +5,7 @@
         linear-gradient(135deg, #4c84ea 0%, transparent 31%), 
         linear-gradient(134deg, #090080 -10%, transparent 117%);
     color: white;
-    text-align: center;
-    ion-title {
-        padding: 5px;
-    }
+    text-align: center;   
 }
 
 ion-grid, ion-col {
@@ -24,12 +21,6 @@ ion-grid, ion-col {
         border: none;
         color: #383b44;
         margin-bottom: 10px;
-
-        .preview {
-            max-height: 100px !important;
-            height: 100px !important;
-            min-height: 70px !important;
-        }
     }
 
     mat-form-field {
@@ -73,23 +64,6 @@ ion-grid, ion-col {
     }
 }
 
-.buttons {
-    margin: 10px 5px !important;
-}
-
 ::ng-deep .cdk-overlay-container {
     z-index: 20042 !important;
-}
-
-::ng-deep .mat-snack-bar-container {
-    background-color: red;
-    color: white;
-
-    .mat-button-wrapper {
-        color: white;
-    }
-    
-    span {
-        margin: auto;
-    }
 }

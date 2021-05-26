@@ -67,7 +67,7 @@ class CategoriasController extends Controller
         $request->validate([
             'id' => 'required',
             'name' => 'required',
-            'idCategoria' => 'required',
+            'idCategoria' => 'idCategoria',
         ]);
 
         $data = Categoria::findOrFail($request->id);

@@ -156,7 +156,7 @@ export class DashboardComponent implements OnInit {
       case 'txt':
         return 'description';
       default:
-        break;
+        return 'insert_drive_file';
     }
   }
 

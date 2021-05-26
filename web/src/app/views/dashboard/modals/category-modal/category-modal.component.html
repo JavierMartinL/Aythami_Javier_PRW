@@ -47,8 +47,8 @@
             <mat-icon>create_new_folder</mat-icon>
           </button>
 
-          <div>
-            <button mat-flat-button color="primary" (click)="updateCategory()" class="button" *ngIf="categoryObject !== null">
+          <div *ngIf="categoryObject !== null">
+            <button mat-flat-button color="primary" (click)="updateCategory()" class="button">
               Editar
               <mat-icon>edit</mat-icon>
             </button>

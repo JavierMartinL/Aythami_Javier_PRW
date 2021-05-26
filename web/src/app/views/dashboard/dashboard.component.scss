@@ -30,6 +30,21 @@ ion-grid {
             margin-right: 5px !important;
         }
 
+        .subCategorias {
+          text-align: center;
+          margin-top: 10px;
+
+          .title {
+            margin: 0 !important;
+            font-weight: 700;
+          }
+        }
+
+        .lista {
+          padding-top: 0;
+          margin: 0px 15px;
+        }
+
         .button {
             margin: 10px;
             text-align: center;
@@ -47,10 +62,18 @@ ion-grid {
         .categoryTitle {
             padding: 10px !important;
             margin: 0 !important;
+            font-weight: 800;
         }
 
         .spinner {
             margin: auto;
+        }
+
+        .fileIcon {
+          font-size: 50px;
+          height: auto;
+          width: auto;
+          color: #74c2e1;
         }
     }
   }

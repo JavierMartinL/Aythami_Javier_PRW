@@ -28,7 +28,7 @@
 
 <ion-grid>
   <ion-row class="dashboard">
-    <ion-col size-md="3" size-lg="2" *ngIf="sidevar" class="ion-hide-md-down">
+    <ion-col size-md="4" size-lg="2" *ngIf="sidevar" class="ion-hide-md-down">
       <ion-content *ngIf="categories !== null" class="sidevar">
 
       <ion-item>
@@ -36,7 +36,16 @@
         <ion-label (click)="setCategory(root)">Principal</ion-label>
       </ion-item>
 
-      <ion-list>
+      <ion-item *ngIf="categoryParent['id'] !== root">
+        <mat-icon class="categoryIcon">west</mat-icon>
+        <ion-label (click)="setCategory(categoryParent['categoria'])">Atras</ion-label>
+      </ion-item>
+
+      <div class="subCategorias">
+        <h3 class="title">Subcategorías</h3>
+      </div>
+
+      <ion-list class="lista">
         <ion-item *ngFor="let category of categories">
           <mat-icon class="categoryIcon">folder</mat-icon>
           <ion-label (click)="setCategory(category.id)">{{category.name}}</ion-label>
@@ -66,7 +75,16 @@
           <ion-label (click)="setCategory(root)">Principal</ion-label>
         </ion-item>
   
-        <ion-list>
+        <ion-item *ngIf="categoryParent['id'] !== root">
+          <mat-icon class="categoryIcon">west</mat-icon>
+          <ion-label (click)="setCategory(categoryParent['categoria'])">Atras</ion-label>
+        </ion-item>
+  
+        <div class="subCategorias">
+          <h3 class="title">Subcategorías</h3>
+        </div>
+  
+        <ion-list class="lista">
           <ion-item *ngFor="let category of categories">
             <mat-icon class="categoryIcon">folder</mat-icon>
             <ion-label (click)="setCategory(category.id)">{{category.name}}</ion-label>
@@ -116,7 +134,7 @@
 
             <ion-card>
               <ion-card-header>
-                <mat-icon>{{setIcon(file)}}</mat-icon>
+                <mat-icon class="fileIcon">{{setIcon(file)}}</mat-icon>
                 <ion-card-title>{{file.name}}</ion-card-title>
               </ion-card-header>
 

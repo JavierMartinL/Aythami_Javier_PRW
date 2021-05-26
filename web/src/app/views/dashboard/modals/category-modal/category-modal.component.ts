@@ -52,9 +52,7 @@ export class CategoryModalComponent implements OnInit {
   }
 
   // Editar una categoría
-  async updateCategory(): Promise<void> {
-    console.log(this.categoryObject['id']);
-    
+  async updateCategory(): Promise<void> {    
     if (this.categoryForm.valid) {
       let name: string = this.categoryForm.get('name').value;
       if (typeof this.categoryForm.get('categoryControl').value === 'object') {
@@ -71,6 +69,19 @@ export class CategoryModalComponent implements OnInit {
         );
       }
     }
+  }
+
+  // Eliminar una categoría
+  async deleteCategory(): Promise<void> {
+    (await this.categoryService.destroy(this.categoryObject['id'])).subscribe(
+      data => {
+        console.log(data);
+        this.modalController.dismiss();
+      },
+      err => {
+        console.log(err);
+      }
+    );
   }
 
   // Funciones de Material Autocomplete

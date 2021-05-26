@@ -26,6 +26,10 @@ ion-grid, ion-col {
     }
 }
 
+.button {
+    margin: 5px !important;
+}
+
 ::ng-deep .cdk-overlay-container {
     z-index: 20042 !important;
 }

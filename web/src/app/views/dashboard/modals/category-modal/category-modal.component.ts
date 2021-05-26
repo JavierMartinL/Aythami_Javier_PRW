@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
-import { element } from 'protractor';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { CategoriaService } from 'src/app/core/service/categoria/categoria.service';
@@ -19,21 +18,15 @@ export class CategoryModalComponent implements OnInit {
   public title: string;
   public filteredOptions: Observable<any[]>;
   private categoryForm: FormGroup;
-  private categoryParent: Object;
 
   constructor(private modalController: ModalController, private formBuilder: FormBuilder, private categoryService: CategoriaService) { }
 
   async ngOnInit() {    
     this.title = (this.categoryObject !== null) ? 'Editar Categoría' : 'Crear Categoría';
-    this.categoryOptions.forEach(element => {
-      if (element.id === this.categoryObject['categoria']){
-        this.categoryParent = element;
-      }
-    })
-    
+
     this.categoryForm = this.formBuilder.group({
       name: [(this.categoryObject !== null ) ? this.categoryObject['name'] : '', Validators.required],
-      categoryControl: [(this.categoryObject !== null ) ? this.categoryParent : '', Validators.required],
+      categoryControl: ['', Validators.required],
     })
     this.loadSearch();
   }
@@ -91,7 +84,6 @@ export class CategoryModalComponent implements OnInit {
 
   private _filter(name: string): any[] {
     const filterValue = name.toLowerCase();
-    console.log(this.categoryOptions.filter(options => options.name.toLowerCase().indexOf(filterValue) === 0));
     return this.categoryOptions.filter(options => options.name.toLowerCase().indexOf(filterValue) === 0);
   }
 

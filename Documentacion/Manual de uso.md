@@ -47,8 +47,11 @@ Nos llevará a una nueva ventana de recuperar contraseña
 Una vez realizado el cambio volverás al login.
  
  
- 
 ## Menú principal
+ 
+Así se ve nuestro menú principal donde se muestran los archivos subidos, por categorías y una  página principal donde se muestran todos los archivos.
+ 
+![logo](Imagenes/Manual/escritorio.PNG)
  
 ## Gestión de archivos
  
@@ -70,8 +73,25 @@ Aquí se muestra un archivo completamente relleno.
  
 Editar funciona exactamente igual teniendo que darle  a editar en la tarjeta del archivo
  
-insertar foto.
+![logo](Imagenes/Manual/subirArchivo0.PNG)
  
 Mostrando los datos del archivo anteriormente subido.
  
 ![logo](Imagenes/Manual/editarArchivo.PNG)
+ 
+## Gestión de categorías
+ 
+Para crear una categoría nos vamos al lado izquierdo de la aplicación y tocamos el botón crear Categoría. Veremos el siguiente modal en el cual añadimos nombre y la categoría padre a la que pertenece.
+ 
+![logo](Imagenes/Manual/añadirCategoria.PNG)
+ 
+Si hacemos click en la categoría, veremos los archivos dentro de estas categorías.
+ 
+![logo](Imagenes/Manual/categoria.PNG)
+ 
+Como vemos podemos ir creando subcategorías para gestionar mejor nuestros archivos. Pudiendo gestionar mejor los archivos.
+ 
+![logo](Imagenes/Manual/categorias.PNG)
+ 
+ 
+ 

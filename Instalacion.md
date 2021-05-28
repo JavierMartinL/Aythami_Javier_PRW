@@ -4,7 +4,7 @@ Esta instalación no es recomendable para un usuario común ya que esta aplicaci
  
 Para hacer uso del backen se deberá tener instalado php, mysql y composer,como se explica en la documentación de Backend.
  
-Con esto solo tenemos que ejecutar el comando `composer install` dentro de la carpeta de servidor luego `php artisan passport:install` para que se creen las claves del passport.
+Con esto solo tenemos que ejecutar el comando `composer install` dentro de la carpeta de servidor 
  
 Luego agregamos el environment que va a tener nuestras variables de acceso a la base de datos y servidor de correos.
  
@@ -13,7 +13,7 @@ Crearemos la tabla en la base de datos en este caso la llamamos organizador pero
  
  ![Env](Documentacion/imagenes/instalacion.PNG)
  
-Una vez esté listo ejecutamos el comando `php artisan migrate` que nos generará la base de datos en mysql y para lanzar el servidor `php artisan serve`.
+Una vez esté listo ejecutamos el comando `php artisan migrate` que nos generará la base de datos en mysql, luego `php artisan passport:install` para que se creen las claves del passport. y para lanzar el servidor `php artisan serve`.
  
  ![Env](Documentacion/imagenes/migrate.PNG)
  

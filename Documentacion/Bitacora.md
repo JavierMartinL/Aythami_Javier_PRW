@@ -4,7 +4,7 @@ Aquí se verán reflejadas en número de horas que ha ido realizando cada uno de
 
 |         | Horas totales |
 | ------- | ------------- |
-| Aythami | 99 hora       |
+| Aythami | 105 hora       |
 | Javier  | 62 horas      |
 
 **Fecha: 12/03/2021 y 20/03/2021**
@@ -333,3 +333,20 @@ Generación de la primera bitácora y corrección de ortografía.
 **Commits:**
 
 - Agregada a la documentacion del backen pruebas de las categorias, bli… 
+
+**Fecha: 26/05/2021 y 27/05/2021**
+**Realizado por:** Aythami
+**Tiempo invertido:** 6h
+**Área:** Documentación
+**Resumen:** Cambios en el readme principal, finalizaciojn en manual de uso, y conversion a pdf de los diferentes manuales.
+
+**Commits:**
+
+- Agregada isntalacion
+- Documentacion de instalacion 30 min
+- elimancion del pdf de readme
+- genaricon de algunos pdf falta 
+- Update Manual de uso.md
+- Update Base_de_datos.md
+- casos de usos pequeño arreglo
+- casos de uso al backend 26/07/2021 1hora

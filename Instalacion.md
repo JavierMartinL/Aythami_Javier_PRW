@@ -18,6 +18,6 @@ Una vez esté listo ejecutamos el comando `php artisan migrate` que nos generar�
  ![Env](Documentacion/imagenes/migrate.PNG)
  
 Para la instalación de Fronten se requiere tener instalados nodejs y npm , angular y ionic.
-Entramos en la carpeta de web hacemos `npm install` y `ionic serve`.
+Para poder descargar las dependencias debemos hacer un `npm install`. Una vez descargadas podemos lanzar la aplicación con el comando `ionic serve`.
  
  

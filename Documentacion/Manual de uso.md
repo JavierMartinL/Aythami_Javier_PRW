@@ -30,7 +30,11 @@ Donde dando click en el botón, nos verifica el correo y redireccionará a el lo
  
 Una vez aquí nos pedirá el email  si lo envias sin que el email este en el sistema dara un error.
  
-![logo](Imagenes/Manual/recuperarContraseña.PNG)
+![logo](Imagenes/Manual/recuperarContraseña.png)
+
+En el caso que el correo esté mal escrito o que no exista dentro de la base de datos se mostrará un mensaje
+
+![logo](Imagenes/Manual/recuperarContraseñaError.png)
  
 Una vez enviado le das a enviar se mostrará el siguiente mensaje 
  
@@ -42,10 +46,11 @@ En el email encontramos el siguiente email de momento aparece como inseguro por 
  
 Nos llevará a una nueva ventana de recuperar contraseña
  
-![logo](Imagenes/Manual/recuperarContraseña3.PNG)
+![logo](Imagenes/Manual/recuperarContraseña3.png)
  
 Una vez realizado el cambio volverás al login.
- 
+
+Para poder acceder al dashboard debes estar logueado, de lo contrario te redirige al login
  
 ## Menú principal
  
@@ -56,8 +61,10 @@ Así se ve nuestro menú principal donde se muestran los archivos subidos, por c
 ## Gestión de archivos
  
 Para añadir un archivo nuevo le damos al botón añadir archivo y se desplegará el siguiente modal.
+
+![logo](Imagenes/Manual/subirArchivo0.PNG)
   
-![logo](Imagenes/Manual/subirArchivo.PNG)
+![logo](Imagenes/Manual/subirArchivo.png)
  
 Como se ve en la siguiente imagen las categorías se muestran en un el campo y se añaden dándole al símbolo de la derecha con la carpeta agregar esto permite añadir al archivo a las categorías.
  
@@ -71,11 +78,11 @@ Aquí se muestra un archivo completamente relleno.
  
 ![logo](Imagenes/Manual/subirArchivo3.PNG)
  
-Editar funciona exactamente igual teniendo que darle  a editar en la tarjeta del archivo
+En el detalle del archivo se nos mostrarán todos los datos y las categorías a las cuales pertenece. En este modal podemos editar el archivo o descargarlo
  
-![logo](Imagenes/Manual/subirArchivo0.PNG)
+![logo](Imagenes/Manual/detail.PNG)
  
-Mostrando los datos del archivo anteriormente subido.
+Editar funciona exactamente igual mostrando los datos del archivo anteriormente subido. Dentro de este modal también podemos eliminar el archivo
  
 ![logo](Imagenes/Manual/editarArchivo.PNG)
  
@@ -93,5 +100,12 @@ Como vemos podemos ir creando subcategorías para gestionar mejor nuestros archi
  
 ![logo](Imagenes/Manual/categorias.PNG)
  
+Todas las categorías se pueden editar y eliminar (excepto la categoría root), para ello debemos pulsar en el botón de editar categoría. Al mostrar nos parece el modal anterior pero con los datos de la categoría
+
+![logo](Imagenes/Manual/editarCategoria.png)
  
- 
+## Datos del Usuario
+
+En la parte superior derecha podemos acceder a un popover con los datos del usuario. En él se nos mostrará el nombre, el e-mail y un botón con el cual podemos cerrar la sesión.
+
+![logo](Imagenes/Manual/cerrarSesion.png)

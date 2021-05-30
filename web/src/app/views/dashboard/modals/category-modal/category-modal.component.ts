@@ -76,7 +76,7 @@ export class CategoryModalComponent implements OnInit {
     (await this.categoryService.destroy(this.categoryObject['id'])).subscribe(
       data => {
         console.log(data);
-        this.modalController.dismiss();
+        this.modalController.dismiss('load');
       },
       err => {
         console.log(err);

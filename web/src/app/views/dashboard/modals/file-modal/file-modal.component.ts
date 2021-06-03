@@ -147,7 +147,7 @@ export class FileModalComponent implements OnInit {
     (await this.fileService.delete(this.fileObject['id'])).subscribe(
       data => {
         console.log(data);
-        this.modalController.dismiss();
+        this.modalController.dismiss('load');
       },
       err => {
         console.log(err);
